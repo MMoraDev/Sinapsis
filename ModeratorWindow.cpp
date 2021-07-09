@@ -1,21 +1,24 @@
 /************************************************//**
- * \file    UIElement.cpp
- * \brief   Here are defined all methods from UIElement class
+ * \file    ModeratorWindow.cpp
+ * \brief   Here are defined all methods from Button class
 ***************************************************/
 
 /**************************************************/
 // Libraries
 
-#include "UIElement.h"
+#include "ModeratorWindow.h"
+
+/**************************************************/
+// Constructor
+
+ModeratorWindow::ModeratorWindow(int width, int height)
+{
+    this->width = width;
+    this->height = height;
+};
 
 /**************************************************/
 // Public
 
 /*****************************/
 // Getters and setters methods
-
-float UIElement::getX() { return this->x; };
-void UIElement::setX(float x) { this->x = x; };
-
-float UIElement::getY() { return this->y; };
-void UIElement::setY(float y) { this->y = y; };

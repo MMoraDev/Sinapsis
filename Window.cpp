@@ -9,15 +9,6 @@
 #include "Window.h"
 
 /**************************************************/
-// Constructor
-
-Window::Window(int width, int height)
-{
-    this->width = width;
-    this->height = height;
-};
-
-/**************************************************/
 // Public
 
 /*****************************/

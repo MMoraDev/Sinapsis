@@ -6,6 +6,7 @@
 
 /**************************************************/
 // Libraries
+
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <windows.h>
@@ -14,6 +15,7 @@
 
 /**************************************************/
 // Namespaces
+
 using namespace sf;
 using namespace std;
 

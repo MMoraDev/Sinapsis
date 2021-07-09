@@ -1,25 +1,26 @@
 /************************************************//**
- * \file    Window.h
+ * \file    ModeratorWindow.h
 ***************************************************/
 
 #pragma once
 
 /**************************************************/
+// Libraries
+
+#include "Window.h"
+
+/**************************************************/
 /**
- * Window class
+ * ModeratorWindow class
  * This is an abstract class that is going be inherited by all windows.
  */
-class Window
+class ModeratorWindow : public Window
 {
     private:
 
     protected:
         /********************/
         // Variables
-
-        int
-            width = 0,
-            height = 0;
 
         /********************/
         // Methods
@@ -31,13 +32,19 @@ class Window
 
     public:
         /********************/
+        // Constructor
+
+        /**
+         * ModeratorWindow Constructor.
+         *
+         * \param width The desired width for the window.
+         * \param height The desired height for the window.
+         */
+        ModeratorWindow(int width, int height);
+
+        /********************/
         // Getters and setters methods
 
-        int getWidth();
-        void setWidth(int width);
-
-        int getHeight();
-        void setHeight(int height);
 
         /********************/
         // Methods

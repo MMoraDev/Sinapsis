@@ -149,11 +149,13 @@
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ModeratorWindow.cpp" />
     <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ModeratorWindow.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="Window.h" />

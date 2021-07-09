@@ -161,12 +161,12 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="resources\audio\clock.mp3" />
-    <Media Include="resources\audio\new-round.mp3" />
-    <Media Include="resources\audio\opening.mp3" />
-    <Media Include="resources\audio\right-answer.mp3" />
-    <Media Include="resources\audio\win.mp3" />
-    <Media Include="resources\audio\wrong-answer.mp3" />
+    <None Include="resources\audio\clock.ogg" />
+    <None Include="resources\audio\new-round.ogg" />
+    <None Include="resources\audio\opening.ogg" />
+    <None Include="resources\audio\right-answer.ogg" />
+    <None Include="resources\audio\win.ogg" />
+    <None Include="resources\audio\wrong-answer.ogg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

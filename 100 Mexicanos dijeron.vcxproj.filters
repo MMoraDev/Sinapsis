@@ -49,23 +49,23 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Media Include="resources\audio\clock.mp3">
+    <None Include="resources\audio\clock.ogg">
       <Filter>resources\Audio</Filter>
-    </Media>
-    <Media Include="resources\audio\new-round.mp3">
+    </None>
+    <None Include="resources\audio\new-round.ogg">
       <Filter>resources\Audio</Filter>
-    </Media>
-    <Media Include="resources\audio\opening.mp3">
+    </None>
+    <None Include="resources\audio\opening.ogg">
       <Filter>resources\Audio</Filter>
-    </Media>
-    <Media Include="resources\audio\right-answer.mp3">
+    </None>
+    <None Include="resources\audio\right-answer.ogg">
       <Filter>resources\Audio</Filter>
-    </Media>
-    <Media Include="resources\audio\win.mp3">
+    </None>
+    <None Include="resources\audio\win.ogg">
       <Filter>resources\Audio</Filter>
-    </Media>
-    <Media Include="resources\audio\wrong-answer.mp3">
+    </None>
+    <None Include="resources\audio\wrong-answer.ogg">
       <Filter>resources\Audio</Filter>
-    </Media>
+    </None>
   </ItemGroup>
 </Project>

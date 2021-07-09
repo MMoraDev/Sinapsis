@@ -11,7 +11,7 @@
 
 #include "MainController.h"
 #include "ModeratorWindowController.h"
-#include "Settings.h"
+
 
 /**************************************************/
 // Namespaces
@@ -26,7 +26,7 @@ using namespace std;
 // Methods
 
 void MainController::run() {
-    // Varaibles
+    // Variables
     ModeratorWindowController mmoderatorWindow;
     Thread moderatorWindowThread(&ModeratorWindowController::run, &mmoderatorWindow);
 

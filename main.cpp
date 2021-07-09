@@ -24,6 +24,7 @@
  */
 int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszArgument, int nCmdShow)
 {
+    // Variables
     MainController mainCtrl = MainController();
 
     mainCtrl.run();

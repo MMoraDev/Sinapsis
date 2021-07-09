@@ -29,7 +29,6 @@ class ModeratorWindowController : public WindowController
     private:
         /********************/
         // Variables
-            RenderWindow window;
 
         /********************/
         // Methods
@@ -42,14 +41,6 @@ class ModeratorWindowController : public WindowController
     protected:
 
     public:
-        /********************/
-        // Constructor
-
-        /**
-         * ModeratorWindowController Constructor.
-         */
-        ModeratorWindowController();
-
         /********************/
         // Getters and setters methods
 

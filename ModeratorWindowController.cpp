@@ -31,20 +31,14 @@ void ModeratorWindowController::draw() {
 /**************************************************/
 // Public
 
-/**************************************************/
-// Constructor
-
-ModeratorWindowController::ModeratorWindowController()
-{
-    window.create(VideoMode(700, 500), APP_TITLE + " - Moderador");
-};
-
 /*****************************/
 // Methods
 
 void ModeratorWindowController::run()
 {
+    window.create(VideoMode(700, 500), APP_TITLE + " - Moderador");
     CircleShape shape(100.f);
+    float i = 0;
     shape.setFillColor(Color::Green);
 
     while (window.isOpen())
@@ -56,8 +50,11 @@ void ModeratorWindowController::run()
                 window.close();
         }
 
+        shape.setPosition(i++, 0);
+
         window.clear();
         window.draw(shape);
         window.display();
+        cout << "I'm not the main thread" << endl;
     }
 };

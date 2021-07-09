@@ -27,12 +27,9 @@ using namespace std;
 
 void MainController::run() {
     // Varaibles
-    ModeratorWindowController m;
-    //WindowController* moderatorWindow = &m;
-
-    Thread moderatorWindowThread(&ModeratorWindowController::run, &m);
+    ModeratorWindowController mmoderatorWindow;
+    Thread moderatorWindowThread(&ModeratorWindowController::run, &mmoderatorWindow);
 
     // Launch threads
     moderatorWindowThread.launch();
-    m.run();
 }

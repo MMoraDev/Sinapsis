@@ -7,17 +7,10 @@
 /**************************************************/
 // Libraries
 
-#include <iostream>
-#include <SFML/Graphics.hpp>
-#include <windows.h>
+#define NOMINMAX                // Prevents SFML Graphic errors caused by windows.h
+#include <windows.h>            // WinMain parameters
 
-#include "Settings.h"
-
-/**************************************************/
-// Namespaces
-
-using namespace sf;
-using namespace std;
+#include "MainController.h"
 
 /**************************************************/
 /**
@@ -31,23 +24,9 @@ using namespace std;
  */
 int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszArgument, int nCmdShow)
 {
-    RenderWindow mainWindow(VideoMode(200, 200), APP_TITLE);
-    CircleShape shape(100.f);
-    shape.setFillColor(Color::Green);
+    MainController mainCtrl = MainController();
 
-    while (mainWindow.isOpen())
-    {
-        Event event;
-        while (mainWindow.pollEvent(event))
-        {
-            if (event.type == Event::Closed)
-                mainWindow.close();
-        }
-
-        mainWindow.clear();
-        mainWindow.draw(shape);
-        mainWindow.display();
-    }
+    mainCtrl.run();
 
     return 0;
 }

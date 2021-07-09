@@ -1,5 +1,5 @@
 /************************************************//**
- * \file    ModeratorWindow.h
+ * \file    WindowController.h
 ***************************************************/
 
 #pragma once
@@ -7,20 +7,31 @@
 /**************************************************/
 // Libraries
 
-#include "Window.h"
+#include <SFML/Graphics.hpp>
+
+/**************************************************/
+// Namespaces
+
+using namespace sf;
 
 /**************************************************/
 /**
- * ModeratorWindow class
+ * WindowController class
  * This is an abstract class that is going be inherited by all windows.
  */
-class ModeratorWindow : public Window
+class WindowController
 {
     private:
 
     protected:
         /********************/
         // Variables
+
+        RenderWindow
+            window;
+        int
+            width = 0,
+            height = 0;
 
         /********************/
         // Methods
@@ -32,25 +43,19 @@ class ModeratorWindow : public Window
 
     public:
         /********************/
-        // Constructor
-
-        /**
-         * ModeratorWindow Constructor.
-         *
-         * \param width The desired width for the window.
-         * \param height The desired height for the window.
-         */
-        ModeratorWindow(int width, int height);
-
-        /********************/
         // Getters and setters methods
 
+        int getWidth();
+        void setWidth(int width);
+
+        int getHeight();
+        void setHeight(int height);
 
         /********************/
         // Methods
 
         /**
-         * \brief Prints the button on screen.
+         * \brief This is going to be the method called by the threads.
          */
-        virtual void render() = 0;
+        virtual void run() = 0;
 };

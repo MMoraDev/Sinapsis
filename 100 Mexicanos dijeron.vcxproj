@@ -148,17 +148,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="MainController.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ModeratorWindow.cpp" />
+    <ClCompile Include="ModeratorWindowController.cpp" />
     <ClCompile Include="UIElement.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WindowController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
-    <ClInclude Include="ModeratorWindow.h" />
+    <ClInclude Include="MainController.h" />
+    <ClInclude Include="ModeratorWindowController.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="UIElement.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowController.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\audio\clock.ogg" />

@@ -23,13 +23,16 @@
     <ClCompile Include="Button.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="ModeratorWindow.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="WindowController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="MainController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="ModeratorWindowController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UIElement.h">
@@ -41,10 +44,13 @@
     <ClInclude Include="Settings.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
+    <ClInclude Include="WindowController.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="ModeratorWindow.h">
+    <ClInclude Include="MainController.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeratorWindowController.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

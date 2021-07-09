@@ -160,6 +160,14 @@
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\audio\clock.mp3" />
+    <Media Include="resources\audio\new-round.mp3" />
+    <Media Include="resources\audio\opening.mp3" />
+    <Media Include="resources\audio\right-answer.mp3" />
+    <Media Include="resources\audio\win.mp3" />
+    <Media Include="resources\audio\wrong-answer.mp3" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

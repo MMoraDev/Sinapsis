@@ -1,50 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de encabezado">
+    <Filter Include="include">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Archivos de recursos">
+    <Filter Include="src">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos principales">
-      <UniqueIdentifier>{d9d2610a-9238-406b-8033-992a7e0fa1a1}</UniqueIdentifier>
+    <Filter Include="resources">
+      <UniqueIdentifier>{d7cee358-425a-4b32-b92b-e63190148c69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\Audio">
+      <UniqueIdentifier>{8126e7b9-6b19-4639-81cb-4d934a97af53}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Archivos principales</Filter>
-    </ClCompile>
     <ClCompile Include="UIElement.cpp">
-      <Filter>Archivos de recursos</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Archivos de recursos</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
-      <Filter>Archivos de recursos</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="ModeratorWindow.cpp">
-      <Filter>Archivos de recursos</Filter>
+      <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UIElement.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="Settings.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="ModeratorWindow.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>include</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\audio\clock.mp3">
+      <Filter>resources\Audio</Filter>
+    </Media>
+    <Media Include="resources\audio\new-round.mp3">
+      <Filter>resources\Audio</Filter>
+    </Media>
+    <Media Include="resources\audio\opening.mp3">
+      <Filter>resources\Audio</Filter>
+    </Media>
+    <Media Include="resources\audio\right-answer.mp3">
+      <Filter>resources\Audio</Filter>
+    </Media>
+    <Media Include="resources\audio\win.mp3">
+      <Filter>resources\Audio</Filter>
+    </Media>
+    <Media Include="resources\audio\wrong-answer.mp3">
+      <Filter>resources\Audio</Filter>
+    </Media>
   </ItemGroup>
 </Project>

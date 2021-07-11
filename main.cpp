@@ -13,6 +13,14 @@
 #include "MainController.h"
 
 /**************************************************/
+//      Comments
+//!     These are important comments
+//?     These are questions
+//TODO  These are tasks to do
+//x     These are completed tasks
+//      https://marketplace.visualstudio.com/items?itemName=OmarRwemi.BetterComments
+
+/**************************************************/
 /**
  * Main function of the app.
  * 

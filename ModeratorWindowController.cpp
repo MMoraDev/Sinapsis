@@ -55,6 +55,5 @@ void ModeratorWindowController::run()
         window.clear();
         window.draw(shape);
         window.display();
-        cout << "I'm not the main thread" << endl;
     }
 };

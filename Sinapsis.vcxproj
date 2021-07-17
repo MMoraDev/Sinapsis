@@ -166,10 +166,12 @@
     <ClInclude Include="WindowController.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\audio\clock.ogg" />
-    <None Include="resources\audio\new-round.ogg" />
+    <None Include="resources\audio\claps.ogg" />
+    <None Include="resources\audio\game.ogg" />
+    <None Include="resources\audio\menu.ogg" />
     <None Include="resources\audio\opening.ogg" />
     <None Include="resources\audio\right-answer.ogg" />
+    <None Include="resources\audio\single-clap.ogg" />
     <None Include="resources\audio\win.ogg" />
     <None Include="resources\audio\wrong-answer.ogg" />
   </ItemGroup>

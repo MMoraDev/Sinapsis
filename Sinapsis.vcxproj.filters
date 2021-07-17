@@ -12,7 +12,7 @@
     <Filter Include="resources">
       <UniqueIdentifier>{d7cee358-425a-4b32-b92b-e63190148c69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="resources\Audio">
+    <Filter Include="resources\audio">
       <UniqueIdentifier>{8126e7b9-6b19-4639-81cb-4d934a97af53}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -61,23 +61,29 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\audio\clock.ogg">
-      <Filter>resources\Audio</Filter>
+    <None Include="resources\audio\claps.ogg">
+      <Filter>resources\audio</Filter>
     </None>
-    <None Include="resources\audio\new-round.ogg">
-      <Filter>resources\Audio</Filter>
+    <None Include="resources\audio\game.ogg">
+      <Filter>resources\audio</Filter>
+    </None>
+    <None Include="resources\audio\menu.ogg">
+      <Filter>resources\audio</Filter>
     </None>
     <None Include="resources\audio\opening.ogg">
-      <Filter>resources\Audio</Filter>
+      <Filter>resources\audio</Filter>
     </None>
     <None Include="resources\audio\right-answer.ogg">
-      <Filter>resources\Audio</Filter>
+      <Filter>resources\audio</Filter>
+    </None>
+    <None Include="resources\audio\single-clap.ogg">
+      <Filter>resources\audio</Filter>
     </None>
     <None Include="resources\audio\win.ogg">
-      <Filter>resources\Audio</Filter>
+      <Filter>resources\audio</Filter>
     </None>
     <None Include="resources\audio\wrong-answer.ogg">
-      <Filter>resources\Audio</Filter>
+      <Filter>resources\audio</Filter>
     </None>
   </ItemGroup>
 </Project>

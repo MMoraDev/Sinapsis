@@ -18,6 +18,8 @@ class UIElement
         // Variables
 
         float
+            height = 0,
+            width = 0,
             x = 0.0,
             y = 0.0;
 
@@ -30,18 +32,25 @@ class UIElement
         /********************/
         // Getters and setters methods
 
-        virtual float getX();
-        virtual void setX(float);
+        int getHeight();
+        void setHeight(int height);
 
-        virtual float getY();
-        virtual void setY(float);
+        int getWidth();
+        void setWidth(int width);
+
+        float getX();
+        void setX(float x);
+
+        float getY();
+        void setY(float y);
 
         /********************/
         // Methods
 
         /**
-         * @brief Prints on screen the object
-         *
+         * /brief Prints the ui on the canvas (doesn't show it on screen).
+         * 
+         * \param canvas
          */
-        virtual void render() = 0;
+        virtual void draw(RenderTexture& canvas) = 0;
 };

@@ -33,12 +33,6 @@ void Button::draw() {
 /*****************************/
 // Getters and setters methods
 
-int Button::getWidth() { return this->width; };
-void Button::setWidth(int width) { this->width = width; };
-
-int Button::getHeight() { return this->height; };
-void Button::setHeight(int height) { this->height = height; };
-
 /*****************************/
 // Medoths
 

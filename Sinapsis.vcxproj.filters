@@ -51,6 +51,9 @@
     <ClCompile Include="WindowController.cpp">
       <Filter>src\controllers</Filter>
     </ClCompile>
+    <ClCompile Include="SlideableMenu.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Settings.h">
@@ -73,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="WindowController.h">
       <Filter>include\controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SlideableMenu.h">
+      <Filter>include\ui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

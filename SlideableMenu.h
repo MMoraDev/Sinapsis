@@ -7,19 +7,30 @@
 /**************************************************/
 // Libraries
 
+#include <SFML/Graphics.hpp>
+
 #include "UIElement.h"
+
+/**************************************************/
+// Namespaces
+
+using namespace sf;
 
 /**************************************************/
 /**
  * Button class
  */
-class Button : public UIElement
+class SlideableMenu : public UIElement
 {
     private:
 
     protected:
         /********************/
         // Variables
+
+        int
+            width = 0,
+            height = 0;
 
         /********************/
         // Methods
@@ -39,7 +50,7 @@ class Button : public UIElement
          * \param width The desired width for the window.
          * \param height The desired height for the window.
          */
-        Button(int width, int height);
+        SlideableMenu(int width, int height);
 
         /********************/
         // Getters and setters methods

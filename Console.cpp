@@ -15,7 +15,8 @@
 /*****************************/
 // Medoths
 
-void Console::setStyle(STYLE style) {
+void Console::setStyle(STYLE style)
+{
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, (int)style);
 }
@@ -26,7 +27,8 @@ void Console::setStyle(STYLE style) {
 /*****************************/
 // Medoths
 
-void Console::debug(string title, string message, int line, string file, MESSAGE_TYPE type) {
+void Console::debug(string title, string message, int line, string file, MESSAGE_TYPE type)
+{
 	setlocale(LC_ALL, "es_ES");
 
 	cout << endl << endl;
@@ -45,7 +47,8 @@ void Console::debug(string title, string message, int line, string file, MESSAGE
 	setStyle(STYLE::RESET);
 };
 
-Console::STYLE Console::getColorByType(MESSAGE_TYPE type, MESSAGE_PART part) {
+Console::STYLE Console::getColorByType(MESSAGE_TYPE type, MESSAGE_PART part)
+{
 	STYLE style = STYLE::RESET;
 
 	switch (type)

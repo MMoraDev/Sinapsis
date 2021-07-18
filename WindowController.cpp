@@ -6,6 +6,7 @@
 /**************************************************/
 // Libraries
 
+#include "MainController.h"
 #include "WindowController.h"
 
 /**************************************************/
@@ -19,3 +20,11 @@ void WindowController::setWidth(int width) { this->width = width; };
 
 int WindowController::getHeight() { return this->height; };
 void WindowController::setHeight(int height) { this->height = height; };
+
+/*****************************/
+// Methods
+
+void WindowController::setState(MainController::State newState)
+{
+	this->currentState = newState;
+}

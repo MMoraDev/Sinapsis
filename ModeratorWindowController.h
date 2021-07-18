@@ -29,13 +29,12 @@ class ModeratorWindowController : public WindowController
         /********************/
         // Variables
 
+        const enum class State {
+            MAIN_MENU
+        };
+
         /********************/
         // Methods
-
-        /**
-         * \brief Creates the window's background, etc, but doesn`t show it until render.
-         */
-        void draw();
 
     protected:
 

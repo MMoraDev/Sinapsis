@@ -7,7 +7,10 @@
 /**************************************************/
 // Libraries
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
+
+#include "MainController.h"
 
 /**************************************************/
 // Namespaces
@@ -29,17 +32,16 @@ class WindowController
 
         RenderWindow
             window;
+        RenderTexture
+            texture;
         int
             width = 0,
             height = 0;
+        MainController::State
+            currentState;
 
         /********************/
         // Methods
-
-        /**
-         * \brief Creates the window's background, etc, but doesn`t show it until render.
-         */
-        virtual void draw() = 0;
 
     public:
         /********************/
@@ -58,4 +60,9 @@ class WindowController
          * \brief This is going to be the method called by the threads.
          */
         virtual void run() = 0;
+
+        /**
+         * \brief This sets the state of the wndow.
+         */
+        void setState(MainController::State newState);
 };

@@ -24,10 +24,6 @@ using namespace std;
 /*****************************/
 // Methods
 
-void ModeratorWindowController::draw() {
-
-};
-
 /**************************************************/
 // Public
 
@@ -53,6 +49,7 @@ void ModeratorWindowController::run()
         shape.setPosition(i++, 0);
 
         window.clear();
+        //Sprite sprite(texture.getTexture());
         window.draw(shape);
         window.display();
     }

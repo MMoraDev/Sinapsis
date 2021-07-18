@@ -38,7 +38,7 @@ class Console
             WHITE = 7,
             ERR = 79,
             WARNING = 111,
-            FRIENDLY = 159
+            FRIENDLY = 159,
         };
 
         /********************/
@@ -55,17 +55,17 @@ class Console
         /********************/
         // Enums
         const enum class MESSAGE_TYPE {
-            DEFAULT = 0,
-            WARNING = 1,
-            ERR = 2,
-            FRIENDLY = 3,
+            DEFAULT,
+            WARNING,
+            ERR,
+            FRIENDLY,
         };
 
         const enum class MESSAGE_PART {
-            TITLE = 0,
-            MESSAGE = 1,
-            LINE = 2,
-            FILE = 3
+            TITLE,
+            MESSAGE,
+            LINE,
+            FILE,
         };
 
         /********************/

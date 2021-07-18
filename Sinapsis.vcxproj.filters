@@ -15,49 +15,64 @@
     <Filter Include="resources\audio">
       <UniqueIdentifier>{8126e7b9-6b19-4639-81cb-4d934a97af53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resources\images">
+      <UniqueIdentifier>{48a9a8ca-ed60-4af1-bbe3-82f1792356b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui">
+      <UniqueIdentifier>{88751570-b4ad-4ce0-a173-72ba12d65525}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\ui">
+      <UniqueIdentifier>{0157ac14-7ebc-4dd4-ab79-c3b0abc58770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\controllers">
+      <UniqueIdentifier>{e1af919c-3e99-4ebd-acb9-4a7ca9161d8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\controllers">
+      <UniqueIdentifier>{cb92aa75-3d87-4c88-9fb7-fa8a73711489}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="UIElement.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="WindowController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="MainController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="ModeratorWindowController.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="Console.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="UIElement.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="MainController.cpp">
+      <Filter>src\controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="ModeratorWindowController.cpp">
+      <Filter>src\controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowController.cpp">
+      <Filter>src\controllers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UIElement.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="Settings.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowController.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="MainController.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="ModeratorWindowController.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="Console.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>include\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="UIElement.h">
+      <Filter>include\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="MainController.h">
+      <Filter>include\controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeratorWindowController.h">
+      <Filter>include\controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowController.h">
+      <Filter>include\controllers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -85,5 +100,10 @@
     <None Include="resources\audio\wrong-answer.ogg">
       <Filter>resources\audio</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\images\logo.png">
+      <Filter>resources\images</Filter>
+    </Image>
   </ItemGroup>
 </Project>

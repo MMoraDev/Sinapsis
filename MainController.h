@@ -25,14 +25,31 @@ class MainController
 {
     private:
 
+    public:
+        /********************/
+        // Constants
+
+        const enum class State {
+            MAIN_MENU
+        };
+
+
     protected:
         /********************/
         // Variables
+
+        State
+            currentState;
 
         /********************/
         // Methods
 
     public:
+        /********************/
+        // Constructor
+
+        MainController();
+
         /********************/
         // Getters and setters methods
 
@@ -44,4 +61,11 @@ class MainController
          * \brief This is the function that main will call.
          */
         void run();
+
+        /**
+         * Sets the state of the game.
+         *
+         * \param newState
+         */
+        void setState(State newState);
 };

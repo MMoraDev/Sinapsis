@@ -7,7 +7,14 @@
 /**************************************************/
 // Libraries
 
+#include <SFML/Graphics.hpp>
+
 #include "UIElement.h"
+
+/**************************************************/
+// Namespaces
+
+using namespace sf;
 
 /**************************************************/
 /**
@@ -24,22 +31,11 @@ class Button : public UIElement
         /********************/
         // Methods
 
-        /**
-         * \brief Creates the button's background, etc, but doesn`t show it until render.
-         */
-        void draw();
-
     public:
         /********************/
         // Constructor
 
-        /**
-         * Button Constructor.
-         *
-         * \param width The desired width for the window.
-         * \param height The desired height for the window.
-         */
-        Button(int width, int height);
+        using UIElement::UIElement;
 
         /********************/
         // Getters and setters methods
@@ -48,7 +44,9 @@ class Button : public UIElement
         // Methods
 
         /**
-         * \brief Prints the button on screen.
+         * \brief Prints the ui on the canvas (doesn't show it on screen).
+         *
+         * \param canvas
          */
-        void render();
+        void draw(RenderTexture& canvas);
 };

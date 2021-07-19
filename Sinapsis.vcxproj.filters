@@ -30,6 +30,12 @@
     <Filter Include="src\controllers">
       <UniqueIdentifier>{cb92aa75-3d87-4c88-9fb7-fa8a73711489}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\views">
+      <UniqueIdentifier>{31531231-f216-4622-9712-4f7d3caf6dd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\views">
+      <UniqueIdentifier>{edd1dbcf-c483-4ad8-b171-b728a6132fac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -53,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="SlideableMenu.cpp">
       <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuView.cpp">
+      <Filter>src\views</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="SlideableMenu.h">
       <Filter>include\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuView.h">
+      <Filter>include\views</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

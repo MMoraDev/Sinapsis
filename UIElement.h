@@ -5,6 +5,16 @@
 #pragma once
 
 /**************************************************/
+// Libraries
+
+#include <SFML/Graphics.hpp>
+
+/**************************************************/
+// Namespaces
+
+using namespace sf;
+
+/**************************************************/
 /**
  * UIElement class
  * This is an abstract class that is going be inherited by all classes that need to print on screen.
@@ -17,18 +27,27 @@ class UIElement
         /********************/
         // Variables
 
-        float
+        int
             height = 0,
             width = 0,
-            x = 0.0,
-            y = 0.0;
+            x = 0,
+            y = 0;
 
         /********************/
         // Methods
 
-        virtual void draw() = 0;
-
     public:
+        /********************/
+        /**
+         * Button Constructor.
+         *
+         * \param x The x coordinate.
+         * \param y The y coordinate.
+         * \param height The desired height for the element.
+         * \param width The desired width for the element.
+         */
+        UIElement(int x, int y, int height, int width);
+
         /********************/
         // Getters and setters methods
 
@@ -38,17 +57,17 @@ class UIElement
         int getWidth();
         void setWidth(int width);
 
-        float getX();
-        void setX(float x);
+        int getX();
+        void setX(int x);
 
-        float getY();
-        void setY(float y);
+        int getY();
+        void setY(int y);
 
         /********************/
         // Methods
 
         /**
-         * /brief Prints the ui on the canvas (doesn't show it on screen).
+         * \brief Prints the ui on the canvas (doesn't show it on screen).
          * 
          * \param canvas
          */

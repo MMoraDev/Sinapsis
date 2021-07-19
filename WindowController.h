@@ -45,6 +45,17 @@ class WindowController
 
     public:
         /********************/
+        // Constructor
+
+        /**
+         * WindowController constructor.
+         * 
+         * \param height
+         * \param width
+         */
+        WindowController(int height, int width);
+
+        /********************/
         // Getters and setters methods
 
         int getWidth();

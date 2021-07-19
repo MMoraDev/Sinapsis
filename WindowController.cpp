@@ -13,6 +13,15 @@
 // Public
 
 /*****************************/
+// Constructor
+WindowController::WindowController(int height, int width)
+{
+	this->currentState = MainController::State::MAIN_MENU;
+	this->height = height;
+	this->width = width;
+}
+
+/*****************************/
 // Getters and setters methods
 
 int WindowController::getWidth() { return this->width; };

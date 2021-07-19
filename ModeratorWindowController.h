@@ -40,8 +40,12 @@ class ModeratorWindowController : public WindowController
 
     public:
         /********************/
-        // Getters and setters methods
+        // Constructor
 
+        ModeratorWindowController(int height, int width);
+
+        /********************/
+        // Getters and setters methods
 
         /********************/
         // Methods

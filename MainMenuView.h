@@ -1,5 +1,5 @@
 /************************************************//**
- * \file    SlideableMenu.h
+ * \file    MainMenuView.h
 ***************************************************/
 
 #pragma once
@@ -18,15 +18,17 @@ using namespace sf;
 
 /**************************************************/
 /**
- * SlideableMenu class
+ * MainMenuView class
  */
-class SlideableMenu : public UIElement
+class MainMenuView : public UIElement
 {
     private:
 
     protected:
         /********************/
         // Variables
+        Image 
+            logo;
 
         /********************/
         // Methods

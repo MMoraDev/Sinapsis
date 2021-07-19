@@ -6,26 +6,23 @@
 /**************************************************/
 // Libraries
 
+#include <SFML/Graphics.hpp>
+
 #include "Button.h"
 
 /**************************************************/
-// Constructor
+// Namespaces
 
-Button::Button(int width, int height)
-{
-    this->width = width;
-    this->height = height;
-};
+using namespace sf;
+
+/**************************************************/
+// Constructor
 
 /**************************************************/
 // Protected
 
 /*****************************/
 // Medoths
-
-void Button::draw() {
-
-};
 
 /**************************************************/
 // Public
@@ -36,6 +33,7 @@ void Button::draw() {
 /*****************************/
 // Medoths
 
-void Button::render() {
+void Button::draw(RenderTexture& canvas)
+{
 
 };

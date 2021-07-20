@@ -44,11 +44,9 @@ ModeratorWindowController::ModeratorWindowController(int height, int width) : Wi
 void ModeratorWindowController::run()
 {
     window.create(VideoMode(this->width, this->height), APP_TITLE + " - Moderador");
-    CircleShape shape(100.f);
     Sprite sprite;
     MainMenuView mainMenu = MainMenuView(0, 0, this->height, this->width);
     float i = 0;
-    shape.setFillColor(Color::Green);
 
     while (window.isOpen())
     {
@@ -59,11 +57,9 @@ void ModeratorWindowController::run()
                 window.close();
         }
 
-        shape.setPosition(i++, 0);
 
         this->texture.clear();
         mainMenu.draw(texture);
-        this->texture.draw(shape);
         sprite.setTexture(this->texture.getTexture());
 
         window.clear();

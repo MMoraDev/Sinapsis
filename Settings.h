@@ -10,6 +10,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "WrappableText.h"
+
 /**************************************************/
 // Namespaces
 using namespace std;

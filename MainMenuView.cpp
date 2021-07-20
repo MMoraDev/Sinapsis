@@ -10,8 +10,8 @@
 
 #include "MainMenuView.h"
 #include "Settings.h"
+#include "SlideableMenu.h"
 #include "UIElement.h"
-#include "WrappableText.h"
 
 /**************************************************/
 // Dev libraries
@@ -76,7 +76,6 @@ void MainMenuView::draw(RenderTexture& canvas)
 	sprite.setTexture(texture);
 	sprite.setPosition(Vector2f((float)(this->width / 2) - (this->logo.getSize().x * (logoScale.x / 2.f)), (float)this->height / 15));
 	
-	WrappableText(0, 0, 40, 150, "Modo de juego", PADDING, WrappableText::Style::BODY, APP_COLORS().BLACK, APP_COLORS().PRIMARY).draw(canvas);
-
+	SlideableMenu((int)(this->width / 2) - (400 / 2), (int)(this->height * (1 + 0.1))/ 2, 40, 400).draw(canvas);
 	canvas.draw(sprite);
 };

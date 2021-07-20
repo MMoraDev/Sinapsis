@@ -11,7 +11,13 @@
 #include <string>
 #include <vector>
 
-#include <StorageController.h>
+#include "StorageController.h"
+
+/**************************************************/
+// Dev libraries
+#ifdef _DEBUG
+    #include "Console.h"
+#endif
 
 /**************************************************/
 //Namespaces
@@ -31,19 +37,17 @@ void storageController::readFile() {
     file.open("file.csv", ios::in);
     
     if (file.fail()) {
-
-        cout<<"There has been an error while opening the file."<<endl;
-        exit(1);
-
+        #ifdef _DEBUG
+                Console().debug("Error loading file", "There has been an error while opening the file.", __LINE__, __FILE__, Console::Message_Type::ERR);
+        #endif
     }
 
     while (!file.eof()) {
         getline(file, text, ',');
-        cout<<text<<endl;
+        cout << text << endl;
     }
 
     file.close();
-
 }
 
 /*********************************************/

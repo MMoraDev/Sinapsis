@@ -15,10 +15,10 @@
 /*****************************/
 // Medoths
 
-void Console::setStyle(STYLE style)
+void Console::setStyle(Style Style)
 {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, (int)style);
+	SetConsoleTextAttribute(hConsole, (int)Style);
 }
 
 /**************************************************/
@@ -27,52 +27,52 @@ void Console::setStyle(STYLE style)
 /*****************************/
 // Medoths
 
-void Console::debug(string title, string message, int line, string file, MESSAGE_TYPE type)
+void Console::debug(string title, string message, int line, string file, Message_Type type)
 {
 	setlocale(LC_ALL, "es_ES");
 
 	cout << endl << endl;
-	setStyle(getColorByType(type, MESSAGE_PART::TITLE));
+	setStyle(getColorByType(type, Message_Part::TITLE));
 	cout << title << endl;
-	setStyle(getColorByType(type, MESSAGE_PART::MESSAGE));
+	setStyle(getColorByType(type, Message_Part::MESSAGE));
 	cout << '\t' << message << endl;
-	setStyle(STYLE::RESET);
+	setStyle(Style::RESET);
 	cout << '\t' << "On line ";
-	setStyle(getColorByType(type, MESSAGE_PART::LINE));
+	setStyle(getColorByType(type, Message_Part::LINE));
 	cout << line << endl;
-	setStyle(STYLE::RESET);
+	setStyle(Style::RESET);
 	cout << '\t' << "In file ";
-	setStyle(getColorByType(type, MESSAGE_PART::FILE));
+	setStyle(getColorByType(type, Message_Part::FILE));
 	cout << file << endl;
-	setStyle(STYLE::RESET);
+	setStyle(Style::RESET);
 };
 
-Console::STYLE Console::getColorByType(MESSAGE_TYPE type, MESSAGE_PART part)
+Console::Style Console::getColorByType(Message_Type type, Message_Part part)
 {
-	STYLE style = STYLE::RESET;
+	Style Style = Style::RESET;
 
 	switch (type)
 	{
-		case MESSAGE_TYPE::DEFAULT:
-			if (part == MESSAGE_PART::TITLE) style = STYLE::CYAN;
-			else style = STYLE::WHITE;
+		case Message_Type::DEFAULT:
+			if (part == Message_Part::TITLE) Style = Style::CYAN;
+			else Style = Style::WHITE;
 			break;
-		case MESSAGE_TYPE::WARNING:
-			if (part == MESSAGE_PART::TITLE) style = STYLE::WARNING;
-			else if (part == MESSAGE_PART::MESSAGE) style = STYLE::YELLOW;
-			else style = STYLE::WHITE;
+		case Message_Type::WARNING:
+			if (part == Message_Part::TITLE) Style = Style::WARNING;
+			else if (part == Message_Part::MESSAGE) Style = Style::YELLOW;
+			else Style = Style::WHITE;
 			break;
-		case MESSAGE_TYPE::ERR:
-			if (part == MESSAGE_PART::TITLE) style = STYLE::ERR;
-			else if (part == MESSAGE_PART::MESSAGE) style = STYLE::RED;
-			else style = STYLE::WHITE;
+		case Message_Type::ERR:
+			if (part == Message_Part::TITLE) Style = Style::ERR;
+			else if (part == Message_Part::MESSAGE) Style = Style::RED;
+			else Style = Style::WHITE;
 			break;
-		case MESSAGE_TYPE::FRIENDLY:
-			if (part == MESSAGE_PART::TITLE) style = STYLE::FRIENDLY;
-			else if (part == MESSAGE_PART::MESSAGE) style = STYLE::CYAN;
-			else style = STYLE::WHITE;
+		case Message_Type::FRIENDLY:
+			if (part == Message_Part::TITLE) Style = Style::FRIENDLY;
+			else if (part == Message_Part::MESSAGE) Style = Style::CYAN;
+			else Style = Style::WHITE;
 			break;
 	}
 
-	return style;
+	return Style;
 };

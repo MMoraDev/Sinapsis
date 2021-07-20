@@ -16,19 +16,35 @@
 using namespace sf;
 
 /**************************************************/
+// Protected
+
+/*****************************/
+// Methods
+
+void UIElement::setCursor(Cursor::Type cursor)
+{
+	Cursor c;
+
+	if (this->isClickeable && c.loadFromSystem(cursor))
+		this->parent->setMouseCursor(c);
+};
+
+/**************************************************/
 // Public
 
 /*****************************/
 // Constructor
 
-UIElement::UIElement(int x, int y, int height, int width)
+UIElement::UIElement(Window* parent, int x, int y, int height, int width, bool isClickeable)
 {
+	this->parent = parent;
 	this->x = x;
 	this->y = y;
 	this->height = height;
 	this->width = width;
+	this->isClickeable = isClickeable;
+	this->isMouseInside = false;
 };
-
 
 /*****************************/
 // Getters and setters methods
@@ -44,3 +60,29 @@ void UIElement::setX(int x) { this->x = x; };
 
 int UIElement::getY() { return this->y; };
 void UIElement::setY(int y) { this->y = y; };
+
+/*****************************/
+// Methods
+
+bool UIElement::isMouseOver()
+{
+	Vector2i mousePos = Mouse::getPosition(*this->parent);
+
+	if (mousePos.x >= this->x
+		&& mousePos.x <= this->x + this->width
+		&& mousePos.y >= this->y
+		&& mousePos.y <= this->y + this->height)
+	{
+		Cursor cursor;
+
+		this->setCursor(Cursor::Hand);
+		this->isMouseInside = true;
+
+		return true;
+	}
+
+	this->setCursor(Cursor::Arrow);
+	this->isMouseInside = false;
+
+	return false;
+};

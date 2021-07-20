@@ -38,7 +38,7 @@ using namespace sf;
 /*****************************/
 // Constructor
 
-RoundedRectangle::RoundedRectangle(int x, int y, int height, int width, float radius, const Color& fillColor, float outline, const Color& outlineColor) : UIElement(x, y, height, width)
+RoundedRectangle::RoundedRectangle(Window* parent, int x, int y, int height, int width, float radius, const Color& fillColor, float outline, const Color& outlineColor) : UIElement(parent, x, y, height, width)
 {
 	this->radius = radius;
 	this->outline = outline;

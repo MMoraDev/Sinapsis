@@ -8,6 +8,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "Button.h"
 #include "MainMenuView.h"
 #include "Settings.h"
 #include "SlideableMenu.h"
@@ -39,12 +40,12 @@ using namespace sf;
 /*****************************/
 // Constructor
 
-MainMenuView::MainMenuView(int x, int y, int height, int width) : UIElement(x, y, height, width)
+MainMenuView::MainMenuView(Window* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
 {
 	if (!logo.loadFromFile("resources\\images\\logo.png") || !bg.loadFromFile("resources\\images\\bg.png"))
 	{
 		#ifdef _DEBUG
-				Console().debug("Error loading image", "There was an error loading logo.png or bg.png", __LINE__, __FILE__, Console::MESSAGE_TYPE::ERR);
+				Console().debug("Error loading image", "There was an error loading logo.png or bg.png", __LINE__, __FILE__, Console::Message_Type::ERR);
 		#endif
 	}
 };
@@ -60,12 +61,15 @@ void MainMenuView::draw(RenderTexture& canvas)
 	Texture texture;
 	Sprite sprite;
 	Vector2f logoScale = Vector2f((float)(logo.getSize().x * 0.7) / this->width, (float)(this->logo.getSize().x * 0.7) / this->width);
+	const map<string, vector<string>> options{
+		{ "Modo de juego", { "Clásico", "UNIVA" }}
+	};
 
 	// Convert bg.png (from image -> texture -> sprite) to draw on canvas
 	texture.loadFromImage(this->bg);
 	texture.setSmooth(true);
 	sprite.setTexture(texture);
-	sprite.setScale(Vector2f((float)this->width / bg.getSize().x, (float)this->height / bg.getSize().y));
+	sprite.setScale((float)this->width / bg.getSize().x, (float)this->height / bg.getSize().y);
 
 	canvas.draw(sprite);
 
@@ -74,8 +78,8 @@ void MainMenuView::draw(RenderTexture& canvas)
 	texture.setSmooth(true);
 	sprite.setScale(logoScale);
 	sprite.setTexture(texture);
-	sprite.setPosition(Vector2f((float)(this->width / 2) - (this->logo.getSize().x * (logoScale.x / 2.f)), (float)this->height / 15));
+	sprite.setPosition((float)(this->width / 2) - (this->logo.getSize().x * (logoScale.x / 2.f)), (float)this->height / 15);
 	
-	SlideableMenu((int)(this->width / 2) - (400 / 2), (int)(this->height * (1 + 0.1))/ 2, 40, 400).draw(canvas);
+	SlideableMenu(this->parent, (int)(this->width / 2) - (400 / 2), (int)(this->height * (1 + 0.1))/ 2, 40, 400, options).draw(canvas);
 	canvas.draw(sprite);
 };

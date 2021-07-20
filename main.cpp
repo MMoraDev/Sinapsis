@@ -44,7 +44,7 @@
 #endif
 {
     #ifdef _DEBUG
-            Console().debug("Welcome", "José Gutiérrez & Miguel De La Mora welcome you, developer.", __LINE__, __FILE__, Console::MESSAGE_TYPE::FRIENDLY);
+            Console().debug("Welcome", "José Gutiérrez & Miguel De La Mora welcome you, developer.", __LINE__, __FILE__, Console::Message_Type::FRIENDLY);
     #endif
 
     // Variables

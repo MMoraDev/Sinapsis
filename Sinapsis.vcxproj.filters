@@ -154,6 +154,12 @@
     <Image Include="resources\images\logo.png">
       <Filter>resources\images</Filter>
     </Image>
+    <Image Include="resources\images\arrow.png">
+      <Filter>resources\images</Filter>
+    </Image>
+    <Image Include="resources\images\arrow-hover.png">
+      <Filter>resources\images</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="resources\fonts\MPLUSRounded1c-Black.ttf">

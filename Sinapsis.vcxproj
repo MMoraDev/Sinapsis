@@ -191,6 +191,8 @@
     <None Include="resources\data\file.csv" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\images\arrow-hover.png" />
+    <Image Include="resources\images\arrow.png" />
     <Image Include="resources\images\logo.png" />
   </ItemGroup>
   <ItemGroup>

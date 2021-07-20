@@ -43,7 +43,7 @@ bool WrappableText::initialized = false;
 /*****************************/
 // Constructor
 
-WrappableText::WrappableText(int x, int y, int height, int width, string text, Vector2f padding, Style style, Color fontColor, Color bgColor, float borderRadius) : UIElement(x, y, height, width)
+WrappableText::WrappableText(Window* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style, Color fontColor, Color bgColor, float borderRadius) : UIElement(parent, x, y, height, width)
 {
 	this->text = text;
 	this->padding = padding;
@@ -62,7 +62,7 @@ WrappableText::WrappableText(int x, int y, int height, int width, string text, V
 			if (!tempFont->loadFromFile("resources\\fonts\\MPLUSRounded1c-" + fontWeight + ".ttf"))
 			{
 				#ifdef _DEBUG
-					Console().debug("Error loading font", "There was an error loading MPLUSRounded1c" + fontWeight + ".ttf", __LINE__, __FILE__, Console::MESSAGE_TYPE::ERR);
+					Console().debug("Error loading font", "There was an error loading MPLUSRounded1c" + fontWeight + ".ttf", __LINE__, __FILE__, Console::Message_Type::ERR);
 				#endif
 			}
 
@@ -113,7 +113,7 @@ void WrappableText::draw(RenderTexture& canvas)
 
 	this->uiText.setString(finalText);
 
-	RoundedRectangle(this->x, this->y, this->height, this->width, BORDER_RADIUS, this->bgColor).draw(canvas);
+	RoundedRectangle(this->parent, this->x, this->y, this->height, this->width, BORDER_RADIUS, this->bgColor).draw(canvas);
 	canvas.draw(this->uiText);
 };
 

@@ -27,14 +27,21 @@ class UIElement
         /********************/
         // Variables
 
+        Window*
+            parent;
         int
             height = 0,
             width = 0,
             x = 0,
             y = 0;
+        bool
+            isClickeable,
+            isMouseInside;
 
         /********************/
         // Methods
+
+        void setCursor(Cursor::Type cursor = Cursor::Arrow);
 
     public:
         /********************/
@@ -43,12 +50,14 @@ class UIElement
         /**
          * UIElement Constructor.
          *
+         * \param parent The pointer of the window that contains the element.
          * \param x The x coordinate.
          * \param y The y coordinate.
          * \param height The desired height for the element.
          * \param width The desired width for the element.
+         * \param isClickeable
          */
-        UIElement(int x, int y, int height, int width);
+        UIElement(Window* parent, int x, int y, int height, int width, bool isClickeable = false);
 
         /********************/
         // Getters and setters methods
@@ -74,4 +83,6 @@ class UIElement
          * \param canvas
          */
         virtual void draw(RenderTexture& canvas) = 0;
+
+        bool isMouseOver();
 };

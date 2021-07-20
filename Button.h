@@ -7,13 +7,16 @@
 /**************************************************/
 // Libraries
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 #include "UIElement.h"
 
 /**************************************************/
 // Namespaces
 
+using namespace std;
 using namespace sf;
 
 /**************************************************/
@@ -24,9 +27,24 @@ class Button : public UIElement
 {
     private:
 
+    public:
+        /********************/
+        // Constants
+
+        const enum class Type {
+            IMAGE,
+            TEXT,
+        };
+
     protected:
         /********************/
         // Variables
+
+        Image
+            bg,
+            onHoverBg;
+        Type
+            type;
 
         /********************/
         // Methods
@@ -35,7 +53,7 @@ class Button : public UIElement
         /********************/
         // Constructor
 
-        using UIElement::UIElement;
+        Button(Window* parent, int x, int y, int height, int width, Image bg, Image onHoverBg);
 
         /********************/
         // Getters and setters methods

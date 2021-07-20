@@ -25,7 +25,7 @@ class Console
         /********************/
         // Constants
         // https://ss64.com/nt/syntax-ansi.html
-        const enum class STYLE {
+        const enum class Style {
             RESET = 7,
             BLACK = 0,
             RED = 5,
@@ -49,19 +49,19 @@ class Console
          * 
          * \param style
          */
-        static void setStyle(STYLE style);
+        static void setStyle(Style style);
 
     public:
         /********************/
         // Enums
-        const enum class MESSAGE_TYPE {
+        const enum class Message_Type {
             DEFAULT,
             WARNING,
             ERR,
             FRIENDLY,
         };
 
-        const enum class MESSAGE_PART {
+        const enum class Message_Part {
             TITLE,
             MESSAGE,
             LINE,
@@ -80,12 +80,12 @@ class Console
          * \param file
          * \param type
          */
-        static void debug(string title, string message, int line, string file, MESSAGE_TYPE type = MESSAGE_TYPE::DEFAULT);
+        static void debug(string title, string message, int line, string file, Message_Type type = Message_Type::DEFAULT);
 
         /**
          * \param type
          * \param part
          * \return 
          */
-        static STYLE getColorByType(MESSAGE_TYPE type, MESSAGE_PART part);
+        static Style getColorByType(Message_Type type, Message_Part part);
 };

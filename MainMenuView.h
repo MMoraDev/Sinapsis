@@ -27,6 +27,7 @@ class MainMenuView : public UIElement
     protected:
         /********************/
         // Variables
+
         Image 
             logo,
             bg;
@@ -38,7 +39,7 @@ class MainMenuView : public UIElement
         /********************/
         // Constructor
 
-        MainMenuView(int x, int y, int height, int width);
+        MainMenuView(Window* parent, int x, int y, int height, int width);
 
         /********************/
         // Getters and setters methods

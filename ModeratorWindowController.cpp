@@ -43,18 +43,18 @@ ModeratorWindowController::ModeratorWindowController(int height, int width) : Wi
 
 void ModeratorWindowController::run()
 {
-    window.create(VideoMode(this->width, this->height), APP_TITLE + " - Moderador");
+    this->window.create(VideoMode(this->width, this->height), APP_TITLE + " - Moderador");
     Sprite sprite;
-    MainMenuView mainMenu = MainMenuView(0, 0, this->height, this->width);
+    MainMenuView mainMenu = MainMenuView(&this->window, 0, 0, this->height, this->width);
     float i = 0;
 
-    while (window.isOpen())
+    while (this->window.isOpen())
     {
         Event event;
-        while (window.pollEvent(event))
+        while (this->window.pollEvent(event))
         {
             if (event.type == Event::Closed)
-                window.close();
+                this->window.close();
         }
 
 
@@ -62,8 +62,8 @@ void ModeratorWindowController::run()
         mainMenu.draw(texture);
         sprite.setTexture(this->texture.getTexture());
 
-        window.clear();
-        window.draw(sprite);
-        window.display();
+        this->window.clear();
+        this->window.draw(sprite);
+        this->window.display();
     }
 };

@@ -49,6 +49,7 @@ class RoundedRectangle : public UIElement
         /**
          * RoundedRectangle Constructor.
          *
+         * \param parent The pointer of the window that contains the element.
          * \param x The x coordinate.
          * \param y The y coordinate.
          * \param height The desired height for the element.
@@ -58,7 +59,7 @@ class RoundedRectangle : public UIElement
          * \param outline (Optional) Thickness of the border
          * \param outlineColor (Optional) Color of the border
          */
-        RoundedRectangle(int x, int y, int height, int width, float radius, const Color& fillColor, float outline = 0.f, const Color& outlineColor = Color::Transparent);
+        RoundedRectangle(Window* parent, int x, int y, int height, int width, float radius, const Color& fillColor, float outline = 0.f, const Color& outlineColor = Color::Transparent);
 
         /********************/
         // Getters and setters methods

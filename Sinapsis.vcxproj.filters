@@ -36,8 +36,11 @@
     <Filter Include="src\views">
       <UniqueIdentifier>{edd1dbcf-c483-4ad8-b171-b728a6132fac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="resources\shaders">
-      <UniqueIdentifier>{252d6f4a-f9b9-4434-b6d8-e1f6f1101aaa}</UniqueIdentifier>
+    <Filter Include="resources\fonts">
+      <UniqueIdentifier>{f28c58ff-087a-4a40-8ab8-4f57d8fd7f5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\data">
+      <UniqueIdentifier>{54e30557-b1dd-4744-89a0-88299bd3f142}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -66,10 +69,10 @@
     <ClCompile Include="MainMenuView.cpp">
       <Filter>src\views</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp">
+    <ClCompile Include="RoundedRectangle.cpp">
       <Filter>src\ui</Filter>
     </ClCompile>
-    <ClCompile Include="RoundedRectangle.cpp">
+    <ClCompile Include="WrappableText.cpp">
       <Filter>src\ui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,10 +104,10 @@
     <ClInclude Include="MainMenuView.h">
       <Filter>include\views</Filter>
     </ClInclude>
-    <ClInclude Include="Title.h">
+    <ClInclude Include="RoundedRectangle.h">
       <Filter>include\ui</Filter>
     </ClInclude>
-    <ClInclude Include="RoundedRectangle.h">
+    <ClInclude Include="WrappableText.h">
       <Filter>include\ui</Filter>
     </ClInclude>
   </ItemGroup>
@@ -133,10 +136,36 @@
     <None Include="resources\audio\wrong-answer.ogg">
       <Filter>resources\audio</Filter>
     </None>
+    <None Include="resources\data\file.csv">
+      <Filter>resources\data</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\images\logo.png">
       <Filter>resources\images</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\fonts\MPLUSRounded1c-Black.ttf">
+      <Filter>resources\fonts</Filter>
+    </Font>
+    <Font Include="resources\fonts\MPLUSRounded1c-Bold.ttf">
+      <Filter>resources\fonts</Filter>
+    </Font>
+    <Font Include="resources\fonts\MPLUSRounded1c-ExtraBold.ttf">
+      <Filter>resources\fonts</Filter>
+    </Font>
+    <Font Include="resources\fonts\MPLUSRounded1c-Light.ttf">
+      <Filter>resources\fonts</Filter>
+    </Font>
+    <Font Include="resources\fonts\MPLUSRounded1c-Medium.ttf">
+      <Filter>resources\fonts</Filter>
+    </Font>
+    <Font Include="resources\fonts\MPLUSRounded1c-Regular.ttf">
+      <Filter>resources\fonts</Filter>
+    </Font>
+    <Font Include="resources\fonts\MPLUSRounded1c-Thin.ttf">
+      <Filter>resources\fonts</Filter>
+    </Font>
   </ItemGroup>
 </Project>

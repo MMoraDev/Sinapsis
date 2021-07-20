@@ -19,6 +19,8 @@ using namespace sf;
 // Constants
 
 const string APP_TITLE = "100 Mexicanos dijeron";
+const float PADDING = 10;
+const float BORDER_RADIUS = 12;
 
 /**************************************************/
 // Classes

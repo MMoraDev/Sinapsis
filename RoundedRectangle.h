@@ -55,10 +55,10 @@ class RoundedRectangle : public UIElement
          * \param width The desired width for the element.
          * \param radius The radius for the rounded corners
          * \param fillColor Color of the inner rectangle
-         * \param outline Thickness of the border
-         * \param outlineColor Color of the border
+         * \param outline (Optional) Thickness of the border
+         * \param outlineColor (Optional) Color of the border
          */
-        RoundedRectangle(int x, int y, int height, int width, float radius, const Color& fillColor, float outline, const Color& outlineColor);
+        RoundedRectangle(int x, int y, int height, int width, float radius, const Color& fillColor, float outline = 0.f, const Color& outlineColor = Color::Transparent);
 
         /********************/
         // Getters and setters methods

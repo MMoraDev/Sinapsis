@@ -99,7 +99,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;winmm.lib;gdi32.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;winmm.lib;gdi32.lib;freetype.lib;freetype.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,7 +120,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\migue\source\repos\Sinapsis\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;winmm.lib;gdi32.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-audio-s.lib;sfml-system-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;winmm.lib;gdi32.lib;freetype.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-audio-s.lib;sfml-system-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -160,9 +160,9 @@
     <ClCompile Include="ModeratorWindowController.cpp" />
     <ClCompile Include="RoundedRectangle.cpp" />
     <ClCompile Include="SlideableMenu.cpp" />
-    <ClCompile Include="Title.cpp" />
     <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="WindowController.cpp" />
+    <ClCompile Include="WrappableText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
@@ -173,9 +173,9 @@
     <ClInclude Include="RoundedRectangle.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="SlideableMenu.h" />
-    <ClInclude Include="Title.h" />
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="WindowController.h" />
+    <ClInclude Include="WrappableText.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\audio\claps.ogg" />
@@ -186,9 +186,19 @@
     <None Include="resources\audio\single-clap.ogg" />
     <None Include="resources\audio\win.ogg" />
     <None Include="resources\audio\wrong-answer.ogg" />
+    <None Include="resources\data\file.csv" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\fonts\MPLUSRounded1c-Black.ttf" />
+    <Font Include="resources\fonts\MPLUSRounded1c-Bold.ttf" />
+    <Font Include="resources\fonts\MPLUSRounded1c-ExtraBold.ttf" />
+    <Font Include="resources\fonts\MPLUSRounded1c-Light.ttf" />
+    <Font Include="resources\fonts\MPLUSRounded1c-Medium.ttf" />
+    <Font Include="resources\fonts\MPLUSRounded1c-Regular.ttf" />
+    <Font Include="resources\fonts\MPLUSRounded1c-Thin.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

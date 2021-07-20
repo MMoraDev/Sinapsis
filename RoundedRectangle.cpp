@@ -10,7 +10,6 @@
 
 #include "RoundedRectangle.h"
 #include "Settings.h"
-#include "Title.h"
 #include "UIElement.h"
 
 /**************************************************/
@@ -39,7 +38,7 @@ using namespace sf;
 /*****************************/
 // Constructor
 
-RoundedRectangle::RoundedRectangle(int x, int y, int height, int width, float radius, const Color& fillColor, float outline = 0.f, const Color& outlineColor = Color::Transparent) : UIElement(x, y, height, width)
+RoundedRectangle::RoundedRectangle(int x, int y, int height, int width, float radius, const Color& fillColor, float outline, const Color& outlineColor) : UIElement(x, y, height, width)
 {
 	this->radius = radius;
 	this->outline = outline;

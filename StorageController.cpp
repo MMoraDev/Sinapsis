@@ -1,6 +1,6 @@
 /**************************************************//**
- * @file StorageManager.cpp
- * @brief Here are defined all methods from StorageManager class
+ * @file StorageController.cpp
+ * @brief Here are defined all methods from StorageController class
 /**************************************************/
 
 /**************************************************/
@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-#include <StorageManager.h>
+#include <StorageController.h>
 
 /**************************************************/
 //Namespaces
@@ -23,7 +23,7 @@ using namespace std;
 
 /*****************************/
 // Methods
-void storageManager::readFile() {
+void storageController::readFile() {
 
     ifstream file;
     string text;

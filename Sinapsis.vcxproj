@@ -160,6 +160,7 @@
     <ClCompile Include="ModeratorWindowController.cpp" />
     <ClCompile Include="RoundedRectangle.cpp" />
     <ClCompile Include="SlideableMenu.cpp" />
+    <ClCompile Include="StorageController.cpp" />
     <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="WindowController.cpp" />
     <ClCompile Include="WrappableText.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="RoundedRectangle.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="SlideableMenu.h" />
+    <ClInclude Include="StorageController.h" />
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="WindowController.h" />
     <ClInclude Include="WrappableText.h" />

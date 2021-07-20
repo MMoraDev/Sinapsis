@@ -1,5 +1,5 @@
 /**
- * @file StorageManager.h
+ * @file StorageController.h
  */
 
 #pragma once
@@ -17,7 +17,7 @@ using namespace std;
  * StorageManager class
  */
 
-class storageManager {
+class storageController {
 
     private:
 
@@ -30,6 +30,6 @@ class storageManager {
 
     public:
 
-    void readFile();
+    static void readFile();
 
 };

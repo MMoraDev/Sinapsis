@@ -11,6 +11,7 @@
 #include <windows.h>            // WinMain parameters
 
 #include "MainController.h"
+#include "StorageController.h"
 
 /**************************************************/
 // Dev libraries
@@ -50,6 +51,8 @@
     MainController mainCtrl = MainController();
 
     mainCtrl.run();
+
+    storageController::readFile();
 
     return 0;
 }

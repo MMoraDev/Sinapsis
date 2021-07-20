@@ -69,11 +69,16 @@
     <ClCompile Include="MainMenuView.cpp">
       <Filter>src\views</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
     <ClCompile Include="RoundedRectangle.cpp">
       <Filter>src\ui</Filter>
     </ClCompile>
     <ClCompile Include="WrappableText.cpp">
       <Filter>src\ui</Filter>
+=======
+    <ClCompile Include="StorageController.cpp">
+      <Filter>src\controllers</Filter>
+>>>>>>> Stashed changes
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,11 +109,16 @@
     <ClInclude Include="MainMenuView.h">
       <Filter>include\views</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="RoundedRectangle.h">
       <Filter>include\ui</Filter>
     </ClInclude>
     <ClInclude Include="WrappableText.h">
       <Filter>include\ui</Filter>
+=======
+    <ClInclude Include="StorageController.h">
+      <Filter>include</Filter>
+>>>>>>> Stashed changes
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

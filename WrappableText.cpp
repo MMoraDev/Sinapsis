@@ -43,7 +43,7 @@ bool WrappableText::initialized = false;
 /*****************************/
 // Constructor
 
-WrappableText::WrappableText(int x, int y, int height, int width, string text, float padding, Style style, Color fontColor, Color bgColor, float borderRadius) : UIElement(x, y, height, width)
+WrappableText::WrappableText(int x, int y, int height, int width, string text, Vector2f padding, Style style, Color fontColor, Color bgColor, float borderRadius) : UIElement(x, y, height, width)
 {
 	this->text = text;
 	this->padding = padding;
@@ -85,14 +85,21 @@ void WrappableText::draw(RenderTexture& canvas)
 	string
 		finalText = "",
 		line = "";
+	float
+		charWidth = 10;
 
-	this->uiText.setPosition((float)this->x + this->padding, (float)this->y + this->padding);
+	this->uiText.setPosition((float)this->x + this->padding.x, (float)this->y + this->padding.y);
 	this->uiText.setFillColor(this->fontColor);
+	this->uiText.setString(this->text);
+
+	charWidth = uiText.getLocalBounds().width / this->text.size();
 
 	for (unsigned int i = 0; i < this->text.size(); i++)
 	{
-		if ((int)(((line.size() + 1) * uiText.getCharacterSize()) + this->padding) <= this->width - this->padding)
+		if ((int)(((line.size() + 1) * charWidth) + this->padding.x) <= this->width - this->padding.x)
+		{
 			line += this->text[i];
+		}
 		else
 		{
 			i--;
@@ -100,6 +107,9 @@ void WrappableText::draw(RenderTexture& canvas)
 			line = "";
 		}
 	}
+
+	if (line.size() > 0)
+		finalText += line;
 
 	this->uiText.setString(finalText);
 

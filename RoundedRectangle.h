@@ -1,5 +1,5 @@
 /************************************************//**
- * \file    UIElement.h
+ * \file    RoundedRectangle.h
 ***************************************************/
 
 #pragma once
@@ -9,6 +9,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "UIElement.h"
+
 /**************************************************/
 // Namespaces
 
@@ -16,22 +18,26 @@ using namespace sf;
 
 /**************************************************/
 /**
- * UIElement class
- * This is an abstract class that is going be inherited by all classes that need to print on screen.
+ * Button class
  */
-class UIElement
+class RoundedRectangle : public UIElement
 {
     private:
 
     protected:
         /********************/
-        // Variables
-
+        // Constants
         int
-            height = 0,
-            width = 0,
-            x = 0,
-            y = 0;
+            POINTS = 10;
+
+        /********************/
+        // Variables
+        float
+            radius,
+            outline;
+        Color
+            fillColor,
+            outlineColor;
 
         /********************/
         // Methods
@@ -41,37 +47,29 @@ class UIElement
         // Constructor
 
         /**
-         * UIElement Constructor.
+         * RoundedRectangle Constructor.
          *
          * \param x The x coordinate.
          * \param y The y coordinate.
          * \param height The desired height for the element.
          * \param width The desired width for the element.
+         * \param radius The radius for the rounded corners
+         * \param fillColor Color of the inner rectangle
+         * \param outline Thickness of the border
+         * \param outlineColor Color of the border
          */
-        UIElement(int x, int y, int height, int width);
+        RoundedRectangle(int x, int y, int height, int width, float radius, const Color& fillColor, float outline, const Color& outlineColor);
 
         /********************/
         // Getters and setters methods
-
-        int getHeight();
-        void setHeight(int height);
-
-        int getWidth();
-        void setWidth(int width);
-
-        int getX();
-        void setX(int x);
-
-        int getY();
-        void setY(int y);
 
         /********************/
         // Methods
 
         /**
          * \brief Prints the ui on the canvas (doesn't show it on screen).
-         * 
+         *
          * \param canvas
          */
-        virtual void draw(RenderTexture& canvas) = 0;
+        void draw(RenderTexture& canvas);
 };

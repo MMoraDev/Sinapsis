@@ -10,6 +10,7 @@
 
 #include "MainMenuView.h"
 #include "Settings.h"
+#include "Title.h"
 #include "UIElement.h"
 
 /**************************************************/
@@ -59,6 +60,7 @@ void MainMenuView::draw(RenderTexture& canvas)
 	Texture texture;
 	Sprite sprite;
 	Vector2f logoScale = Vector2f((float)(logo.getSize().x * 0.7) / this->width, (float)(this->logo.getSize().x * 0.7) / this->width);
+	Title t = Title(0, 0, 100, 10);
 
 	// Convert bg.png (from image -> texture -> sprite) to draw on canvas
 	texture.loadFromImage(this->bg);
@@ -74,6 +76,8 @@ void MainMenuView::draw(RenderTexture& canvas)
 	sprite.setScale(logoScale);
 	sprite.setTexture(texture);
 	sprite.setPosition(Vector2f((this->width / 2) - (this->logo.getSize().x * (logoScale.x / 2.f)), this->height / 15));
+	
+	t.draw(canvas);
 
 	canvas.draw(sprite);
 };

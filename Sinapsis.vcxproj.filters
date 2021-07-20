@@ -66,6 +66,12 @@
     <ClCompile Include="MainMenuView.cpp">
       <Filter>src\views</Filter>
     </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="RoundedRectangle.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Settings.h">
@@ -94,6 +100,12 @@
     </ClInclude>
     <ClInclude Include="MainMenuView.h">
       <Filter>include\views</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>include\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="RoundedRectangle.h">
+      <Filter>include\ui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

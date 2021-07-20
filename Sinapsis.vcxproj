@@ -188,7 +188,8 @@
     <None Include="resources\audio\single-clap.ogg" />
     <None Include="resources\audio\win.ogg" />
     <None Include="resources\audio\wrong-answer.ogg" />
-    <None Include="resources\data\file.csv" />
+    <None Include="resources\data\classic.csv" />
+    <None Include="resources\data\univa.csv" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\images\arrow-hover.png" />

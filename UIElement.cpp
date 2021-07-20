@@ -27,7 +27,7 @@ UIElement::UIElement(int x, int y, int height, int width)
 	this->y = y;
 	this->height = height;
 	this->width = width;
-}
+};
 
 
 /*****************************/

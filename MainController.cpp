@@ -36,7 +36,7 @@ MainController::MainController()
 void MainController::run()
 {
     // Variables
-    ModeratorWindowController mmoderatorWindow(500, 700);
+    ModeratorWindowController mmoderatorWindow(675, 1200);
     Thread moderatorWindowThread(&ModeratorWindowController::run, &mmoderatorWindow);
 
     // Launch threads

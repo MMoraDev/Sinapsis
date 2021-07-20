@@ -28,7 +28,8 @@ class MainMenuView : public UIElement
         /********************/
         // Variables
         Image 
-            logo;
+            logo,
+            bg;
 
         /********************/
         // Methods
@@ -37,7 +38,7 @@ class MainMenuView : public UIElement
         /********************/
         // Constructor
 
-        using UIElement::UIElement;
+        MainMenuView(int x, int y, int height, int width);
 
         /********************/
         // Getters and setters methods

@@ -36,6 +36,9 @@
     <Filter Include="src\views">
       <UniqueIdentifier>{edd1dbcf-c483-4ad8-b171-b728a6132fac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resources\shaders">
+      <UniqueIdentifier>{252d6f4a-f9b9-4434-b6d8-e1f6f1101aaa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

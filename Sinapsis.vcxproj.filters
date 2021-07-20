@@ -74,6 +74,7 @@
     </ClCompile>
     <ClCompile Include="WrappableText.cpp">
       <Filter>src\ui</Filter>
+    </ClCompile>
     <ClCompile Include="StorageController.cpp">
       <Filter>src\controllers</Filter>
     </ClCompile>

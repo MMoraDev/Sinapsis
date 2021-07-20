@@ -1,23 +1,25 @@
-/**
+/**************************************************//**
  * @file StorageController.h
- */
+/**************************************************/
 
 #pragma once
 
-/*********************************************/
-//Libraries
+/**************************************************/
+// Libraries
 
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
-/*********************************************/
-//Namespaces
+/**************************************************/
+// Namespaces
+
 using namespace std;
+using namespace sf;
 
 /**
  * StorageManager class
  */
-
-class storageController {
+class StorageController {
 
     private:
 
@@ -29,7 +31,7 @@ class storageController {
         //Methods
 
     public:
-
-    static void readFile();
+        
+        static map<string, map<string, int>> readFile(string filename);
 
 };

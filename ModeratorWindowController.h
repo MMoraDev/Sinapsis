@@ -15,8 +15,8 @@
 /**************************************************/
 // Namespaces
 
-using namespace sf;
 using namespace std;
+using namespace sf;
 
 /**************************************************/
 /**

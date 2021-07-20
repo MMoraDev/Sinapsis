@@ -34,7 +34,7 @@ class SlideableMenu : public UIElement
         map<string, vector<string>> options;
         map<string, vector<string>>::iterator actualOption;
         vector<Image> arrowImages;
-
+        
         /********************/
         // Methods
 

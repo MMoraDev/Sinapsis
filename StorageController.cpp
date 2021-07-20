@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <SFML/Graphics.hpp>
 #include <string>
 #include <vector>
 
@@ -23,19 +24,20 @@
 //Namespaces
 
 using namespace std;
+using namespace sf;
 
 /**************************************************/
 // Public
 
 /*****************************/
 // Methods
-void storageController::readFile()
+map<string, map<string, int>> StorageController::readFile(string filename)
 {
-
     ifstream file;
     string text;
+    map<string, map<string, int>> res = map<string, map<string, int>>();
 
-    file.open("file.csv", ios::in);
+    file.open(filename, ios::in);
     
     if (file.fail())
     {
@@ -47,14 +49,12 @@ void storageController::readFile()
     while (!file.eof())
     {
         getline(file, text, ',');
-        cout << text << endl;
+        #ifdef _DEBUG
+                Console().debug("File", text, __LINE__, __FILE__);
+        #endif
     }
 
     file.close();
+
+    return res;
 }
-
-/*********************************************/
-//Libraries
-
-/*********************************************/
-//Libraries

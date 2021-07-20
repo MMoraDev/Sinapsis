@@ -69,16 +69,13 @@
     <ClCompile Include="MainMenuView.cpp">
       <Filter>src\views</Filter>
     </ClCompile>
-<<<<<<< Updated upstream
     <ClCompile Include="RoundedRectangle.cpp">
       <Filter>src\ui</Filter>
     </ClCompile>
     <ClCompile Include="WrappableText.cpp">
       <Filter>src\ui</Filter>
-=======
     <ClCompile Include="StorageController.cpp">
       <Filter>src\controllers</Filter>
->>>>>>> Stashed changes
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

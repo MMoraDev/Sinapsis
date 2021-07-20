@@ -112,8 +112,9 @@
     </ClInclude>
     <ClInclude Include="WrappableText.h">
       <Filter>include\ui</Filter>
+    </ClInclude>
     <ClInclude Include="StorageController.h">
-      <Filter>include</Filter>
+      <Filter>include\controllers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

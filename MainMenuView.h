@@ -39,7 +39,7 @@ class MainMenuView : public UIElement
         /********************/
         // Constructor
 
-        MainMenuView(Window* parent, int x, int y, int height, int width);
+        MainMenuView(RenderWindow* parent, int x, int y, int height, int width);
 
         /********************/
         // Getters and setters methods

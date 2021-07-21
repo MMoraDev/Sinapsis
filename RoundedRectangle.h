@@ -59,7 +59,7 @@ class RoundedRectangle : public UIElement
          * \param outline (Optional) Thickness of the border
          * \param outlineColor (Optional) Color of the border
          */
-        RoundedRectangle(Window* parent, int x, int y, int height, int width, float radius, const Color& fillColor, float outline = 0.f, const Color& outlineColor = Color::Transparent);
+        RoundedRectangle(RenderWindow* parent, int x, int y, int height, int width, float radius, const Color& fillColor, float outline = 0.f, const Color& outlineColor = Color::Transparent);
 
         /********************/
         // Getters and setters methods

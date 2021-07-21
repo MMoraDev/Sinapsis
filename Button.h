@@ -53,7 +53,7 @@ class Button : public UIElement
         /********************/
         // Constructor
 
-        Button(Window* parent, int x, int y, int height, int width, Image bg, Image onHoverBg);
+        Button(RenderWindow* parent, int x, int y, int height, int width, Image bg, Image onHoverBg);
 
         /********************/
         // Getters and setters methods

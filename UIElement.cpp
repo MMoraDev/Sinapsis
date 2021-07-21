@@ -35,7 +35,7 @@ void UIElement::setCursor(Cursor::Type cursor)
 /*****************************/
 // Constructor
 
-UIElement::UIElement(Window* parent, int x, int y, int height, int width, bool isClickeable)
+UIElement::UIElement(RenderWindow* parent, int x, int y, int height, int width, bool isClickeable)
 {
 	this->parent = parent;
 	this->x = x;
@@ -44,6 +44,9 @@ UIElement::UIElement(Window* parent, int x, int y, int height, int width, bool i
 	this->width = width;
 	this->isClickeable = isClickeable;
 	this->isMouseInside = false;
+
+	this->bounds.setPosition((float)this->x, (float)this->y);
+	this->bounds.setSize({ (float)this->width, (float)this->height });
 };
 
 /*****************************/
@@ -66,12 +69,9 @@ void UIElement::setY(int y) { this->y = y; };
 
 bool UIElement::isMouseOver()
 {
-	Vector2i mousePos = Mouse::getPosition(*this->parent);
+	Vector2f mousePos = static_cast<Vector2f>(this->parent->mapPixelToCoords(Mouse::getPosition(*this->parent)));
 
-	if (mousePos.x >= this->x
-		&& mousePos.x <= this->x + this->width
-		&& mousePos.y >= this->y
-		&& mousePos.y <= this->y + this->height)
+	if (this->bounds.getGlobalBounds().contains(mousePos))
 	{
 		Cursor cursor;
 

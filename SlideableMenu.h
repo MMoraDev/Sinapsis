@@ -52,7 +52,7 @@ class SlideableMenu : public UIElement
          * \param height The desired height for the element.
          * \param width The desired width for the element.
          */
-        SlideableMenu(Window* parent, int x, int y, int height, int width, map<string, vector<string>> options);
+        SlideableMenu(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<string>> options);
 
         /********************/
         // Getters and setters methods

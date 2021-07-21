@@ -27,8 +27,10 @@ class UIElement
         /********************/
         // Variables
 
-        Window*
+        RenderWindow*
             parent;
+        RectangleShape
+            bounds;
         int
             height = 0,
             width = 0,
@@ -57,7 +59,7 @@ class UIElement
          * \param width The desired width for the element.
          * \param isClickeable
          */
-        UIElement(Window* parent, int x, int y, int height, int width, bool isClickeable = false);
+        UIElement(RenderWindow* parent, int x, int y, int height, int width, bool isClickeable = false);
 
         /********************/
         // Getters and setters methods

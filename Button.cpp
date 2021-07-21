@@ -30,7 +30,7 @@ using namespace sf;
 /**************************************************/
 // Constructor
 
-Button::Button(Window* parent, int x, int y, int height, int width, Image bg, Image onHoverBg) : UIElement(parent, x, y, height, width, true)
+Button::Button(RenderWindow* parent, int x, int y, int height, int width, Image bg, Image onHoverBg) : UIElement(parent, x, y, height, width, true)
 {
 	this->bg = bg;
 	this->onHoverBg = onHoverBg;

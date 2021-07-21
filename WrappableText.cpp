@@ -43,7 +43,7 @@ bool WrappableText::initialized = false;
 /*****************************/
 // Constructor
 
-WrappableText::WrappableText(Window* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style, Color fontColor, Color bgColor, float borderRadius) : UIElement(parent, x, y, height, width)
+WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style, Color fontColor, Color bgColor, float borderRadius) : UIElement(parent, x, y, height, width)
 {
 	this->text = text;
 	this->padding = padding;

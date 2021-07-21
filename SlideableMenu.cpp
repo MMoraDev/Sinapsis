@@ -39,7 +39,7 @@ using namespace sf;
 /**************************************************/
 // Constructor
 
-SlideableMenu::SlideableMenu(Window* parent, int x, int y, int height, int width, map<string, vector<string>> options) : UIElement(parent, x, y, height, width)
+SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<string>> options) : UIElement(parent, x, y, height, width)
 {
 	vector<Image> tempImages = {
 		Image(),

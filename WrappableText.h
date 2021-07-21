@@ -89,7 +89,7 @@ class WrappableText : public UIElement
          * \param bgColor (Optional) Color of the background
          * \param borderRadius (Optional) Corner's radious
          */
-        WrappableText(Window* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style = Style::BODY, Color fontColor = Color::Black, Color bgColor = Color::Transparent, float borderRadius = 0);
+        WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style = Style::BODY, Color fontColor = Color::Black, Color bgColor = Color::Transparent, float borderRadius = 0);
 
         /********************/
         // Getters and setters methods

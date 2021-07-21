@@ -46,7 +46,6 @@ void ModeratorWindowController::run()
     this->window.create(VideoMode(this->width, this->height), APP_TITLE + " - Moderador");
     Sprite sprite;
     MainMenuView mainMenu = MainMenuView(&this->window, 0, 0, this->height, this->width);
-    float i = 0;
 
     while (this->window.isOpen())
     {

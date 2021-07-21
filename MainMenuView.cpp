@@ -40,7 +40,7 @@ using namespace sf;
 /*****************************/
 // Constructor
 
-MainMenuView::MainMenuView(Window* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
+MainMenuView::MainMenuView(RenderWindow* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
 {
 	if (!logo.loadFromFile("resources\\images\\logo.png") || !bg.loadFromFile("resources\\images\\bg.png"))
 	{

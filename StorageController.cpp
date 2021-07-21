@@ -11,6 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <vector>
+#include <locale.h>
 
 #include "StorageController.h"
 
@@ -37,6 +38,7 @@ map<string, map<string, int>> StorageController::readFile(string filename)
     string text;
     map<string, map<string, int>> res = map<string, map<string, int>>();
 
+    setlocale(LC_CTYPE, "Spanish");
     file.open(filename, ios::in);
     
     if (file.fail())

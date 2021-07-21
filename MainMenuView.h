@@ -7,13 +7,16 @@
 /**************************************************/
 // Libraries
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 #include "UIElement.h"
 
 /**************************************************/
 // Namespaces
 
+using namespace std;
 using namespace sf;
 
 /**************************************************/
@@ -31,6 +34,8 @@ class MainMenuView : public UIElement
         Image 
             logo,
             bg;
+        map<string, vector<string>>
+            options;
 
         /********************/
         // Methods

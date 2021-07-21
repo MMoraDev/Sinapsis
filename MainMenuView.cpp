@@ -12,6 +12,7 @@
 #include "MainMenuView.h"
 #include "Settings.h"
 #include "SlideableMenu.h"
+#include "StorageController.h"
 #include "UIElement.h"
 
 /**************************************************/
@@ -42,6 +43,8 @@ using namespace sf;
 
 MainMenuView::MainMenuView(RenderWindow* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
 {
+	options["Modo de juego"] = StorageController::findGameModes();
+
 	if (!logo.loadFromFile("resources\\images\\logo.png") || !bg.loadFromFile("resources\\images\\bg.png"))
 	{
 		#ifdef _DEBUG
@@ -61,9 +64,6 @@ void MainMenuView::draw(RenderTexture& canvas)
 	Texture texture;
 	Sprite sprite;
 	Vector2f logoScale = Vector2f((float)(logo.getSize().x * 0.7) / this->width, (float)(this->logo.getSize().x * 0.7) / this->width);
-	const map<string, vector<string>> options{
-		{ "Modo de juego", { "Clásico", "UNIVA" }}
-	};
 
 	// Convert bg.png (from image -> texture -> sprite) to draw on canvas
 	texture.loadFromImage(this->bg);
@@ -80,6 +80,6 @@ void MainMenuView::draw(RenderTexture& canvas)
 	sprite.setTexture(texture);
 	sprite.setPosition((float)(this->width / 2) - (this->logo.getSize().x * (logoScale.x / 2.f)), (float)this->height / 15);
 	
-	SlideableMenu(this->parent, (int)(this->width / 2) - (400 / 2), (int)(this->height * (1 + 0.1))/ 2, 40, 400, options).draw(canvas);
+	SlideableMenu(this->parent, (int)(this->width / 2) - (400 / 2), (int)(this->height * (1 + 0.1))/ 2, 40, 400, this->options).draw(canvas);
 	canvas.draw(sprite);
 };

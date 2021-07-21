@@ -7,12 +7,14 @@
 //Libraries
 
 #include <iostream>
+#include <filesystem>
 #include <fstream>
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <vector>
 #include <locale.h>
 
+#include "Settings.h"
 #include "StorageController.h"
 
 /**************************************************/
@@ -32,6 +34,20 @@ using namespace sf;
 
 /*****************************/
 // Methods
+
+vector<string> StorageController::findGameModes()
+{
+    vector<string> modes = vector<string>();
+
+    for (const auto& entry : filesystem::directory_iterator(DATA_PATH))
+    {
+        modes.push_back(entry.path().stem().u8string());
+    }
+
+    return modes;
+};
+
+
 map<string, map<string, int>> StorageController::readFile(string filename)
 {
     ifstream file;

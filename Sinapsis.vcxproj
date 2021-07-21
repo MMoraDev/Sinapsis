@@ -89,10 +89,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SFML_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SFML_STATIC;WIN32;_HAS_STD_BYTE=0;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>include</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp14</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -108,10 +108,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SFML_STATIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SFML_STATIC;WIN32;_HAS_STD_BYTE=0;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\migue\source\repos\Sinapsis\include</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp14</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -188,8 +188,8 @@
     <None Include="resources\audio\single-clap.ogg" />
     <None Include="resources\audio\win.ogg" />
     <None Include="resources\audio\wrong-answer.ogg" />
-    <None Include="resources\data\classic.csv" />
-    <None Include="resources\data\univa.csv" />
+    <None Include="resources\data\Classic.csv" />
+    <None Include="resources\data\UNIVA.csv" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\images\arrow-hover.png" />

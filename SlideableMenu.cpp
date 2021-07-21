@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <string>
 #include <vector>
 
 #include "Button.h"
@@ -67,6 +68,7 @@ SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int
 
 void SlideableMenu::draw(RenderTexture& canvas)
 {
-	WrappableText(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3)/ 5, this->actualOption->first, PADDING, WrappableText::Style::SUBTITLE, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY).draw(canvas);
-	Button(this->parent, (int)this->x, (int)this->y + 50, 100, 200, arrowImages[0], arrowImages[1]).draw(canvas);
+	WrappableText(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3)/ 5, this->actualOption->second[0], PADDING, WrappableText::Style::SUBTITLE, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY).draw(canvas);
+	Button(this->parent, (int)this->x, (int)this->y + 20 + 50, 75, 26, arrowImages[0], arrowImages[1]).draw(canvas);
+	Button(this->parent, (int)this->x, (int)this->y + 20 + 50, 75, 26, arrowImages[0], arrowImages[1]).draw(canvas);
 };

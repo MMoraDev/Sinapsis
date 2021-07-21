@@ -24,14 +24,18 @@ class StorageController {
     private:
 
     protected:
-        /*******************/
-        //Variables
-        
+
+    public:
         /*******************/
         //Methods
 
-    public:
-        
+        /**
+         * Search in resources/data all files.
+         * 
+         * \return a vector of strings with the names (without extension) of the founded files
+         */
+        static vector<string> findGameModes();
+
         static map<string, map<string, int>> readFile(string filename);
 
 };

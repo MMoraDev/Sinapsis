@@ -142,10 +142,10 @@
     <None Include="resources\audio\wrong-answer.ogg">
       <Filter>resources\audio</Filter>
     </None>
-    <None Include="resources\data\classic.csv">
+    <None Include="resources\data\Classic.csv">
       <Filter>resources\data</Filter>
     </None>
-    <None Include="resources\data\univa.csv">
+    <None Include="resources\data\UNIVA.csv">
       <Filter>resources\data</Filter>
     </None>
   </ItemGroup>

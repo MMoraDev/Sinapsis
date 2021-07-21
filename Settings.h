@@ -20,9 +20,10 @@ using namespace sf;
 /**************************************************/
 // Constants
 
-const string APP_TITLE = "100 Mexicanos dijeron";
-const Vector2f PADDING = { 20.f, 10.f };
-const float BORDER_RADIUS = 12;
+const string	APP_TITLE = "100 Mexicanos dijeron";
+const Vector2f	PADDING = { 20.f, 10.f };
+const float		BORDER_RADIUS = 12;
+const string	DATA_PATH = "resources\\data\\";
 
 /**************************************************/
 // Classes

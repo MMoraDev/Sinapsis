@@ -47,7 +47,7 @@ void ModeratorWindowController::run()
 {
     this->window.create(VideoMode(this->width, this->height), APP_TITLE + " - Moderador");
     MainMenuView mainMenu = MainMenuView(&this->window, 0, 0, this->height, this->width);
-    RoundedRectangle r = RoundedRectangle(&this->window, 50, 50, 100, 100, 10, APP_COLORS().PRIMARY);
+    this->window.setVerticalSyncEnabled(true);
 
     while (this->window.isOpen())
     {
@@ -58,9 +58,9 @@ void ModeratorWindowController::run()
                 this->window.close();
         }
 
-        //this->window.clear();
+        this->window.clear();
         this->window.draw(mainMenu);
-        //this->window.draw(r);
         this->window.display();
+        sleep(milliseconds(10));
     }
 };

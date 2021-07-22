@@ -40,7 +40,8 @@ class UIElement : public Drawable
             y = 0;
         bool
             isClickeable,
-            isMouseInside;
+            isMouseInside,
+            isRedrawNeeded;
         map<string, Drawable*>
             drawables;
 

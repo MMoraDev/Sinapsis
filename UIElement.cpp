@@ -47,6 +47,7 @@ UIElement::UIElement(RenderWindow* parent, int x, int y, int height, int width, 
 	this->width = width;
 	this->isClickeable = isClickeable;
 	this->isMouseInside = false;
+	this->isRedrawNeeded = true;
 
 	this->bounds.setPosition((float)this->x, (float)this->y);
 	this->bounds.setSize({ (float)this->width, (float)this->height });

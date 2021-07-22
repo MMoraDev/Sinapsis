@@ -42,6 +42,12 @@ class WrappableText : public UIElement
             BODY
         };
 
+        const enum class TextAlign {
+            LEFT,
+            CENTER,
+            RIGHT
+        };
+
         const vector<string> FontWeight {
             "ExtraBold",
             "Black",
@@ -57,6 +63,8 @@ class WrappableText : public UIElement
             text;
         Style
             style;
+        TextAlign
+            alignment;
         Color
             fontColor,
             bgColor;
@@ -64,7 +72,7 @@ class WrappableText : public UIElement
             padding;
         float
             borderRadius;
-        Text
+        Text*
             uiText;
 
         /********************/
@@ -85,11 +93,12 @@ class WrappableText : public UIElement
          * \param text The text that will be printed on screen
          * \param padding The inner-margin
          * \param style (Optional) This will change the font weight and size
+         * \param alignment (Optional) This will change the text alignment
          * \param fontColor (Optional) The color of the text
          * \param bgColor (Optional) Color of the background
          * \param borderRadius (Optional) Corner's radious
          */
-        WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style = Style::BODY, Color fontColor = Color::Black, Color bgColor = Color::Transparent, float borderRadius = 0);
+        WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style = Style::BODY, TextAlign alignment = TextAlign::LEFT, Color fontColor = Color::Black, Color bgColor = Color::Transparent, float borderRadius = 0);
 
         /********************/
         // Getters and setters methods
@@ -98,11 +107,16 @@ class WrappableText : public UIElement
         // Methods
 
         /**
-         * \brief Prints the ui on the canvas (doesn't show it on screen).
-         *
-         * \param canvas
+         * Adds blank spaces to de left to alignm text.
+         * 
+         * \param line
          */
-        void draw(RenderTexture& canvas);
+        void addLeftSpaces(string& line);
+
+        /**
+         * \brief Prints the ui on the canvas (doesn't show it on screen).
+         */
+        void initDrawables();
 
         /**
          * Returns an UI Text object with the specified style.

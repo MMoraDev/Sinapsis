@@ -9,6 +9,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "RoundedRectangle.h"
+
 #include "MainMenuView.h"
 #include "ModeratorWindowController.h"
 #include "Settings.h"
@@ -44,8 +46,8 @@ ModeratorWindowController::ModeratorWindowController(int height, int width) : Wi
 void ModeratorWindowController::run()
 {
     this->window.create(VideoMode(this->width, this->height), APP_TITLE + " - Moderador");
-    Sprite sprite;
     MainMenuView mainMenu = MainMenuView(&this->window, 0, 0, this->height, this->width);
+    RoundedRectangle r = RoundedRectangle(&this->window, 50, 50, 100, 100, 10, APP_COLORS().PRIMARY);
 
     while (this->window.isOpen())
     {
@@ -56,13 +58,9 @@ void ModeratorWindowController::run()
                 this->window.close();
         }
 
-
-        this->texture.clear();
-        mainMenu.draw(texture);
-        sprite.setTexture(this->texture.getTexture());
-
-        this->window.clear();
-        this->window.draw(sprite);
+        //this->window.clear();
+        this->window.draw(mainMenu);
+        //this->window.draw(r);
         this->window.display();
     }
 };

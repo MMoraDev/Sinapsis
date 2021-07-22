@@ -7,11 +7,13 @@
 /**************************************************/
 // Libraries
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 /**************************************************/
 // Namespaces
 
+using namespace std;
 using namespace sf;
 
 /**************************************************/
@@ -19,7 +21,7 @@ using namespace sf;
  * UIElement class
  * This is an abstract class that is going be inherited by all classes that need to print on screen.
  */
-class UIElement
+class UIElement : public Drawable
 {
     private:
 
@@ -39,6 +41,8 @@ class UIElement
         bool
             isClickeable,
             isMouseInside;
+        map<string, Drawable*>
+            drawables;
 
         /********************/
         // Methods
@@ -79,12 +83,9 @@ class UIElement
         /********************/
         // Methods
 
-        /**
-         * \brief Prints the ui on the canvas (doesn't show it on screen).
-         * 
-         * \param canvas
-         */
-        virtual void draw(RenderTexture& canvas) = 0;
+        virtual void initDrawables() = 0;
+
+        void draw(RenderTarget& target, RenderStates states) const;
 
         bool isMouseOver();
 };

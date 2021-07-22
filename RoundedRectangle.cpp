@@ -24,15 +24,6 @@
 using namespace sf;
 
 /**************************************************/
-// Constructor
-
-/**************************************************/
-// Protected
-
-/*****************************/
-// Medoths
-
-/**************************************************/
 // Public
 
 /*****************************/
@@ -44,6 +35,8 @@ RoundedRectangle::RoundedRectangle(RenderWindow* parent, int x, int y, int heigh
 	this->outline = outline;
 	this->fillColor = fillColor;
 	this->outlineColor = outlineColor;
+
+	this->initDrawables();
 };
 
 /*****************************/
@@ -52,7 +45,7 @@ RoundedRectangle::RoundedRectangle(RenderWindow* parent, int x, int y, int heigh
 /*****************************/
 // Medoths
 
-void RoundedRectangle::draw(RenderTexture& canvas)
+void RoundedRectangle::initDrawables()
 {
 	ConvexShape* rrect = new ConvexShape();
 	float
@@ -93,5 +86,5 @@ void RoundedRectangle::draw(RenderTexture& canvas)
 		rrect->setPoint(counter++, Vector2f(x - X + this->radius, y + this->radius - Y));
 	}
 
-	canvas.draw(*rrect);
+	this->drawables["shape"] = rrect;
 };

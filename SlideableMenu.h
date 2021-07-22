@@ -62,8 +62,8 @@ class SlideableMenu : public UIElement
 
         /**
          * \brief Prints the ui on the canvas (doesn't show it on screen).
-         *
-         * \param canvas
          */
-        void draw(RenderTexture& canvas);
+        void initDrawables();
+
+        void changeOption(map<string, vector<string>>::iterator option);
 };

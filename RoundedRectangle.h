@@ -67,10 +67,5 @@ class RoundedRectangle : public UIElement
         /********************/
         // Methods
 
-        /**
-         * \brief Prints the ui on the canvas (doesn't show it on screen).
-         *
-         * \param canvas
-         */
-        void draw(RenderTexture& canvas);
+        void initDrawables();
 };

@@ -31,9 +31,9 @@ class MainMenuView : public UIElement
         /********************/
         // Variables
 
-        Image 
-            logo,
-            bg;
+        Texture 
+            *logo,
+            *bg;
         map<string, vector<string>>
             options;
 
@@ -54,8 +54,6 @@ class MainMenuView : public UIElement
 
         /**
          * \brief Prints the ui on the canvas (doesn't show it on screen).
-         *
-         * \param canvas
          */
-        void draw(RenderTexture& canvas);
+        void initDrawables();
 };

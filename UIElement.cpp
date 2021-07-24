@@ -6,13 +6,16 @@
 /**************************************************/
 // Libraries
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 #include "UIElement.h"
 
 /**************************************************/
 // Namespaces
 
+using namespace std;
 using namespace sf;
 
 /**************************************************/
@@ -44,6 +47,7 @@ UIElement::UIElement(RenderWindow* parent, int x, int y, int height, int width, 
 	this->width = width;
 	this->isClickeable = isClickeable;
 	this->isMouseInside = false;
+	this->isRedrawNeeded = true;
 
 	this->bounds.setPosition((float)this->x, (float)this->y);
 	this->bounds.setSize({ (float)this->width, (float)this->height });
@@ -66,6 +70,13 @@ void UIElement::setY(int y) { this->y = y; };
 
 /*****************************/
 // Methods
+void UIElement::draw(RenderTarget& target, RenderStates states) const
+{
+	for (const auto& d : this->drawables)
+	{
+		target.draw(*d.second, states);
+	}
+};
 
 bool UIElement::isMouseOver()
 {
@@ -81,8 +92,11 @@ bool UIElement::isMouseOver()
 		return true;
 	}
 
-	this->setCursor(Cursor::Arrow);
-	this->isMouseInside = false;
+	if (this->isMouseInside)
+	{
+		this->setCursor(Cursor::Arrow);
+		this->isMouseInside = false;
+	}
 
 	return false;
 };

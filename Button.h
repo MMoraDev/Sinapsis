@@ -26,6 +26,10 @@ using namespace sf;
 class Button : public UIElement
 {
     private:
+        /********************/
+        // Methods
+
+        void draw(RenderTarget& target, RenderStates states) const override;
 
     public:
         /********************/
@@ -40,9 +44,9 @@ class Button : public UIElement
         /********************/
         // Variables
 
-        Image
-            bg,
-            onHoverBg;
+        Texture
+            *bg,
+            *onHoverBg;
         Type
             type;
 
@@ -61,10 +65,5 @@ class Button : public UIElement
         /********************/
         // Methods
 
-        /**
-         * \brief Prints the ui on the canvas (doesn't show it on screen).
-         *
-         * \param canvas
-         */
-        void draw(RenderTexture& canvas);
+        void initDrawables();
 };

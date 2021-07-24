@@ -32,22 +32,17 @@ vector<Font*> WrappableText::fonts = vector<Font*>();
 bool WrappableText::initialized = false;
 
 /**************************************************/
-// Protected
-
-/*****************************/
-// Medoths
-
-/**************************************************/
 // Public
 
 /*****************************/
 // Constructor
 
-WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style, Color fontColor, Color bgColor, float borderRadius) : UIElement(parent, x, y, height, width)
+WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style, TextAlign alignment, Color fontColor, Color bgColor, float borderRadius) : UIElement(parent, x, y, height, width)
 {
 	this->text = text;
 	this->padding = padding;
 	this->style = style;
+	this->alignment = alignment;
 	this->fontColor = fontColor;
 	this->bgColor = bgColor;
 	this->borderRadius = borderRadius;
@@ -70,7 +65,7 @@ WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int
 		}
 	}
 
-	this->setStyle(this->style);
+	this->initDrawables();
 };
 
 
@@ -80,7 +75,26 @@ WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int
 /*****************************/
 // Medoths
 
-void WrappableText::draw(RenderTexture& canvas)
+void WrappableText::addLeftSpaces(string& line)
+{
+	this->uiText->setString(" ");
+	float charWidth = uiText->getLocalBounds().width;
+	this->uiText->setString(line);
+	float remainingWidth = this->width - (this->padding.x * 2) - uiText->getLocalBounds().width;
+
+	switch (this->alignment)
+	{
+		case WrappableText::TextAlign::CENTER:
+			line = string((int) ((remainingWidth / 2) / charWidth), ' ') + line;
+			break;
+		case WrappableText::TextAlign::RIGHT:
+			line = string((int) (remainingWidth / charWidth), ' ') + line;
+			break;
+	}
+}
+
+
+void WrappableText::initDrawables()
 {
 	string
 		finalText = "",
@@ -88,11 +102,13 @@ void WrappableText::draw(RenderTexture& canvas)
 	float
 		charWidth = 10;
 
-	this->uiText.setPosition((float)this->x + this->padding.x, (float)this->y + this->padding.y);
-	this->uiText.setFillColor(this->fontColor);
-	this->uiText.setString(this->text);
+	this->uiText = new Text();
+	this->uiText->setPosition((float)this->x + this->padding.x, (float)this->y + this->padding.y);
+	this->uiText->setFillColor(this->fontColor);
+	this->uiText->setString(this->text);
+	this->setStyle(this->style);
 
-	charWidth = uiText.getLocalBounds().width / this->text.size();
+	charWidth = uiText->getLocalBounds().width / this->text.size();
 
 	for (unsigned int i = 0; i < this->text.size(); i++)
 	{
@@ -103,44 +119,48 @@ void WrappableText::draw(RenderTexture& canvas)
 		else
 		{
 			i--;
+			this->addLeftSpaces(line);
 			finalText += line + '\n';
 			line = "";
 		}
 	}
 
 	if (line.size() > 0)
+	{
+		this->addLeftSpaces(line);
 		finalText += line;
+	}
 
-	this->uiText.setString(finalText);
+	this->uiText->setString(finalText);
 
-	RoundedRectangle(this->parent, this->x, this->y, this->height, this->width, BORDER_RADIUS, this->bgColor).draw(canvas);
-	canvas.draw(this->uiText);
+	this->drawables["bg"] = new RoundedRectangle(this->parent, this->x, this->y, this->height, this->width, BORDER_RADIUS, this->bgColor);
+	this->drawables["text"] = this->uiText;
 };
 
 void WrappableText::setStyle(Style style)
 {
-	this->uiText.setFont(*WrappableText::fonts[3]);
+	this->uiText->setFont(*WrappableText::fonts[3]);
 	int fontSize = 20;
 
 	switch (style)
 	{
 	case Style::TITLE:
-		this->uiText.setFont(*WrappableText::fonts[0]);
+		this->uiText->setFont(*WrappableText::fonts[0]);
 		fontSize = 30;
 		break;
 	case Style::SUBTITLE:
-		this->uiText.setFont(*WrappableText::fonts[1]);
+		this->uiText->setFont(*WrappableText::fonts[1]);
 		fontSize = 25;
 		break;
 	case Style::SCORE:
-		this->uiText.setFont(*WrappableText::fonts[0]);
+		this->uiText->setFont(*WrappableText::fonts[0]);
 		fontSize = 80;
 		break;
 	case Style::BODY:
-		this->uiText.setFont(*WrappableText::fonts[2]);
+		this->uiText->setFont(*WrappableText::fonts[2]);
 		fontSize = 20;
 		break;
 	}
 
-	this->uiText.setCharacterSize(fontSize);
+	this->uiText->setCharacterSize(fontSize);
 };

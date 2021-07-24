@@ -48,7 +48,7 @@
     #endif
 
     //! Tests section
-    //StorageController::readFile("resources\\data\\classic.csv");
+    StorageController::readFile("resources\\data\\classic.csv");
 
     // Variables
     MainController mainCtrl = MainController();

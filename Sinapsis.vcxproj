@@ -160,6 +160,7 @@
     <ClCompile Include="ModeratorWindowController.cpp" />
     <ClCompile Include="RoundedRectangle.cpp" />
     <ClCompile Include="SlideableMenu.cpp" />
+    <ClCompile Include="MainGameView.cpp" />
     <ClCompile Include="StorageController.cpp" />
     <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="WindowController.cpp" />
@@ -168,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Console.h" />
+    <ClInclude Include="MainGameView.h" />
     <ClInclude Include="MainController.h" />
     <ClInclude Include="MainMenuView.h" />
     <ClInclude Include="ModeratorWindowController.h" />

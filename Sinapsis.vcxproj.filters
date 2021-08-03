@@ -78,6 +78,9 @@
     <ClCompile Include="StorageController.cpp">
       <Filter>src\controllers</Filter>
     </ClCompile>
+    <ClCompile Include="MainGameView.cpp">
+      <Filter>src\views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Settings.h">
@@ -115,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="StorageController.h">
       <Filter>include\controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGameView.h">
+      <Filter>include\views</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

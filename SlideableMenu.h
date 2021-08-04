@@ -31,14 +31,28 @@ class SlideableMenu : public UIElement
         /********************/
         // Variables
 
+        float MAX_GAP = 25;
+
+        /********************/
+        // Variables
+
         map<string, vector<string>> options;
         map<string, vector<string>>::iterator actualOption;
         vector<Image> arrowImages;
+        float gap;
         
         /********************/
         // Methods
 
     public:
+        /********************/
+        // Constants
+
+        const enum class Direction {
+            LEFT,
+            RIGHT,
+        };
+
         /********************/
         // Constructor
 
@@ -60,10 +74,10 @@ class SlideableMenu : public UIElement
         /********************/
         // Methods
 
+        void changeOption(map<string, vector<string>>::iterator option, Direction dirrection = Direction::LEFT);
+
         /**
          * \brief Prints the ui on the canvas (doesn't show it on screen).
          */
         void initDrawables();
-
-        void changeOption(map<string, vector<string>>::iterator option);
 };

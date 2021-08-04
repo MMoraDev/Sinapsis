@@ -45,6 +45,7 @@ SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int
 
 	this->options = options;
 	this->actualOption = this->options.begin();
+	this->gap = 0;
 
 	if (!tempImages[0].loadFromFile("resources\\images\\arrow.png") || !tempImages[1].loadFromFile("resources\\images\\arrow-hover.png"))
 	{
@@ -71,6 +72,20 @@ SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int
 /*****************************/
 // Medoths
 
+void SlideableMenu::changeOption(map<string, vector<string>>::iterator option, Direction direction)
+{
+	if (direction == Direction::LEFT)
+	{
+		if (this->gap < MAX_GAP)
+			this->gap++;
+	}
+	else
+	{
+		if (this->gap < MAX_GAP)
+			this->gap++;
+	}
+};
+
 void SlideableMenu::initDrawables()
 {
 	const Vector2f CENTER = Vector2f((float)(this->x + (this->width / 2)), (float)(this->y + (this->height / 2)));
@@ -90,7 +105,7 @@ void SlideableMenu::initDrawables()
 	circle->setFillColor(APP_COLORS().GRAY);
 	circle->setPosition((float) (CENTER.x - 50), (float) (this->y + 55 + 37.5));
 
-	// Convert bg.png (from image -> texture -> sprite) to draw on canvas
+	// Convert from image -> texture -> sprite to draw on canvas
 	texture.loadFromImage(image);
 	texture.setSmooth(true);
 
@@ -100,9 +115,4 @@ void SlideableMenu::initDrawables()
 	this->drawables["optionButton"] = new Button(this->parent, (int)(CENTER.x - (texture.getSize().x * rescaleFactor / 2)), (int)(this->y + 82.5), 120, texture.getSize().x * rescaleFactor, image, image);
 	this->drawables["nextButton"] = new Button(this->parent, (int)(this->x + this->width - 26), (int)this->y + 55 + 50, 75, 26, arrowImages[2], arrowImages[3]);
 	this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + + 55 + 25, 50, (int)(this->width * 3) / 5, this->actualOption->second[0], PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().SECONDARY_DARK);
-};
-
-void changeOption(map<string, vector<string>>::iterator option)
-{
-
 };

@@ -57,7 +57,7 @@ class UIElement : public Drawable
         /**
          * UIElement Constructor.
          *
-         * \param parent The pointer of the window that contains the element.
+         * \param parent The windw that contains the element.
          * \param x The x coordinate.
          * \param y The y coordinate.
          * \param height The desired height for the element.

@@ -56,7 +56,7 @@ void MainMenuView::initDrawables()
 	this->logo = new Texture();
 	this->bg = new Texture();
 
-	if (!logo->loadFromFile("resources\\images\\logo.png") || !bg->loadFromFile("resources\\images\\bg.png"))
+	if (!this->logo->loadFromFile("resources\\images\\logo.png") || !this->bg->loadFromFile("resources\\images\\bg.png"))
 	{
 		#ifdef _DEBUG
 			Console().debug("Error loading image", "There was an error loading logo.png or bg.png", __LINE__, __FILE__, Console::Message_Type::ERR);

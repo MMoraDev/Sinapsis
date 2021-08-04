@@ -31,6 +31,9 @@ class MainGameView : public UIElement
         int
             scores[2] = {0, 0};
 
+        Texture
+            * bg;
+
         /********************/
         // Methods
 

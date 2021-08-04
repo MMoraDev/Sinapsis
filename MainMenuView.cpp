@@ -36,10 +36,6 @@ using namespace sf;
 
 MainMenuView::MainMenuView(RenderWindow* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
 {
-	options["Modo de juego"] = StorageController::findGameModes();
-	this->logo = new Texture();
-	this->bg = new Texture();
-
 	this->initDrawables();
 };
 
@@ -55,6 +51,10 @@ void MainMenuView::initDrawables()
 		*bgSprite = new Sprite(), 
 		*logoSprite = new Sprite();
 	Vector2f logoScale;
+
+	options["Modo de juego"] = StorageController::findGameModes();
+	this->logo = new Texture();
+	this->bg = new Texture();
 
 	if (!logo->loadFromFile("resources\\images\\logo.png") || !bg->loadFromFile("resources\\images\\bg.png"))
 	{

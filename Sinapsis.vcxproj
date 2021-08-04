@@ -159,6 +159,7 @@
     <ClCompile Include="MainMenuView.cpp" />
     <ClCompile Include="ModeratorWindowController.cpp" />
     <ClCompile Include="RoundedRectangle.cpp" />
+    <ClCompile Include="SignUpView.cpp" />
     <ClCompile Include="SlideableMenu.cpp" />
     <ClCompile Include="MainGameView.cpp" />
     <ClCompile Include="StorageController.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="ModeratorWindowController.h" />
     <ClInclude Include="RoundedRectangle.h" />
     <ClInclude Include="Settings.h" />
+    <ClInclude Include="SignUpView.h" />
     <ClInclude Include="SlideableMenu.h" />
     <ClInclude Include="StorageController.h" />
     <ClInclude Include="UIElement.h" />

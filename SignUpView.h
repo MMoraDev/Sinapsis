@@ -1,5 +1,5 @@
 /************************************************//**
- * \file    MainGameView.h
+ * \file    SignUpView.h
 ***************************************************/
 
 #pragma once
@@ -21,26 +21,27 @@ using namespace sf;
 
 /**************************************************/
 /**
- * MainMenuView class
+ * SignUpView class
  */
-class MainGameView : public UIElement
+class SignUpView : public UIElement
 {
     private:
+
+    protected:
         /********************/
         // Variables
-        int
-            scores[2] = {0, 0};
+
+        Texture
+            * bg;
 
         /********************/
         // Methods
-
-    protected:
 
     public:
         /********************/
         // Constructor
 
-        MainGameView(RenderWindow* parent, int x, int y, int height, int width);
+        SignUpView(RenderWindow* parent, int x, int y, int height, int width);
 
         /********************/
         // Getters and setters methods

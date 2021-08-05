@@ -48,8 +48,8 @@ ModeratorWindowController::ModeratorWindowController(int height, int width) : Wi
 void ModeratorWindowController::run()
 {
     this->window.create(VideoMode(this->width, this->height), APP_TITLE + " - Moderador");
-    //MainMenuView mainMenu = MainMenuView(&this->window, 0, 0, this->height, this->width);
-    MainGameView mainMenu = MainGameView(&this->window, 0, 0, this->height, this->width);
+    MainMenuView mainMenu = MainMenuView(&this->window, 0, 0, this->height, this->width);
+    //MainGameView mainMenu = MainGameView(&this->window, 0, 0, this->height, this->width);
     this->window.setVerticalSyncEnabled(true);
 
     while (this->window.isOpen())

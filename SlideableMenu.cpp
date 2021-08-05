@@ -29,6 +29,30 @@ using namespace std;
 using namespace sf;
 
 /**************************************************/
+// Private
+
+/*****************************/
+// Medoths
+
+void SlideableMenu::draw(RenderTarget& target, RenderStates states) const
+{
+	if (const_cast<Button*>(this)->isMouseOver())
+	{
+		if (this->type == Type::IMAGE)
+		{
+			target.draw(*const_cast<Button*>(this)->drawables["onHoverBg"], states);
+		}
+	}
+	else
+	{
+		if (this->type == Type::IMAGE)
+		{
+			target.draw(*const_cast<Button*>(this)->drawables["bg"], states);
+		}
+	}
+};
+
+/**************************************************/
 // Public
 
 /**************************************************/

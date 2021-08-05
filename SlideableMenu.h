@@ -26,6 +26,9 @@ using namespace sf;
 class SlideableMenu : public UIElement
 {
     private:
+        /********************/
+        // Methods
+        void draw(RenderTarget& target, RenderStates states) const override;
 
     protected:
         /********************/

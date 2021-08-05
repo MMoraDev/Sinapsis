@@ -28,8 +28,7 @@ class Button : public UIElement
     private:
         /********************/
         // Methods
-
-        void draw(RenderTarget& target, RenderStates states) const override;
+        void loop() override;
 
     public:
         /********************/
@@ -47,8 +46,9 @@ class Button : public UIElement
         Texture
             *bg,
             *onHoverBg;
-        Type
-            type;
+        Type type;
+        bool isReleased;
+        int opacity;
 
         /********************/
         // Methods
@@ -57,13 +57,18 @@ class Button : public UIElement
         /********************/
         // Constructor
 
-        Button(RenderWindow* parent, int x, int y, int height, int width, Image bg, Image onHoverBg);
+        Button(RenderWindow* parent, int x, int y, int height, int width, Image bg, Image onHoverBg, int opacity = 255);
 
         /********************/
         // Getters and setters methods
+
+        int getOpacity();
+        void setOpacity(int opacity);
 
         /********************/
         // Methods
 
         void initDrawables();
+
+        bool isClicked();
 };

@@ -28,34 +28,43 @@ class SlideableMenu : public UIElement
     private:
         /********************/
         // Methods
-        void draw(RenderTarget& target, RenderStates states) const override;
+        void loop() override;
+
+    public:
+        /********************/
+        // Structs
+
+        struct AnimationData {
+            const enum class Direction {
+                LEFT,
+                RIGHT,
+            };
+
+            float gap = 0;
+            bool isChangingOption = false;
+            Direction direction = Direction::LEFT;
+        };
 
     protected:
         /********************/
         // Variables
 
-        float MAX_GAP = 25;
+        float MAX_GAP = 50;
 
         /********************/
         // Variables
 
         map<string, vector<string>> options;
-        map<string, vector<string>>::iterator actualOption;
+        map<string, vector<string>>::iterator actualSection;
+        int actualOption;
         vector<Image> arrowImages;
-        float gap;
-        
+        AnimationData animation;
+        Texture *icon;
+
         /********************/
         // Methods
 
     public:
-        /********************/
-        // Constants
-
-        const enum class Direction {
-            LEFT,
-            RIGHT,
-        };
-
         /********************/
         // Constructor
 
@@ -77,10 +86,12 @@ class SlideableMenu : public UIElement
         /********************/
         // Methods
 
-        void changeOption(map<string, vector<string>>::iterator option, Direction dirrection = Direction::LEFT);
+        void changeOption();
 
         /**
          * \brief Prints the ui on the canvas (doesn't show it on screen).
          */
         void initDrawables();
+
+        void loadOption();
 };

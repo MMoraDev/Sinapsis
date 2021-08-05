@@ -196,8 +196,23 @@
     <None Include="resources\data\UNIVA.csv" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resources\images\arrow-hover.png" />
-    <Image Include="resources\images\arrow.png" />
+    <Image Include="resources\images\avatars\Recurso 10.png" />
+    <Image Include="resources\images\avatars\Recurso 11.png" />
+    <Image Include="resources\images\avatars\Recurso 12.png" />
+    <Image Include="resources\images\avatars\Recurso 13.png" />
+    <Image Include="resources\images\avatars\Recurso 14.png" />
+    <Image Include="resources\images\avatars\Recurso 15.png" />
+    <Image Include="resources\images\avatars\Recurso 16.png" />
+    <Image Include="resources\images\avatars\Recurso 17.png" />
+    <Image Include="resources\images\avatars\Recurso 18.png" />
+    <Image Include="resources\images\avatars\Recurso 20.png" />
+    <Image Include="resources\images\avatars\Recurso 4.png" />
+    <Image Include="resources\images\avatars\Recurso 6.png" />
+    <Image Include="resources\images\avatars\Recurso 7.png" />
+    <Image Include="resources\images\avatars\Recurso 8.png" />
+    <Image Include="resources\images\avatars\Recurso 9.png" />
+    <Image Include="resources\images\buttons\arrow-hover.png" />
+    <Image Include="resources\images\buttons\arrow.png" />
     <Image Include="resources\images\logo.png" />
   </ItemGroup>
   <ItemGroup>

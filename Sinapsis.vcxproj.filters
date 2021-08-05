@@ -42,6 +42,12 @@
     <Filter Include="resources\data">
       <UniqueIdentifier>{54e30557-b1dd-4744-89a0-88299bd3f142}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resources\images\buttons">
+      <UniqueIdentifier>{9df6b1e7-7134-4b3f-8e0d-ec5bfbbae4c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\images\avatars">
+      <UniqueIdentifier>{fdef27af-7559-407e-b9da-32b13e88e373}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -165,11 +171,56 @@
     <Image Include="resources\images\logo.png">
       <Filter>resources\images</Filter>
     </Image>
-    <Image Include="resources\images\arrow.png">
-      <Filter>resources\images</Filter>
+    <Image Include="resources\images\buttons\arrow.png">
+      <Filter>resources\images\buttons</Filter>
     </Image>
-    <Image Include="resources\images\arrow-hover.png">
-      <Filter>resources\images</Filter>
+    <Image Include="resources\images\buttons\arrow-hover.png">
+      <Filter>resources\images\buttons</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 4.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 6.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 7.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 8.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 9.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 10.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 11.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 12.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 13.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 14.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 15.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 16.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 17.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 18.png">
+      <Filter>resources\images\avatars</Filter>
+    </Image>
+    <Image Include="resources\images\avatars\Recurso 20.png">
+      <Filter>resources\images\avatars</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

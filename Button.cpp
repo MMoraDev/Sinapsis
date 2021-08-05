@@ -22,24 +22,39 @@ using namespace sf;
 // Private
 
 /*****************************/
-// Methods
+// Medoths
 
-void Button::draw(RenderTarget& target, RenderStates states) const
+void Button::loop()
 {
-	if (const_cast<Button*>(this)->isMouseOver())
+	Sprite* sprite = new Sprite();
+	Texture* texture = new Texture();
+	Color color = Color();
+
+	if (this->isMouseOver())
 	{
 		if (this->type == Type::IMAGE)
 		{
-			target.draw(*const_cast<Button*>(this)->drawables["onHoverBg"], states);
+			texture = this->onHoverBg;
 		}
 	}
 	else
 	{
 		if (this->type == Type::IMAGE)
 		{
-			target.draw(*const_cast<Button*>(this)->drawables["bg"], states);
+			texture = this->bg;
 		}
 	}
+
+	// Convert png (from texture -> sprite) to draw on canvas
+	texture->setSmooth(true);
+	sprite->setTexture(*texture);
+	sprite->setScale((float)this->width / texture->getSize().x, (float)this->height / texture->getSize().y);
+	sprite->setPosition((float)this->x, (float)this->y);
+	color = sprite->getColor();
+	color.a = this->opacity;
+	sprite->setColor(color);
+
+	this->drawables["bg"] = sprite;
 };
 
 /**************************************************/
@@ -48,7 +63,7 @@ void Button::draw(RenderTarget& target, RenderStates states) const
 /**************************************************/
 // Constructor
 
-Button::Button(RenderWindow* parent, int x, int y, int height, int width, Image bg, Image onHoverBg) : UIElement(parent, x, y, height, width, true)
+Button::Button(RenderWindow* parent, int x, int y, int height, int width, Image bg, Image onHoverBg, int opacity) : UIElement(parent, x, y, height, width, true)
 {
 	Texture
 		*bgTexture = new Texture(),
@@ -59,7 +74,9 @@ Button::Button(RenderWindow* parent, int x, int y, int height, int width, Image 
 
 	this->bg = bgTexture;
 	this->onHoverBg = onHoverBgTexture;
+	this->opacity = opacity;
 	this->type = Type::IMAGE;
+	this->isReleased = true;
 
 	this->initDrawables();
 };
@@ -67,31 +84,28 @@ Button::Button(RenderWindow* parent, int x, int y, int height, int width, Image 
 /*****************************/
 // Getters and setters methods
 
+int Button::getOpacity() { return this->opacity; };
+void Button::setOpacity(int opacity) { this->opacity = opacity; };
+
 /*****************************/
 // Medoths
 
 void Button::initDrawables()
 {
-	Sprite
-		*bgSprite = new Sprite(),
-		*onHoverBgSprite = new Sprite();
 
-	if (this->type == Type::IMAGE)
+};
+
+bool Button::isClicked()
+{
+	if (this->isMouseOver() && Mouse::isButtonPressed(Mouse::Left) && this->isReleased)
 	{
-		// Convert bg.png (from image -> texture -> sprite) to draw on canvas
-		this->bg->setSmooth(true);
-		bgSprite->setTexture(*this->bg);
-		bgSprite->setScale((float)this->width / bg->getSize().x, (float)this->height / bg->getSize().y);
-		bgSprite->setPosition((float)this->x, (float)this->y);
-
-		this->drawables["bg"] = bgSprite;
-
-		// Convert bg.png (from image -> texture -> sprite) to draw on canvas
-		this->onHoverBg->setSmooth(true);
-		onHoverBgSprite->setTexture(*this->onHoverBg);
-		onHoverBgSprite->setScale((float)this->width / onHoverBg->getSize().x, (float)this->height / onHoverBg->getSize().y);
-		onHoverBgSprite->setPosition((float)this->x, (float)this->y);
-
-		this->drawables["onHoverBg"] = onHoverBgSprite;
+		this->isReleased = false;
+		return true;
 	}
+	else if (!Mouse::isButtonPressed(Mouse::Left))
+	{
+		this->isReleased = true;
+	}
+
+	return false;
 };

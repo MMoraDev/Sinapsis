@@ -34,21 +34,52 @@ using namespace sf;
 /*****************************/
 // Medoths
 
-void SlideableMenu::draw(RenderTarget& target, RenderStates states) const
+void SlideableMenu::loop()
 {
-	if (const_cast<Button*>(this)->isMouseOver())
+	if (static_cast<Button*>(this->drawables["backButton"])->isClicked())
 	{
-		if (this->type == Type::IMAGE)
+		this->animation.isChangingOption = true;
+		this->animation.direction = AnimationData::Direction::LEFT;
+
+		if (--(this->actualOption) < 0)
 		{
-			target.draw(*const_cast<Button*>(this)->drawables["onHoverBg"], states);
+			if ((this->actualSection)-- == this->options.begin())
+			{
+				this->actualSection = --(this->options.end());
+			}
+
+			this->actualOption = this->actualSection->second.size() - 1;
 		}
+
+		this->drawables["prevOptionButton"] = this->drawables["optionButton"];
+		this->loadOption();
 	}
-	else
+	else if (static_cast<Button*>(this->drawables["nextButton"])->isClicked())
 	{
-		if (this->type == Type::IMAGE)
+		this->animation.isChangingOption = true;
+		this->animation.direction = AnimationData::Direction::RIGHT;
+
+		if (++(this->actualOption) >= this->actualSection->second.size())
 		{
-			target.draw(*const_cast<Button*>(this)->drawables["bg"], states);
+			if (++(this->actualSection) == this->options.end())
+			{
+				this->actualSection = this->options.begin();
+			}
+
+			this->actualOption = 0;
 		}
+
+		this->drawables["prevOptionButton"] = this->drawables["optionButton"];
+		this->loadOption();
+	}
+	else if (static_cast<Button*>(this->drawables["nextButton"])->isClicked())
+	{
+
+	}
+
+	if (this->animation.isChangingOption)
+	{
+		changeOption();
 	}
 };
 
@@ -68,10 +99,11 @@ SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int
 	};
 
 	this->options = options;
-	this->actualOption = this->options.begin();
-	this->gap = 0;
+	this->actualSection = this->options.begin();
+	this->actualOption = 0;
+	this->icon = new Texture();
 
-	if (!tempImages[0].loadFromFile("resources\\images\\arrow.png") || !tempImages[1].loadFromFile("resources\\images\\arrow-hover.png"))
+	if (!tempImages[0].loadFromFile("resources\\images\\buttons\\arrow.png") || !tempImages[1].loadFromFile("resources\\images\\buttons\\arrow-hover.png"))
 	{
 		#ifdef _DEBUG
 				Console().debug("Error loading image", "There was an error loading arrow.png or arrow-hover.png", __LINE__, __FILE__, Console::Message_Type::ERR);
@@ -96,17 +128,56 @@ SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int
 /*****************************/
 // Medoths
 
-void SlideableMenu::changeOption(map<string, vector<string>>::iterator option, Direction direction)
+void SlideableMenu::changeOption()
 {
-	if (direction == Direction::LEFT)
+	if (this->animation.gap < MAX_GAP )
 	{
-		if (this->gap < MAX_GAP)
-			this->gap++;
+		int 
+			prevX,
+			prevOpacity,
+			newX,
+			newOpacity;
+		this->animation.gap++;
+
+		newX = static_cast<Button*>(this->drawables["optionButton"])->getX();
+		newOpacity = this->animation.gap * (255 / MAX_GAP);
+		prevX = static_cast<Button*>(this->drawables["prevOptionButton"])->getX();
+		prevOpacity = 255 - this->animation.gap * (255 / MAX_GAP);
+
+		if (this->animation.direction == AnimationData::Direction::LEFT)
+		{
+			// Move the new option from right to center
+			newX--;
+
+			if (this->animation.gap == 1) {
+				newX += MAX_GAP;
+			}
+
+			// Move the previous option from center to left
+			prevX--;
+		}
+		else
+		{
+			// Move the new option from left to center
+			newX++;
+
+			if (this->animation.gap == 1) {
+				newX -= MAX_GAP;
+			}
+
+			// Move the previous option from center to right
+			prevX++;
+		}
+
+		static_cast<Button*>(this->drawables["optionButton"])->setX(newX);
+		static_cast<Button*>(this->drawables["optionButton"])->setOpacity(newOpacity);
+		static_cast<Button*>(this->drawables["prevOptionButton"])->setX(prevX);
+		static_cast<Button*>(this->drawables["prevOptionButton"])->setOpacity(prevOpacity);
 	}
 	else
 	{
-		if (this->gap < MAX_GAP)
-			this->gap++;
+		this->animation.isChangingOption = false;
+		this->animation.gap = 0;
 	}
 };
 
@@ -114,29 +185,41 @@ void SlideableMenu::initDrawables()
 {
 	const Vector2f CENTER = Vector2f((float)(this->x + (this->width / 2)), (float)(this->y + (this->height / 2)));
 	CircleShape* circle = new CircleShape();
-	Image image;
-	Texture texture;
-	if (!image.loadFromFile("resources\\images\\" + this->actualOption->second[0] + ".png"))
-	{
-		#ifdef _DEBUG
-				Console().debug("Error loading image", "There was an error loading menu image", __LINE__, __FILE__, Console::Message_Type::ERR);
-		#endif
-	}
 
-	float rescaleFactor = 120 / (float)image.getSize().y;
+	this->loadOption();
 
 	circle->setRadius(50);
 	circle->setFillColor(APP_COLORS().GRAY);
 	circle->setPosition((float) (CENTER.x - 50), (float) (this->y + 55 + 37.5));
 
-	// Convert from image -> texture -> sprite to draw on canvas
-	texture.loadFromImage(image);
-	texture.setSmooth(true);
-
-	this->drawables["sectionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3) / 5, this->actualOption->first, PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 	this->drawables["backButton"] = new Button(this->parent, (int)this->x, (int)this->y + 55 + 50, 75, 26, arrowImages[0], arrowImages[1]);
 	this->drawables["bg"] = circle;
-	this->drawables["optionButton"] = new Button(this->parent, (int)(CENTER.x - (texture.getSize().x * rescaleFactor / 2)), (int)(this->y + 82.5), 120, texture.getSize().x * rescaleFactor, image, image);
 	this->drawables["nextButton"] = new Button(this->parent, (int)(this->x + this->width - 26), (int)this->y + 55 + 50, 75, 26, arrowImages[2], arrowImages[3]);
-	this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + + 55 + 25, 50, (int)(this->width * 3) / 5, this->actualOption->second[0], PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().SECONDARY_DARK);
+};
+
+void SlideableMenu::loadOption()
+{
+	Image image;
+	Sprite* sprite;
+	const Vector2f CENTER = Vector2f((float)(this->x + (this->width / 2)), (float)(this->y + (this->height / 2)));
+	float rescaleFactor;
+	string realText = this->actualSection->second[this->actualOption];
+	realText[0] = toupper(realText[0]);
+
+	if (!image.loadFromFile("resources\\images\\" + this->actualSection->second[this->actualOption] + ".png"))
+	{
+		#ifdef _DEBUG
+				Console().debug("Error loading image", "There was an error loading menu image", __LINE__, __FILE__, Console::Message_Type::ERR);
+		#endif
+
+	}
+	rescaleFactor = 120 / (float)image.getSize().y;
+
+	// Convert from image -> texture
+	this->icon->loadFromImage(image);
+	this->icon->setSmooth(true);
+
+	this->drawables["sectionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3) / 5, this->actualSection->first, PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
+	this->drawables["optionButton"] = new Button(this->parent, (int)(CENTER.x - (this->icon->getSize().x * rescaleFactor / 2)), (int)(this->y + 82.5), 120, this->icon->getSize().x * rescaleFactor, image, image);
+	this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + +55 + 25, 50, (int)(this->width * 3) / 5, realText, PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().SECONDARY_DARK);
 };

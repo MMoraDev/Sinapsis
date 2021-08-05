@@ -84,9 +84,11 @@ class UIElement : public Drawable
         /********************/
         // Methods
 
-        virtual void initDrawables() = 0;
-
         void draw(RenderTarget& target, RenderStates states) const;
 
+        virtual void initDrawables() = 0;
+
         bool isMouseOver();
+
+        virtual void loop();
 };

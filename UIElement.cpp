@@ -72,6 +72,8 @@ void UIElement::setY(int y) { this->y = y; };
 // Methods
 void UIElement::draw(RenderTarget& target, RenderStates states) const
 {
+	const_cast<UIElement*>(this)->loop();
+
 	for (const auto& d : this->drawables)
 	{
 		target.draw(*d.second, states);
@@ -99,4 +101,9 @@ bool UIElement::isMouseOver()
 	}
 
 	return false;
+};
+
+void UIElement::loop()
+{
+
 };

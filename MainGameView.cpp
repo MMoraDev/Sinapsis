@@ -162,9 +162,11 @@ void MainGameView::initDrawables()
 	this->drawables["xa2"] = xSprite2;
 	this->drawables["xa3"] = xSprite3;
 	this->drawables["logoImage"] = logoSprite;
-	this->drawables["zavatar1Sprite"] = avatar1Sprite;
+	//this->drawables["zavatar1Sprite"] = avatar1Sprite;
+	this->drawables["zavatar1Sprite"] = new SlideableMenu(this->parent, (int)(this->width * 1 / 10), (int)(this->height * 6 / 10), 40, (int)(this->width * 2) / 5, "Nachito", "resources\\images\\", false, true);
 	this->drawables["zavatar1Name"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 1 / 10) - 50, (int)(this->height * 7 / 10) + 80 / 2, 40, (int)(this->width * 2) / 5, "Nachito", "resources\\images\\", false, true);
-	this->drawables["zavatar2Sprite"] = avatar2Sprite;
+	//this->drawables["zavatar2Sprite"] = avatar2Sprite;
+	this->drawables["zavatar2Sprite"] = new SlideableMenu(this->parent, (int)(this->width * 9 / 10) - (this->avatar->getSize().x * (avatarScale.x / 2.f) + 60), (int)(this->height * 6 / 10), 40, (int)(this->width * 2) / 5, "Nachito", "resources\\images\\", false, true);
 	this->drawables["zavatar2Name"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 8 / 10) - 60, (int)(this->height * 7 / 10) + 80, 40, (int)(this->width * 2) / 5, "Migue", "resources\\images\\", false, true);
 	this->drawables["question"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, 65, 55, (int)(this->width * 2) / 5, "Pregunta X", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 	this->drawables["qauestionsBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 350, 90.5, 300, 700, BORDER_RADIUS, APP_COLORS().WHITE);

@@ -122,6 +122,10 @@ void ModeratorWindowController::run()
         }
         else if (this->actualState == State::SIGN_UP)
         {
+            if (static_cast<SignUpView*>(this->view)->getIsDone())
+            {
+                this->setActualState(State::GAME);
+            }
         }
         else if (this->actualState == State::GAME)
         {

@@ -104,6 +104,11 @@ void SignUpView::loop()
 		this->drawables["smT2" + to_string(this->t2Avatars.size() + 1)] = new SlideableMenu(this->parent, x, y, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
 		this->t2Avatars.push_back(static_cast<SlideableMenu*>(this->drawables["smT2" + to_string(this->t2Avatars.size())]));
 	}
+
+	if (static_cast <Button*> (this->drawables["playButton"])->isClicked())
+	{
+		this->isDone = true;
+	}
 };
 
 /**************************************************/
@@ -114,11 +119,15 @@ void SignUpView::loop()
 
 SignUpView::SignUpView(RenderWindow* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
 {
+	isDone = false;
 	this->initDrawables();
 };
 
 /*****************************/
 // Getters and setters methods
+
+bool SignUpView::getIsDone() { return this->isDone; };
+void SignUpView::setIsDone(bool isDone) { this->isDone = isDone; };
 
 /*****************************/
 // Medoths
@@ -193,7 +202,7 @@ void SignUpView::initDrawables()
 	this->drawables["smT21"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 11 / 20) + 40, this->y + 50, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
 	this->drawables["zaddPlayer2"] = new Button(this->parent, (int)this->x + (this->width * 4 / 5) + 20, (int)this->y + 130, 120, 120, this->addPlayer->copyToImage(), this->addPlayer->copyToImage());
 
-	this->drawables["playButton"] = new Button(this->parent, (int)this->x + (this->width / 2) - 50, (int)this->y + 300, 80, 100, "Jugar", APP_COLORS().GRAY_LIGHT, APP_COLORS().SECONDARY, APP_COLORS().SECONDARY_DARK);
+	this->drawables["playButton"] = new Button(this->parent, (int)this->x + (this->width / 2) - 60, (int)(this->height * 4 / 5) + 50, 60, 120, "Jugar", APP_COLORS().GRAY_LIGHT, APP_COLORS().ACCENT, APP_COLORS().BLACK);
 
 	this->drawables["bg"] = bgSprite;
 	this->drawables["vs"] = vsSprite;

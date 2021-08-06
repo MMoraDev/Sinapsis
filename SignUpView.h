@@ -48,6 +48,7 @@ class SignUpView : public UIElement
             t1Avatars,
             t2Avatars;
         map<string, vector<string>> avatarsFilesNames;
+        bool isDone;
 
         /********************/
         // Methods
@@ -60,6 +61,9 @@ class SignUpView : public UIElement
 
         /********************/
         // Getters and setters methods
+
+        bool getIsDone();
+        void setIsDone(bool isDone);
 
         /********************/
         // Methods

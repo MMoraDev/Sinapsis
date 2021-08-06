@@ -81,7 +81,13 @@ void MainGameView::initDrawables()
 	CircleShape
 		* circle1 = new CircleShape(),
 		* circle2 = new CircleShape(),
-		* circle3 = new CircleShape();
+		* circle3 = new CircleShape(),
+		* circle4 = new CircleShape(),
+		* circle5 = new CircleShape(),
+		* circle6 = new CircleShape(),
+		* circle7 = new CircleShape(),
+		* circle8 = new CircleShape(),
+		* circle9 = new CircleShape();
 	
 	this->bg = new Texture();
 	this->logo = new Texture();
@@ -111,6 +117,18 @@ void MainGameView::initDrawables()
 	circle3->setRadius(30);
 	circle3->setFillColor(APP_COLORS().GRAY);
 	circle3->setPosition((float)(CENTER.x + 95), (float)(this->height * 6 / 10)+ 40);
+
+	circle4->setRadius(10);
+	circle4->setFillColor(APP_COLORS().ACCENT);
+	circle4->setPosition((float)(CENTER.x - 335), (float)105.5);
+
+	circle5->setRadius(10);
+	circle5->setFillColor(APP_COLORS().ACCENT);
+	circle5->setPosition((float)(CENTER.x - 335), (float)145.5);
+
+	circle6->setRadius(10);
+	circle6->setFillColor(APP_COLORS().ACCENT);
+	circle6->setPosition((float)(CENTER.x - 335), (float)185.5);
 	
 	// Convert bg.png (from image -> texture -> sprite) to draw on canvas
 	this->bg->setSmooth(true);

@@ -107,8 +107,8 @@ void SignUpView::initDrawables()
 
 	this->drawables["team1"] = new TextField(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3) / 5, "Equipo azul", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::LEFT, APP_COLORS().PRIMARY, APP_COLORS().PRIMARY);
 	this->drawables["team2"] = new TextField(this->parent, (int)this->x + (this->width / 5), this->y + 50, 50, (int)(this->width * 3) / 5, "Equipo azul", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::LEFT, APP_COLORS().PRIMARY, APP_COLORS().PRIMARY);
-	this->drawables["sm1"] = new SlideableMenu(this->parent, (int)this->x + (this->width / 5), this->y + 100, 100, 200, avatars, "resources\\images\\avatars\\", true);
-	this->drawables["sm2"] = new SlideableMenu(this->parent, (int)this->x + (this->width / 5), this->y + 300, 100, 200, avatars, "resources\\images\\avatars\\", true);
+	this->drawables["sm1"] = new SlideableMenu(this->parent, (int)this->x + (this->width / 5), this->y + 100, 500, 200, avatars, "resources\\images\\avatars\\", true);
+	this->drawables["sm2"] = new SlideableMenu(this->parent, (int)this->x + (this->width / 5), this->y + 300, 500, 200, avatars, "resources\\images\\avatars\\", true);
 	this->drawables["bg"] = bgSprite;
 
 	this->textFields.push_back(static_cast<TextField*>(this->drawables["team1"]));

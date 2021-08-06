@@ -105,10 +105,18 @@ void SignUpView::initDrawables()
 	bgSprite->setTexture(*(this->bg));
 	bgSprite->setScale((float)this->width / this->bg->getSize().x, (float)this->height / this->bg->getSize().y);
 
+<<<<<<< Updated upstream
 	this->drawables["team1"] = new TextField(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3) / 5, "Equipo azul", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::LEFT, APP_COLORS().PRIMARY, APP_COLORS().PRIMARY);
 	this->drawables["team2"] = new TextField(this->parent, (int)this->x + (this->width / 5), this->y + 50, 50, (int)(this->width * 3) / 5, "Equipo azul", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::LEFT, APP_COLORS().PRIMARY, APP_COLORS().PRIMARY);
 	this->drawables["sm1"] = new SlideableMenu(this->parent, (int)this->x + (this->width / 5), this->y + 100, 500, 200, avatars, "resources\\images\\avatars\\", true);
 	this->drawables["sm2"] = new SlideableMenu(this->parent, (int)this->x + (this->width / 5), this->y + 300, 500, 200, avatars, "resources\\images\\avatars\\", true);
+=======
+	this->drawables["title"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, 25, 55, (int)(this->width * 2) / 5, "Registro de Jugadores", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
+	this->drawables["team1"] = new TextField(this->parent, (int)this->x + (this->width * 1 / 20) - 20, 75, 50, (int)(this->width * 2) / 5, "Equipo azul", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::LEFT, APP_COLORS().ACCENT, APP_COLORS().ACCENT);
+	this->drawables["team2"] = new TextField(this->parent, (int)this->x + (this->width * 19 / 20) - (this->width * 2) / 5 + 20, 75, 50, (int)(this->width * 2) / 5, "Equipo azul", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::RIGHT, APP_COLORS().ACCENT, APP_COLORS().ACCENT);
+	this->drawables["sm1"] = new SlideableMenu(this->parent, (int)this->x + (this->width / 5), this->y + 60, 320, 200, avatars, "resources\\images\\avatars\\", true);
+	this->drawables["sm2"] = new SlideableMenu(this->parent, (int)this->x + (this->width / 5), this->y + 260, 320, 200, avatars, "resources\\images\\avatars\\", true);
+>>>>>>> Stashed changes
 	this->drawables["bg"] = bgSprite;
 
 	this->textFields.push_back(static_cast<TextField*>(this->drawables["team1"]));

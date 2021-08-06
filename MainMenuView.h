@@ -8,6 +8,7 @@
 // Libraries
 
 #include <iostream>
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <vector>
 
@@ -41,6 +42,7 @@ class MainMenuView : public UIElement
             *bg;
         map<string, vector<string>> options;
         map<string, string> selectedOption;
+        Music *music;
 
         /********************/
         // Methods

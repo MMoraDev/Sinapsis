@@ -9,10 +9,9 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
-#include "RoundedRectangle.h"
-
 #include "Button.h"
 #include "MainMenuView.h"
+#include "RoundedRectangle.h"
 #include "Settings.h"
 #include "SlideableMenu.h"
 #include "StorageController.h"
@@ -37,23 +36,6 @@ using namespace sf;
 
 void MainMenuView::loop()
 {
-	//Music rolita;
-
-	//if (!rolita.openFromFile("resources\\audio\\menu.ogg"))
-	//{
-	//	#ifdef _DEBUG
-	//			Console().debug("Error loading the audio", "There was an error loading menu.ogg", __LINE__, __FILE__, Console::Message_Type::ERR);
-	//	#endif
-	//}
-
-	//// Change some parameters
-	//rolita.setPosition(0, 1, 10); // change its 3D position
-	//rolita.setPitch(2);           // increase the pitch
-	//rolita.setVolume(50);         // reduce the volume
-	//rolita.setLoop(true);         // make it loop
-
-	//rolita.play();
-
 	this->selectedOption = static_cast<SlideableMenu*>(this->drawables["mainMenu"])->getSelectedOption();
 };
 
@@ -65,6 +47,21 @@ void MainMenuView::loop()
 
 MainMenuView::MainMenuView(RenderWindow* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
 {
+	this->music = new Music();
+
+	if (!this->music->openFromFile("resources\\audio\\menu.ogg"))
+	{
+		#ifdef _DEBUG
+				Console().debug("Error loading the audio", "There was an error loading menu.ogg", __LINE__, __FILE__, Console::Message_Type::ERR);
+		#endif
+	}
+
+	// Change some parameters
+	this->music->setVolume(50);         // reduce the volume
+	this->music->setLoop(true);         // make it loop
+
+	this->music->play();
+
 	this->initDrawables();
 };
 

@@ -90,6 +90,10 @@ void ModeratorWindowController::run()
                 this->setActualState(State::SIGN_UP);
             }
         }
+        else if (this->actualState == State::MAIN_MENU)
+        {
+
+        }
 
         this->window.clear();
         this->window.draw(*(this->view));

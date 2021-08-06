@@ -63,7 +63,9 @@ class SlideableMenu : public UIElement
         Texture *icon;
         map<string, string> selectedOption;
         string path;
-        bool isEditable;
+        bool 
+            isEditable,
+            isReadOnly;
 
         /********************/
         // Methods
@@ -83,8 +85,9 @@ class SlideableMenu : public UIElement
          * \param options The desired options.
          * \param path The path of the folder that contains the images.
          * \param isEditable (Optional) Instead of setting a WrappableText, it will use a TextField.
+         * \param isReadOnly (Optional)
          */
-        SlideableMenu(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<string>> options, string path, bool isEditable = false);
+        SlideableMenu(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<string>> options, string path, bool isEditable = false, bool isReadOnly = false);
 
         /********************/
         // Getters and setters methods

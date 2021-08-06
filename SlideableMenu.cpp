@@ -92,7 +92,7 @@ void SlideableMenu::loop()
 /**************************************************/
 // Constructor
 
-SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<string>> options, string path, bool isEditable) : UIElement(parent, x, y, height, width)
+SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<string>> options, string path, bool isEditable, bool isReadOnly) : UIElement(parent, x, y, height, width)
 {
 	vector<Image> tempImages = {
 		Image(),
@@ -211,9 +211,13 @@ void SlideableMenu::initDrawables()
 	circle->setFillColor(APP_COLORS().GRAY);
 	circle->setPosition((float) (CENTER.x - 50), (float) (this->y + 55 + 37.5));
 
-	this->drawables["backButton"] = new Button(this->parent, (int)this->x, (int)this->y + 55 + 50, 75, 26, arrowImages[0], arrowImages[1]);
+	if (!this->isReadOnly)
+	{
+		this->drawables["backButton"] = new Button(this->parent, (int)this->x, (int)this->y + 55 + 50, 75, 26, arrowImages[0], arrowImages[1]);
+		this->drawables["nextButton"] = new Button(this->parent, (int)(this->x + this->width - 26), (int)this->y + 55 + 50, 75, 26, arrowImages[2], arrowImages[3]);
+	}
+
 	this->drawables["bg"] = circle;
-	this->drawables["nextButton"] = new Button(this->parent, (int)(this->x + this->width - 26), (int)this->y + 55 + 50, 75, 26, arrowImages[2], arrowImages[3]);
 
 	if (this->isEditable)
 		this->drawables["optionText"] = new TextField(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + 55 + 10, 50, (int)(this->width * 3) / 5, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().BLACK, APP_COLORS().BLACK);

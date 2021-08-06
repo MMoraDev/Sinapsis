@@ -57,16 +57,32 @@ UIElement::UIElement(RenderWindow* parent, int x, int y, int height, int width, 
 // Getters and setters methods
 
 int UIElement::getHeight() { return this->height; };
-void UIElement::setHeight(int height) { this->height = height; };
+void UIElement::setHeight(int height)
+{
+	this->height = height;
+	this->bounds.setSize(Vector2f((float)this->width, (float)this->height));
+};
 
 int UIElement::getWidth() { return this->width; };
-void UIElement::setWidth(int width) { this->width = width; };
+void UIElement::setWidth(int width)
+{
+	this->width = width;
+	this->bounds.setSize(Vector2f((float)this->width, (float)this->height));
+};
 
 int UIElement::getX() { return this->x; };
-void UIElement::setX(int x) { this->x = x; };
+void UIElement::setX(int x)
+{
+	this->x = x;
+	this->bounds.setPosition(Vector2f((float)this->x, (float)this->y));
+};
 
 int UIElement::getY() { return this->y; };
-void UIElement::setY(int y) { this->y = y; };
+void UIElement::setY(int y)
+{
+	this->y = y;
+	this->bounds.setPosition(Vector2f((float)this->x, (float)this->y));
+};
 
 /*****************************/
 // Methods

@@ -36,19 +36,11 @@ class MainMenuView : public UIElement
         /********************/
         // Variables
 
-<<<<<<< Updated upstream
         Texture 
             *logo,
             *bg;
         map<string, vector<string>> options;
         map<string, string> selectedOption;
-=======
-        Texture
-            * logo,
-            * bg;
-        map<string, vector<string>>
-            options;
->>>>>>> Stashed changes
 
         /********************/
         // Methods

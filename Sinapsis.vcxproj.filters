@@ -93,6 +93,9 @@
     <ClCompile Include="TextField.cpp">
       <Filter>src\ui</Filter>
     </ClCompile>
+    <ClCompile Include="WinnerView.cpp">
+      <Filter>src\views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Settings.h">
@@ -139,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="TextField.h">
       <Filter>include\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="WinnerView.h">
+      <Filter>include\views</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

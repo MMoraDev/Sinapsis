@@ -17,6 +17,7 @@
 #include "Settings.h"
 #include "SignUpView.h"
 #include "MainGameView.h"
+#include "WinnerView.h"
 
 /**************************************************/
 // Dev libraries
@@ -84,6 +85,9 @@ void ModeratorWindowController::setActualState(ModeratorWindowController::State 
         case ModeratorWindowController::State::GAME:
             this->view = new MainGameView(&this->window, 0, 0, this->height, this->width, this->teams, this->selectedOption["Modo de juego"]);
             break;
+        case ModeratorWindowController::State::WINNER:
+            this->view = new WinnerView(&this->window, 0, 0, this->height, this->width, this->teams, this->selectedOption["Modo de juego"]);
+            break;
     }
 };
 
@@ -117,7 +121,7 @@ void ModeratorWindowController::run()
             this->selectedOption = static_cast<MainMenuView*>(this->view)->getSelectedOption();
             if (this->selectedOption.size() > 0)
             {
-                this->setActualState(State::SIGN_UP);
+                this->setActualState(State::WINNER);
             }
         }
         else if (this->actualState == State::SIGN_UP)

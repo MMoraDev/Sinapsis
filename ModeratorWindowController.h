@@ -37,7 +37,8 @@ class ModeratorWindowController : public WindowController
         const enum class State {
             MAIN_MENU,
             SIGN_UP,
-            GAME
+            GAME,
+            WINNER
         };
 
         /********************/

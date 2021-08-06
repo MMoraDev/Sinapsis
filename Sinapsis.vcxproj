@@ -166,6 +166,7 @@
     <ClCompile Include="TextField.cpp" />
     <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="WindowController.cpp" />
+    <ClCompile Include="WinnerView.cpp" />
     <ClCompile Include="WrappableText.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +184,7 @@
     <ClInclude Include="TextField.h" />
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="WindowController.h" />
+    <ClInclude Include="WinnerView.h" />
     <ClInclude Include="WrappableText.h" />
   </ItemGroup>
   <ItemGroup>

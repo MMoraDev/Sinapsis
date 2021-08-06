@@ -7,6 +7,7 @@
 // Libraries
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "RoundedRectangle.h"
 
@@ -36,6 +37,23 @@ using namespace sf;
 
 void MainMenuView::loop()
 {
+	//Music rolita;
+
+	//if (!rolita.openFromFile("resources\\audio\\menu.ogg"))
+	//{
+	//	#ifdef _DEBUG
+	//			Console().debug("Error loading the audio", "There was an error loading menu.ogg", __LINE__, __FILE__, Console::Message_Type::ERR);
+	//	#endif
+	//}
+
+	//// Change some parameters
+	//rolita.setPosition(0, 1, 10); // change its 3D position
+	//rolita.setPitch(2);           // increase the pitch
+	//rolita.setVolume(50);         // reduce the volume
+	//rolita.setLoop(true);         // make it loop
+
+	//rolita.play();
+
 	this->selectedOption = static_cast<SlideableMenu*>(this->drawables["mainMenu"])->getSelectedOption();
 };
 

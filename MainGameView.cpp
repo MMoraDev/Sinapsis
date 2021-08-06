@@ -52,7 +52,9 @@ void MainGameView::initDrawables()
 		* bgSprite = new Sprite(),
 		* logoSprite = new Sprite(),
 		* franjasSprite = new Sprite(),
-		* xSprite = new Sprite();
+		* xSprite1 = new Sprite(),
+		* xSprite2 = new Sprite(),
+		* xSprite3 = new Sprite();
 	
 	Vector2f
 		logoScale,
@@ -114,20 +116,27 @@ void MainGameView::initDrawables()
 
 	// Convert x.png (from image -> texture -> sprite) to draw on canvas
 	xS->setSmooth(true);
-	xSprite->setScale(xScale);
-	xSprite->setTexture(*xS);
-	xSprite->setPosition((float)(this->width / 2) - (xS->getSize().x * (xScale.x / 2.f)), (float)(this->height * 6 / 10));
+	xSprite1->setScale(xScale);
+	xSprite1->setTexture(*xS);
+	xSprite1->setPosition((float)((this->width / 2) - (xS->getSize().x * (xScale.x / 2.f))) - 125, (float)(this->height * 6 / 10));
 
+	xSprite2->setScale(xScale);
+	xSprite2->setTexture(*xS);
+	xSprite2->setPosition((float)((this->width / 2) - (xS->getSize().x * (xScale.x / 2.f))), (float)(this->height * 6 / 10));
+
+	xSprite3->setScale(xScale);
+	xSprite3->setTexture(*xS);
+	xSprite3->setPosition((float)((this->width / 2) - (xS->getSize().x * (xScale.x / 2.f))) + 125, (float)(this->height * 6 / 10));
+
+	//Drawables
 	this->drawables["bg"] = bgSprite;
 	this->drawables["franjas"] = franjasSprite;
 	this->drawables["xBg1"] = circle1;
 	this->drawables["xBg2"] = circle2;
 	this->drawables["xBg3"] = circle3;
-
-	this->drawables["x1"] = xSprite;
-	xSprite->setPosition((float)((this->width / 2) - (xS->getSize().x * (xScale.x / 2.f))) - 125, (float)(this->height * 6 / 10));
-	this->drawables["x1"] = xSprite;
-
+	this->drawables["x1"] = xSprite1;
+	this->drawables["x2"] = xSprite2;
+	this->drawables["x3"] = xSprite3;
 	this->drawables["logoImage"] = logoSprite;
 	this->drawables["question"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, 40, 55, (int)(this->width * 2) / 5, "Pregunta X", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 };

@@ -59,21 +59,16 @@ class WrappableText : public UIElement
         /********************/
         // Variables
 
-        string
-            text;
-        Style
-            style;
-        TextAlign
-            alignment;
+        string text;
+        Style style;
+        TextAlign alignment;
         Color
             fontColor,
             bgColor;
-        Vector2f
-            padding;
-        float
-            borderRadius;
-        Text*
-            uiText;
+        Vector2f padding;
+        float borderRadius;
+        Text *uiText;
+        bool isEditable;
 
         /********************/
         // Methods

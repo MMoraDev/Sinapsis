@@ -133,24 +133,22 @@ void MainGameView::initDrawables()
 	//Drawables
 	this->drawables["bg"] = bgSprite;
 	this->drawables["franjas"] = franjasSprite;
-<<<<<<< Updated upstream
 	this->drawables["bg1"] = circle1;
 	this->drawables["bg2"] = circle2;
 	this->drawables["bg3"] = circle3;
 	this->drawables["x1"] = xSprite1;
 	this->drawables["x2"] = xSprite2;
 	this->drawables["x3"] = xSprite3;
-=======
 	this->drawables["xBg1"] = circle1;
 	this->drawables["xBg2"] = circle2;
 	this->drawables["xBg3"] = circle3;
 	this->drawables["xa1"] = xSprite1;
 	this->drawables["xa2"] = xSprite2;
 	this->drawables["xa3"] = xSprite3;
->>>>>>> Stashed changes
 	this->drawables["logoImage"] = logoSprite;
 	this->drawables["question"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, 40, 55, (int)(this->width * 2) / 5, "Pregunta X", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 	this->drawables["qauestionsBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 350, 65.5, 300, 700, BORDER_RADIUS, APP_COLORS().WHITE);
 	this->drawables["qauestionsaBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 345, 70.5, 290, 690, BORDER_RADIUS, APP_COLORS().GRAY_LIGHT);
-	this->drawables["redTeam"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, 40, 55, (int)(this->width * 2) / 5, "EQUIPO ROJO", PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
+	this->drawables["redTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40), 0, 45, (int)(this->width * 1) / 5, "EQUIPO ROJO", PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, APP_COLORS().WHITE ,true);
+	this->drawables["rblueTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5, 0, 45, (int)(this->width * 1) / 5, "EQUIPO AZUL", PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, APP_COLORS().WHITE, true);
 };

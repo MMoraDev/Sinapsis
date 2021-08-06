@@ -87,7 +87,7 @@ void ModeratorWindowController::run()
             this->selectedOption = static_cast<MainMenuView*>(this->view)->getSelectedOption();
             if (this->selectedOption.size() > 0)
             {
-                this->setActualState(State::SIGN_UP);
+                this->setActualState(State::GAME);
             }
         }
         else if (this->actualState == State::MAIN_MENU)

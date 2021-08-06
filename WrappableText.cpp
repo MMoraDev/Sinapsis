@@ -137,7 +137,7 @@ void WrappableText::initDrawables()
 
 	if (this->isUnderlined)
 	{
-		this->drawables["bg"] = new RoundedRectangle(this->parent, this->x, this->y + this->height, 5, this->width, 5, this->bgColor);
+		this->drawables["bg"] = new RoundedRectangle(this->parent, this->x, this->y + this->height, 3, this->width, 3, this->bgColor);
 	}
 	else
 	{

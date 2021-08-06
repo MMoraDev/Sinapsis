@@ -88,15 +88,15 @@ void MainGameView::initDrawables()
 	// Creates the background circles for the strike's X
 	circle1->setRadius(30);
 	circle1->setFillColor(APP_COLORS().GRAY);
-	circle1->setPosition((float)(CENTER.x - 30), (float)(this->height * 6 / 10) + 150);
+	circle1->setPosition((float)(CENTER.x - 30), (float)(this->height * 6 / 10) + 40);
 
 	circle2->setRadius(30);
 	circle2->setFillColor(APP_COLORS().GRAY);
-	circle2->setPosition((float)(CENTER.x - 155), (float)(this->height * 6 / 10) + 150);
+	circle2->setPosition((float)(CENTER.x - 155), (float)(this->height * 6 / 10) + 40);
 
 	circle3->setRadius(30);
 	circle3->setFillColor(APP_COLORS().GRAY);
-	circle3->setPosition((float)(CENTER.x + 95), (float)(this->height * 6 / 10)+ 150);
+	circle3->setPosition((float)(CENTER.x + 95), (float)(this->height * 6 / 10)+ 40);
 	
 	// Convert bg.png (from image -> texture -> sprite) to draw on canvas
 	this->bg->setSmooth(true);
@@ -120,15 +120,15 @@ void MainGameView::initDrawables()
 
 	xSprite1->setScale(xScale);
 	xSprite1->setTexture(*(this->xS));
-	xSprite1->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))) - 125, (float)(this->height * 6 / 10) + 175);
+	xSprite1->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))) - 125, (float)(this->height * 6 / 10) + 28);
 
 	xSprite2->setScale(xScale);
 	xSprite2->setTexture(*(this->xS));
-	xSprite2->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))), (float)(this->height * 6 / 10) + 175);
+	xSprite2->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))), (float)(this->height * 6 / 10) + 28);
 
 	xSprite3->setScale(xScale);
 	xSprite3->setTexture(*(this->xS));
-	xSprite3->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))) + 125, (float)(this->height * 6 / 10) + 175);
+	xSprite3->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))) + 125, (float)(this->height * 6 / 10) + 28);
 
 	//Drawables
 	this->drawables["bg"] = bgSprite;
@@ -149,6 +149,8 @@ void MainGameView::initDrawables()
 	this->drawables["question"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, 65, 55, (int)(this->width * 2) / 5, "Pregunta X", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 	this->drawables["qauestionsBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 350, 90.5, 300, 700, BORDER_RADIUS, APP_COLORS().WHITE);
 	this->drawables["qauestionsaBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 345, 95.5, 290, 690, BORDER_RADIUS, APP_COLORS().GRAY_LIGHT);
-	this->drawables["redTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40) + 10, 5, 45, (int)(this->width * 1) / 5, "EQUIPO ROJO", PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, APP_COLORS().GRAY_LIGHT ,true);
-	this->drawables["rblueTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 - 10, 5, 45, (int)(this->width * 1) / 5, "EQUIPO AZUL", PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, APP_COLORS().GRAY_LIGHT, true);
+	this->drawables["leftTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40) + 10, 5, 45, (int)(this->width * 1) / 5 + 20, "EQUIPO ROJO", PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, APP_COLORS().GRAY_LIGHT ,true);
+	this->drawables["rightTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 - 10, 5, 45, (int)(this->width * 1) / 5 + 2, "EQUIPO AZUL", PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, APP_COLORS().GRAY_LIGHT, true);
+	this->drawables["leftTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40) - 15, 45, 45, (int)(this->width * 1) / 5 + 20, "5000", PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
+	this->drawables["rightTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 + 5, 45, 45, (int)(this->width * 1) / 5 + 2, "5000", PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
 };

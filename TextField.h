@@ -27,14 +27,6 @@ using namespace sf;
 class TextField : public WrappableText
 {
     private:
-        /********************/
-        // Methods
-        void loop() override;
-
-    public:
-        /********************/
-        // Varaibles
-
 
     protected:
         /********************/

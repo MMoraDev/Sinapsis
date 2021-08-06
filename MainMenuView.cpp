@@ -66,7 +66,7 @@ void MainMenuView::initDrawables()
 		*logoSprite = new Sprite();
 	Vector2f logoScale;
 
-	options["Modo de juego"] = StorageController::findGameModes();
+	options["Modo de juego"] = StorageController::getFilesNames(DATA_PATH);
 	this->logo = new Texture();
 	this->bg = new Texture();
 
@@ -94,5 +94,5 @@ void MainMenuView::initDrawables()
 	
 	this->drawables["logoImage"] = logoSprite;
 
-	this->drawables["mainMenu"] = new SlideableMenu(this->parent, (int)(this->width / 2) - (400 / 2), (int)(this->height * (1 + 0.1))/ 2, 40, 400, this->options);
+	this->drawables["mainMenu"] = new SlideableMenu(this->parent, (int)(this->width / 2) - (400 / 2), (int)(this->height * (1 + 0.1))/ 2, 40, 400, this->options, "resources\\images\\");
 };

@@ -102,6 +102,9 @@ class WrappableText : public UIElement
         /********************/
         // Getters and setters methods
 
+        string getText();
+        void setText(string text);
+
         /********************/
         // Methods
 

@@ -30,13 +30,13 @@ class MainGameView : public UIElement
         // Variables
         int
             scores[2] = {0, 0};
-
+        map<string, vector<map<string, string>>> teams;
+        string game;
         Texture
             * bg,
             * logo,
             * franjas,
-            * xS,
-            * avatar;
+            * xS;
 
         /********************/
         // Methods
@@ -47,13 +47,15 @@ class MainGameView : public UIElement
         /********************/
         // Constructor
 
-        MainGameView(RenderWindow* parent, int x, int y, int height, int width);
+        MainGameView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string game);
 
         /********************/
         // Getters and setters methods
 
         /********************/
         // Methods
+
+        map<string, vector<string>> dataToSlideableMenuFormat(vector<map<string, string>> players);
 
         /**
          * \brief Prints the ui on the canvas (doesn't show it on screen).

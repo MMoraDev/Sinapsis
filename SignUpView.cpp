@@ -134,7 +134,7 @@ map<string, vector<map<string, string>>> SignUpView::getData()
 	map<string, vector<map<string, string>>> res = map<string, vector<map<string, string>>>();
 	vector<map<string, string>> players = vector<map<string, string>>();
 
-	res["names"] = { {{ "team1", this->textFields[0]->getText() }, { "team2", this->textFields[0]->getText() }} };
+	res["names"] = { {{ "team1", this->textFields[0]->getText() }, { "team2", this->textFields[1]->getText() }} };
 
 	for (SlideableMenu* avatar : this->t1Avatars)
 	{

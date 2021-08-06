@@ -98,22 +98,25 @@ void UIElement::draw(RenderTarget& target, RenderStates states) const
 
 bool UIElement::isMouseOver()
 {
-	Vector2f mousePos = static_cast<Vector2f>(this->parent->mapPixelToCoords(Mouse::getPosition(*this->parent)));
-
-	if (this->bounds.getGlobalBounds().contains(mousePos))
+	if (this != NULL)
 	{
-		Cursor cursor;
+		Vector2f mousePos = static_cast<Vector2f>(this->parent->mapPixelToCoords(Mouse::getPosition(*this->parent)));
 
-		this->setCursor(Cursor::Hand);
-		this->isMouseInside = true;
+		if (this->bounds.getGlobalBounds().contains(mousePos))
+		{
+			Cursor cursor;
 
-		return true;
-	}
+			this->setCursor(Cursor::Hand);
+			this->isMouseInside = true;
 
-	if (this->isMouseInside)
-	{
-		this->setCursor(Cursor::Arrow);
-		this->isMouseInside = false;
+			return true;
+		}
+
+		if (this->isMouseInside)
+		{
+			this->setCursor(Cursor::Arrow);
+			this->isMouseInside = false;
+		}
 	}
 
 	return false;

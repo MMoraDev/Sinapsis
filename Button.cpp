@@ -122,14 +122,17 @@ void Button::initDrawables()
 
 bool Button::isClicked()
 {
-	if (this->isMouseOver() && Mouse::isButtonPressed(Mouse::Left) && this->isReleased)
+	if (this != NULL)
 	{
-		this->isReleased = false;
-		return true;
-	}
-	else if (!Mouse::isButtonPressed(Mouse::Left))
-	{
-		this->isReleased = true;
+		if (this->isMouseOver() && Mouse::isButtonPressed(Mouse::Left) && this->isReleased)
+		{
+			this->isReleased = false;
+			return true;
+		}
+		else if (!Mouse::isButtonPressed(Mouse::Left))
+		{
+			this->isReleased = true;
+		}
 	}
 
 	return false;

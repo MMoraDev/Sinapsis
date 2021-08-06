@@ -76,13 +76,13 @@ void ModeratorWindowController::setActualState(ModeratorWindowController::State 
     switch (this->actualState)
     {
         case ModeratorWindowController::State::MAIN_MENU:
-            this->view = new MainMenuView(&this->window, 0, 0, this->height, this->width);;
+            this->view = new MainMenuView(&this->window, 0, 0, this->height, this->width);
             break;
         case ModeratorWindowController::State::SIGN_UP:
-            this->view = new SignUpView(&this->window, 0, 0, this->height, this->width);;
+            this->view = new SignUpView(&this->window, 0, 0, this->height, this->width);
             break;
         case ModeratorWindowController::State::GAME:
-            this->view = new MainGameView(&this->window, 0, 0, this->height, this->width);;
+            this->view = new MainGameView(&this->window, 0, 0, this->height, this->width, this->teams, this->selectedOption["Modo de juego"]);
             break;
     }
 };

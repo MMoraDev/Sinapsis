@@ -37,7 +37,7 @@ using namespace sf;
 
 void SlideableMenu::loop()
 {
-	if (static_cast<Button*>(this->drawables["backButton"])->isClicked())
+	if (this->drawables.find("backButton") != this->drawables.end() && static_cast<Button*>(this->drawables["backButton"])->isClicked())
 	{
 		this->animation.isChangingOption = true;
 		this->animation.direction = AnimationData::Direction::LEFT;
@@ -55,7 +55,7 @@ void SlideableMenu::loop()
 		this->drawables["prevOptionButton"] = this->drawables["optionButton"];
 		this->loadOption();
 	}
-	else if (static_cast<Button*>(this->drawables["nextButton"])->isClicked())
+	else if (this->drawables.find("nextButton") != this->drawables.end() && static_cast<Button*>(this->drawables["nextButton"])->isClicked())
 	{
 		this->animation.isChangingOption = true;
 		this->animation.direction = AnimationData::Direction::RIGHT;
@@ -104,6 +104,7 @@ SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int
 	this->options = options;
 	this->path = path;
 	this->isEditable = isEditable;
+	this->isReadOnly = isReadOnly;
 	this->actualSection = this->options.begin();
 	this->actualOption = 0;
 	this->selectedOption = map<string, string>();
@@ -251,10 +252,14 @@ void SlideableMenu::loadOption()
 	this->icon->setSmooth(true);
 
 
-	if (!this->isEditable)
+	if (!this->isEditable && !this->isReadOnly)
 	{
 		this->drawables["sectionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3) / 5, this->actualSection->first, PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 		this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + +55 + 25, 50, (int)(this->width * 3) / 5, realText, PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().SECONDARY_DARK);
+	}
+	else if (this->isReadOnly)
+	{
+		this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + +55 + 25, 50, (int)(this->width * 3) / 5, this->actualSection->first, PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT);
 	}
 
 	this->drawables["optionButton"] = new Button(this->parent, (int)(CENTER.x - (this->icon->getSize().x * rescaleFactor / 2)), (int)(this->y + 82.5), 120, this->icon->getSize().x * rescaleFactor, image, image);

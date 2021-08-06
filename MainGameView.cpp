@@ -36,8 +36,10 @@ using namespace sf;
 /*****************************/
 // Constructor
 
-MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
+MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string game) : UIElement(parent, x, y, height, width)
 {
+	this->teams = teams;
+	this->game = game;
 	this->initDrawables();
 };
 
@@ -47,6 +49,18 @@ MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int w
 /*****************************/
 // Medoths
 
+map<string, vector<string>> MainGameView::dataToSlideableMenuFormat(vector<map<string, string>> players)
+{
+	map<string, vector<string>> res = map<string, vector<string>>();
+
+	for (map<string, string> player : players)
+	{
+		res[player["text"]] = { player["image"] };
+	}
+
+	return res;
+};
+
 void MainGameView::initDrawables()
 {
 	Sprite
@@ -55,15 +69,12 @@ void MainGameView::initDrawables()
 		* franjasSprite = new Sprite(),
 		* xSprite1 = new Sprite(),
 		* xSprite2 = new Sprite(),
-		* xSprite3 = new Sprite(),
-		* avatar1Sprite = new Sprite(),
-		* avatar2Sprite = new Sprite();
+		* xSprite3 = new Sprite();
 	
 	Vector2f
 		logoScale,
 		franjasScale,
-		xScale,
-		avatarScale;
+		xScale;
 
 	const Vector2f CENTER = Vector2f((float)(this->x + (this->width / 2)), (float)(this->y + (this->height / 2)));
 
@@ -76,9 +87,8 @@ void MainGameView::initDrawables()
 	this->logo = new Texture();
 	this->franjas = new Texture();
 	this->xS = new Texture();
-	this->avatar = new Texture();
 							 
-	if (!this->logo->loadFromFile("resources\\images\\logo.png") || !this->bg->loadFromFile("resources\\images\\bg.png") || !this->franjas->loadFromFile("resources\\images\\franjas.png") || !this->xS->loadFromFile("resources\\images\\x.png") || !this->avatar->loadFromFile("resources\\images\\avatars\\recurso1.png"))
+	if (!this->logo->loadFromFile("resources\\images\\logo.png") || !this->bg->loadFromFile("resources\\images\\bg.png") || !this->franjas->loadFromFile("resources\\images\\franjas.png") || !this->xS->loadFromFile("resources\\images\\x.png"))
 	{
 		#ifdef _DEBUG
 				Console().debug("Error loading image", "There was an error loading logo.png or bg.png", __LINE__, __FILE__, Console::Message_Type::ERR);
@@ -88,7 +98,6 @@ void MainGameView::initDrawables()
 	logoScale = Vector2f((float)(this->logo->getSize().x * 0.15) / this->width, (float)(this->logo->getSize().x * 0.15) / this->width);
 	franjasScale = Vector2f((float)(this->logo->getSize().x) / this->width, (float)(this->logo->getSize().x) / this->width);
 	xScale = Vector2f((float)(this->logo->getSize().x) / this->width, (float)(this->logo->getSize().x) / this->width);
-	avatarScale = Vector2f((float)(this->avatar->getSize().x * 3) / this->width, (float)(this->avatar->getSize().x * 3) / this->width);
 
 	// Creates the background circles for the strike's X
 	circle1->setRadius(30);
@@ -135,17 +144,6 @@ void MainGameView::initDrawables()
 	xSprite3->setTexture(*(this->xS));
 	xSprite3->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))) + 125, (float)(this->height * 6 / 10) + 28);
 
-	// Convert avatars (from image -> texture -> sprite) to draw on canvas
-	this->avatar->setSmooth(true);
-
-	avatar1Sprite->setScale(avatarScale);
-	avatar1Sprite->setTexture(*(this->avatar));
-	avatar1Sprite->setPosition((float)(this->width * 1 / 10), (float)(this->height * 6 / 10));
-
-	avatar2Sprite->setScale(avatarScale);
-	avatar2Sprite->setTexture(*(this->avatar));
-	avatar2Sprite->setPosition((float)(this->width * 9 / 10) - (this->avatar->getSize().x * (avatarScale.x / 2.f) + 60), (float)(this->height * 6 / 10));
-
 	//Drawables
 	this->drawables["bg"] = bgSprite;
 	this->drawables["franjas"] = franjasSprite;
@@ -162,17 +160,13 @@ void MainGameView::initDrawables()
 	this->drawables["xa2"] = xSprite2;
 	this->drawables["xa3"] = xSprite3;
 	this->drawables["logoImage"] = logoSprite;
-	//this->drawables["zavatar1Sprite"] = avatar1Sprite;
-	this->drawables["zavatar1Sprite"] = new SlideableMenu(this->parent, (int)(this->width * 1 / 10), (int)(this->height * 6 / 10), 40, (int)(this->width * 2) / 5, "Nachito", "resources\\images\\", false, true);
-	this->drawables["zavatar1Name"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 1 / 10) - 50, (int)(this->height * 7 / 10) + 80 / 2, 40, (int)(this->width * 2) / 5, "Nachito", "resources\\images\\", false, true);
-	//this->drawables["zavatar2Sprite"] = avatar2Sprite;
-	this->drawables["zavatar2Sprite"] = new SlideableMenu(this->parent, (int)(this->width * 9 / 10) - (this->avatar->getSize().x * (avatarScale.x / 2.f) + 60), (int)(this->height * 6 / 10), 40, (int)(this->width * 2) / 5, "Nachito", "resources\\images\\", false, true);
-	this->drawables["zavatar2Name"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 8 / 10) - 60, (int)(this->height * 7 / 10) + 80, 40, (int)(this->width * 2) / 5, "Migue", "resources\\images\\", false, true);
+	this->drawables["zavatar1"] = new SlideableMenu(this->parent, (int)(this->width * 1 / 10), (int)(this->height * 6 / 10), 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team1Players"]), "resources\\images\\avatars\\", false, true);
+	this->drawables["zavatar2"] = new SlideableMenu(this->parent, (int)(this->width * 9 / 10), (int)(this->height * 6 / 10), 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team2Players"]), "resources\\images\\avatars\\", false, true);
 	this->drawables["question"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, 65, 55, (int)(this->width * 2) / 5, "Pregunta X", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 	this->drawables["qauestionsBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 350, 90.5, 300, 700, BORDER_RADIUS, APP_COLORS().WHITE);
 	this->drawables["qauestionsaBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 345, 95.5, 290, 690, BORDER_RADIUS, APP_COLORS().GRAY_LIGHT);
-	this->drawables["leftTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40) + 10, 5, 45, (int)(this->width * 1) / 5 + 20, "EQUIPO ROJO", PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, APP_COLORS().GRAY_LIGHT ,true);
-	this->drawables["rightTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 - 10, 5, 45, (int)(this->width * 1) / 5 + 2, "EQUIPO AZUL", PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, APP_COLORS().GRAY_LIGHT, true);
-	this->drawables["leftTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40) - 15, 45, 45, (int)(this->width * 1) / 5 + 20, "5000", PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
-	this->drawables["rightTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 + 5, 45, 45, (int)(this->width * 1) / 5 + 2, "5000", PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
+	this->drawables["leftTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40) + 10, 5, 45, (int)(this->width * 1) / 5 + 20, this->teams["names"][0]["team1"], PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, APP_COLORS().GRAY_LIGHT ,true);
+	this->drawables["rightTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 - 10, 5, 45, (int)(this->width * 1) / 5 + 2, this->teams["names"][0]["team2"], PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, APP_COLORS().GRAY_LIGHT, true);
+	this->drawables["leftTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40) - 15, 45, 45, (int)(this->width * 1) / 5 + 20, to_string(this->scores[0]), PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
+	this->drawables["rightTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 + 5, 45, 45, (int)(this->width * 1) / 5 + 2, to_string(this->scores[1]), PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
 };

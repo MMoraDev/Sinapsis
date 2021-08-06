@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "RoundedRectangle.h"
 
@@ -16,6 +17,12 @@
 #include "Settings.h"
 #include "SignUpView.h"
 #include "MainGameView.h"
+
+/**************************************************/
+// Dev libraries
+#ifdef _DEBUG
+    #include "Console.h"
+#endif
 
 /**************************************************/
 // Namespaces
@@ -41,6 +48,21 @@ ModeratorWindowController::ModeratorWindowController(int height, int width) : Wi
     this->texture.create(width, height);
     this->texture.display();
     this->setActualState(State::MAIN_MENU);
+
+    this->music = new Music();
+
+    if (!this->music->openFromFile("resources\\audio\\menu.ogg"))
+    {
+        #ifdef _DEBUG
+                Console().debug("Error loading the audio", "There was an error loading menu.ogg", __LINE__, __FILE__, Console::Message_Type::ERR);
+        #endif
+    }
+
+    // Change some parameters
+    this->music->setVolume(50);         // reduce the volume
+    this->music->setLoop(true);         // make it loop
+
+    this->music->play();
 }
 
 /*****************************/
@@ -77,6 +99,7 @@ void ModeratorWindowController::run()
     {
         Event event;
         String input;
+
         while (this->window.pollEvent(event))
         {
             if (event.type == Event::Closed)
@@ -99,6 +122,25 @@ void ModeratorWindowController::run()
         }
         else if (this->actualState == State::SIGN_UP)
         {
+        }
+        else if (this->actualState == State::GAME)
+        {
+            if (flag == true)
+            {
+                if (!this->music->openFromFile("resources\\audio\\game.ogg"))
+                {
+                    #ifdef _DEBUG
+                                    Console().debug("Error loading the audio", "There was an error loading game.ogg", __LINE__, __FILE__, Console::Message_Type::ERR);
+                    #endif
+                }
+
+                // Change some parameters
+                this->music->setVolume(50);         // reduce the volume
+                this->music->setLoop(true);         // make it loop
+
+                this->music->play();
+                flag = false;
+            }
         }
 
         this->window.clear();

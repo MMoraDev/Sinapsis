@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "UIElement.h"
 #include "WindowController.h"
@@ -27,6 +28,7 @@ using namespace sf;
 class ModeratorWindowController : public WindowController
 {
     private:
+        bool flag = true;
     
     public:
         /********************/
@@ -49,6 +51,7 @@ class ModeratorWindowController : public WindowController
         State actualState;
         UIElement *view;
         map<string, string> selectedOption;
+        Music* music;
 
     public:
         /********************/

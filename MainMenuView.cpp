@@ -47,21 +47,6 @@ void MainMenuView::loop()
 
 MainMenuView::MainMenuView(RenderWindow* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
 {
-	this->music = new Music();
-
-	if (!this->music->openFromFile("resources\\audio\\menu.ogg"))
-	{
-		#ifdef _DEBUG
-				Console().debug("Error loading the audio", "There was an error loading menu.ogg", __LINE__, __FILE__, Console::Message_Type::ERR);
-		#endif
-	}
-
-	// Change some parameters
-	this->music->setVolume(50);         // reduce the volume
-	this->music->setLoop(true);         // make it loop
-
-	this->music->play();
-
 	this->initDrawables();
 };
 

@@ -36,11 +36,11 @@ using namespace sf;
 /*****************************/
 // Methods
 
-vector<string> StorageController::findGameModes()
+vector<string> StorageController::getFilesNames(string path)
 {
     vector<string> modes = vector<string>();
 
-    for (const auto& entry : filesystem::directory_iterator(DATA_PATH))
+    for (const auto& entry : filesystem::directory_iterator(path))
     {
         modes.push_back(entry.path().stem().u8string());
     }

@@ -11,6 +11,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+#include "TextField.h"
+#include "SlideableMenu.h"
 #include "UIElement.h"
 
 /**************************************************/
@@ -26,13 +28,18 @@ using namespace sf;
 class SignUpView : public UIElement
 {
     private:
+        /********************/
+        // Methods
+        void loop() override;
 
     protected:
         /********************/
         // Variables
 
-        Texture
-            * bg;
+        Texture * bg;
+        TextField* selectedTextField;
+        vector<TextField*> textFields;
+        vector<SlideableMenu*> avatars;
 
         /********************/
         // Methods
@@ -48,6 +55,8 @@ class SignUpView : public UIElement
 
         /********************/
         // Methods
+
+        void changeSelectedTextField(String input);
 
         /**
          * \brief Prints the ui on the canvas (doesn't show it on screen).

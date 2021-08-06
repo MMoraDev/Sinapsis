@@ -14,6 +14,7 @@
 #include "Button.h"
 #include "SlideableMenu.h"
 #include "Settings.h"
+#include "TextField.h"
 #include "WrappableText.h"
 
 /**************************************************/
@@ -91,7 +92,7 @@ void SlideableMenu::loop()
 /**************************************************/
 // Constructor
 
-SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<string>> options) : UIElement(parent, x, y, height, width)
+SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<string>> options, string path, bool isEditable) : UIElement(parent, x, y, height, width)
 {
 	vector<Image> tempImages = {
 		Image(),
@@ -101,6 +102,8 @@ SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int
 	};
 
 	this->options = options;
+	this->path = path;
+	this->isEditable = isEditable;
 	this->actualSection = this->options.begin();
 	this->actualOption = 0;
 	this->selectedOption = map<string, string>();
@@ -128,8 +131,18 @@ SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int
 /*****************************/
 // Getters and setters methods
 
-map<string, string> SlideableMenu::getSelectedOption(){ return this->selectedOption; };
+map<string, string> SlideableMenu::getSelectedOption() { return this->selectedOption; };
 void SlideableMenu::setSelectedOption(map<string, string> option) { this->selectedOption = option; };
+
+TextField * SlideableMenu::getTextFieldPtr()
+{
+	if (this->isEditable)
+	{
+		return static_cast<TextField*>(this->drawables["optionText"]);
+	}
+
+	return NULL;
+};
 
 /*****************************/
 // Medoths
@@ -201,6 +214,9 @@ void SlideableMenu::initDrawables()
 	this->drawables["backButton"] = new Button(this->parent, (int)this->x, (int)this->y + 55 + 50, 75, 26, arrowImages[0], arrowImages[1]);
 	this->drawables["bg"] = circle;
 	this->drawables["nextButton"] = new Button(this->parent, (int)(this->x + this->width - 26), (int)this->y + 55 + 50, 75, 26, arrowImages[2], arrowImages[3]);
+
+	if (this->isEditable)
+		this->drawables["optionText"] = new TextField(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + +55 + 25, 50, (int)(this->width * 3) / 5, "FFFFFFFFF", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().SECONDARY_DARK);
 };
 
 void SlideableMenu::loadOption()
@@ -212,7 +228,7 @@ void SlideableMenu::loadOption()
 	string realText = this->actualSection->second[this->actualOption];
 	realText[0] = toupper(realText[0]);
 
-	if (!image.loadFromFile("resources\\images\\" + this->actualSection->second[this->actualOption] + ".png"))
+	if (!image.loadFromFile(this->path + this->actualSection->second[this->actualOption] + ".png"))
 	{
 		#ifdef _DEBUG
 				Console().debug("Error loading image", "There was an error loading menu image", __LINE__, __FILE__, Console::Message_Type::ERR);
@@ -225,7 +241,12 @@ void SlideableMenu::loadOption()
 	this->icon->loadFromImage(image);
 	this->icon->setSmooth(true);
 
-	this->drawables["sectionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3) / 5, this->actualSection->first, PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
+
+	if (!this->isEditable)
+	{
+		this->drawables["sectionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3) / 5, this->actualSection->first, PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
+		this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + +55 + 25, 50, (int)(this->width * 3) / 5, realText, PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().SECONDARY_DARK);
+	}
+
 	this->drawables["optionButton"] = new Button(this->parent, (int)(CENTER.x - (this->icon->getSize().x * rescaleFactor / 2)), (int)(this->y + 82.5), 120, this->icon->getSize().x * rescaleFactor, image, image);
-	this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + +55 + 25, 50, (int)(this->width * 3) / 5, realText, PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().SECONDARY_DARK);
 };

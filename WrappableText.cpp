@@ -70,9 +70,15 @@ WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int
 	this->initDrawables();
 };
 
-
-/*****************************/
+/********************/
 // Getters and setters methods
+
+string WrappableText::getText() { return this->text; };
+void WrappableText::setText(string text)
+{
+	this->text = text;
+	this->initDrawables();
+};
 
 /*****************************/
 // Medoths

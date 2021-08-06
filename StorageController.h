@@ -34,7 +34,7 @@ class StorageController {
          * 
          * \return a vector of strings with the names (without extension) of the founded files
          */
-        static vector<string> findGameModes();
+        static vector<string> getFilesNames(string path);
 
         static map<string, map<string, int>> readFile(string filename);
 

@@ -76,10 +76,17 @@ void ModeratorWindowController::run()
     while (this->window.isOpen())
     {
         Event event;
+        String input;
         while (this->window.pollEvent(event))
         {
             if (event.type == Event::Closed)
                 this->window.close();
+
+            if (event.type == Event::TextEntered)
+            {
+                input = event.text.unicode;
+                static_cast<SignUpView*>(this->view)->changeSelectedTextField(input);
+            }
         }
 
         if (this->actualState == State::MAIN_MENU)
@@ -90,9 +97,8 @@ void ModeratorWindowController::run()
                 this->setActualState(State::GAME);
             }
         }
-        else if (this->actualState == State::MAIN_MENU)
+        else if (this->actualState == State::SIGN_UP)
         {
-
         }
 
         this->window.clear();

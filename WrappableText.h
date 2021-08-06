@@ -67,7 +67,7 @@ class WrappableText : public UIElement
             bgColor;
         Vector2f padding;
         float borderRadius;
-        Text *uiText;
+        Text * uiText;
         bool isEditable;
 
         /********************/

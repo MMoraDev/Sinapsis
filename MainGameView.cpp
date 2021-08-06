@@ -131,9 +131,9 @@ void MainGameView::initDrawables()
 	//Drawables
 	this->drawables["bg"] = bgSprite;
 	this->drawables["franjas"] = franjasSprite;
-	this->drawables["xBg1"] = circle1;
-	this->drawables["xBg2"] = circle2;
-	this->drawables["xBg3"] = circle3;
+	this->drawables["bg1"] = circle1;
+	this->drawables["bg2"] = circle2;
+	this->drawables["bg3"] = circle3;
 	this->drawables["x1"] = xSprite1;
 	this->drawables["x2"] = xSprite2;
 	this->drawables["x3"] = xSprite3;

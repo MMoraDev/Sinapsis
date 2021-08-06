@@ -133,14 +133,14 @@ void WrappableText::initDrawables()
 
 	this->uiText->setString(finalText);
 
-	if ()
+	/*/if ()
 	{
 
 	}
 	else
 	{
 		this->drawables["bg"] = new RoundedRectangle(this->parent, this->x, this->y, this->height, this->width, BORDER_RADIUS, this->bgColor);
-	}
+	}*/
 	this->drawables["text"] = this->uiText;
 };
 

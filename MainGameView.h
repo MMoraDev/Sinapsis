@@ -35,7 +35,8 @@ class MainGameView : public UIElement
             * bg,
             * logo,
             * franjas,
-            * xS;
+            * xS,
+            * avatar;
 
         /********************/
         // Methods

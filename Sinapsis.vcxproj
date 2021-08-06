@@ -186,12 +186,6 @@
     <ClInclude Include="WrappableText.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="dll\OpenAL32.dll">
-      <DeploymentContent>false</DeploymentContent>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <FileType>Document</FileType>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
-    </None>
     <None Include="resources\audio\claps.ogg" />
     <None Include="resources\audio\game.ogg" />
     <None Include="resources\audio\menu.ogg" />

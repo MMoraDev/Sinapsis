@@ -17,6 +17,7 @@
 #include "SignUpView.h"
 #include "TextField.h"
 #include "UIElement.h"
+#include "WrappableText.h"
 
 /**************************************************/
 // Dev libraries
@@ -48,7 +49,13 @@ void SignUpView::loop()
 			this->selectedTextField = field;
 	}
 
-	for (SlideableMenu* avatar : this->avatars)
+	for (SlideableMenu* avatar : this->t1Avatars)
+	{
+		if (avatar->isMouseOver() && Mouse::isButtonPressed(Mouse::Left))
+			this->selectedTextField = avatar->getTextFieldPtr();
+	}
+
+	for (SlideableMenu* avatar : this->t2Avatars)
 	{
 		if (avatar->isMouseOver() && Mouse::isButtonPressed(Mouse::Left))
 			this->selectedTextField = avatar->getTextFieldPtr();
@@ -57,14 +64,14 @@ void SignUpView::loop()
 	if (this->drawables.find("zaddPlayer") != this->drawables.end() && static_cast<Button*>(this->drawables["zaddPlayer"])->isClicked())
 	{
 		int
-			x = (this->avatars.size() % 2 == 0) ? (int)this->x + (this->width * 1 / 20) : (int)this->x + (this->width / 5) + 60,
-			y = ((this->avatars.size() / 2) * 170) + 50,
-			bX = (this->avatars.size() % 2 == 0) ? (int)this->x + (this->width / 5) + 60 : (int)this->x + (this->width * 1 / 20);
+			x = (this->t1Avatars.size() % 2 == 0) ? (int)this->x + (this->width * 1 / 20) : (int)this->x + (this->width / 5) + 60,
+			y = ((this->t1Avatars.size() / 2) * 170) + 50,
+			bX = (this->t1Avatars.size() % 2 == 0) ? (int)this->x + (this->width / 5) + 60 : (int)this->x + (this->width * 1 / 20);
 
-		if (this->avatars.size() + 1 < 6)
+		if (this->t1Avatars.size() + 1 < 6)
 		{
 			static_cast<Button*>(this->drawables["zaddPlayer"])->setX(bX + 40);
-			if (this->avatars.size() % 2 != 0)
+			if (this->t1Avatars.size() % 2 != 0)
 				static_cast<Button*>(this->drawables["zaddPlayer"])->setY(y + 250);
 		}
 		else
@@ -72,21 +79,21 @@ void SignUpView::loop()
 			this->drawables.erase("zaddPlayer");
 		}
 
-		this->drawables["sm" + to_string(this->avatars.size() + 1)] = new SlideableMenu(this->parent, x, y, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
-		this->avatars.push_back(static_cast<SlideableMenu*>(this->drawables["sm" + to_string(this->avatars.size())]));
+		this->drawables["smT1" + to_string(this->t1Avatars.size() + 1)] = new SlideableMenu(this->parent, x, y, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
+		this->t1Avatars.push_back(static_cast<SlideableMenu*>(this->drawables["smT1" + to_string(this->t1Avatars.size())]));
 	}
 
 	if (this->drawables.find("zaddPlayer2") != this->drawables.end() && static_cast<Button*>(this->drawables["zaddPlayer2"])->isClicked())
 	{
 		int
-			x = (this->avatars.size() % 2 == 0) ? (int)this->x + (this->width * 11 / 20) : (int)this->x + (this->width * 4 / 5) -20,
-			y = ((this->avatars.size() / 2) * 170) + 50,
-			bX = (this->avatars.size() % 2 == 0) ? (int)this->x + (this->width * 4 / 5) - 20 : (int)this->x + (this->width * 11 / 20);
+			x = (this->t2Avatars.size() % 2 == 0) ? (int)this->x + (this->width * 11 / 20) + 40 : (int)this->x + (this->width * 4 / 5) - 20,
+			y = ((this->t2Avatars.size() / 2) * 170) + 50,
+			bX = (this->t2Avatars.size() % 2 == 0) ? (int)this->x + (this->width * 4 / 5) - 50 : (int)this->x + (this->width * 11 / 20);
 
-		if (this->avatars.size() + 7 < 12)
+		if (this->t2Avatars.size() + 7 < 12)
 		{
 			static_cast<Button*>(this->drawables["zaddPlayer2"])->setX(bX + 80);
-			if (this->avatars.size() % 2 != 0)
+			if (this->t2Avatars.size() % 2 != 0)
 				static_cast<Button*>(this->drawables["zaddPlayer2"])->setY(y + 250);
 		}
 		else
@@ -94,8 +101,8 @@ void SignUpView::loop()
 			this->drawables.erase("zaddPlayer2");
 		}
 
-		this->drawables["sm" + to_string(this->avatars.size() + 7)] = new SlideableMenu(this->parent, x, y, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
-		this->avatars.push_back(static_cast<SlideableMenu*>(this->drawables["sm" + to_string(this->avatars.size())]));
+		this->drawables["smT2" + to_string(this->t2Avatars.size() + 1)] = new SlideableMenu(this->parent, x, y, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
+		this->t2Avatars.push_back(static_cast<SlideableMenu*>(this->drawables["smT2" + to_string(this->t2Avatars.size())]));
 	}
 };
 
@@ -180,22 +187,19 @@ void SignUpView::initDrawables()
 	this->drawables["team1"] = new TextField(this->parent, (int)this->x + (this->width * 1 / 20) - 20, 65, 50, (int)(this->width * 2) / 5, "Equipo azul", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::LEFT, APP_COLORS().ACCENT, APP_COLORS().ACCENT);
 	this->drawables["team2"] = new TextField(this->parent, (int)this->x + (this->width * 19 / 20) - (this->width * 2) / 5 + 20, 65, 50, (int)(this->width * 2) / 5, "Equipo azul", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::RIGHT, APP_COLORS().ACCENT, APP_COLORS().ACCENT);
 	
-	this->drawables["sm1"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 1 / 20), this->y + 50, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
+	this->drawables["smT11"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 1 / 20), this->y + 50, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
 	this->drawables["zaddPlayer"] = new Button(this->parent, (int)this->x + (this->width / 5) + 100, (int)this->y + 130, 120, 120, this->addPlayer->copyToImage(), this->addPlayer->copyToImage());
 
-	this->drawables["sm7"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 11 / 20) + 40, this->y + 50, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
+	this->drawables["smT21"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 11 / 20) + 40, this->y + 50, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
 	this->drawables["zaddPlayer2"] = new Button(this->parent, (int)this->x + (this->width * 4 / 5) + 20, (int)this->y + 130, 120, 120, this->addPlayer->copyToImage(), this->addPlayer->copyToImage());
-	/*this->drawables["sm8"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 11 / 20) + 40, this->y + 220, 320, 200, avatars, "resources\\images\\avatars\\", true);
-	this->drawables["sm9"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 11 / 20) + 40, this->y + 390, 320, 200, avatars, "resources\\images\\avatars\\", true);
-	this->drawables["sm10"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 4 / 5) - 20, this->y + 50, 320, 200, avatars, "resources\\images\\avatars\\", true);
-	this->drawables["sm11"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 4 / 5) - 20, this->y + 220, 320, 200, avatars, "resources\\images\\avatars\\", true);
-	this->drawables["sm12"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 4 / 5) - 20, this->y + 390, 320, 200, avatars, "resources\\images\\avatars\\", true);*/
-	
+
+	this->drawables["playButton"] = new Button(this->parent, (int)this->x + (this->width / 2) - 50, (int)this->y + 300, 80, 100, "Jugar", APP_COLORS().GRAY_LIGHT, APP_COLORS().SECONDARY, APP_COLORS().SECONDARY_DARK);
+
 	this->drawables["bg"] = bgSprite;
 	this->drawables["vs"] = vsSprite;
 
 	this->textFields.push_back(static_cast<TextField*>(this->drawables["team1"]));
 	this->textFields.push_back(static_cast<TextField*>(this->drawables["team2"]));
-	this->avatars.push_back(static_cast<SlideableMenu*>(this->drawables["sm1"]));
-	//this->avatars.push_back(static_cast<SlideableMenu*>(this->drawables["sm2"]));
+	this->t1Avatars.push_back(static_cast<SlideableMenu*>(this->drawables["smT11"]));
+	this->t2Avatars.push_back(static_cast<SlideableMenu*>(this->drawables["smT21"]));
 };

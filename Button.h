@@ -49,6 +49,11 @@ class Button : public UIElement
         Type type;
         bool isReleased;
         int opacity;
+        String text;
+        Color
+            fontColor,
+            bgColor,
+            onHoverBgColor;
 
         /********************/
         // Methods
@@ -58,6 +63,8 @@ class Button : public UIElement
         // Constructor
 
         Button(RenderWindow* parent, int x, int y, int height, int width, Image bg, Image onHoverBg, int opacity = 255);
+
+        Button(RenderWindow* parent, int x, int y, int height, int width, string text, Color font, Color bg, Color onHoverBg, int opacity = 255);
 
         /********************/
         // Getters and setters methods

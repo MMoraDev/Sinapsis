@@ -48,9 +48,6 @@
     <Filter Include="resources\images\avatars">
       <UniqueIdentifier>{fdef27af-7559-407e-b9da-32b13e88e373}</UniqueIdentifier>
     </Filter>
-    <Filter Include="dll">
-      <UniqueIdentifier>{88253711-da35-4325-89b3-9868442529f2}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -174,9 +171,6 @@
     </None>
     <None Include="resources\data\UNIVA.csv">
       <Filter>resources\data</Filter>
-    </None>
-    <None Include="dll\OpenAL32.dll">
-      <Filter>dll</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

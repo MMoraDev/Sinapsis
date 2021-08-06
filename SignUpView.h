@@ -44,7 +44,9 @@ class SignUpView : public UIElement
 
         TextField* selectedTextField;
         vector<TextField*> textFields;
-        vector<SlideableMenu*> avatars;
+        vector<SlideableMenu*>
+            t1Avatars,
+            t2Avatars;
         map<string, vector<string>> avatarsFilesNames;
 
         /********************/

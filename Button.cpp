@@ -11,6 +11,7 @@
 #include <iostream>
 #include "Button.h"
 #include <vector>
+#include "WrappableText.h"
 
 /**************************************************/
 // Namespaces
@@ -36,6 +37,10 @@ void Button::loop()
 		{
 			texture = this->onHoverBg;
 		}
+		else if (this->type == Type::TEXT)
+		{
+			this->drawables["bg"] = new WrappableText(this->parent, (int)this->x, (int)this->y, (int)this->height, (int)this->width, this->text, PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::CENTER, this->fontColor, this->bgColor);
+		}
 	}
 	else
 	{
@@ -43,18 +48,25 @@ void Button::loop()
 		{
 			texture = this->bg;
 		}
+		else if (this->type == Type::TEXT)
+		{
+			this->drawables["bg"] = new WrappableText(this->parent, (int)this->x, (int)this->y, (int)this->height, (int)this->width, this->text, PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::CENTER, this->fontColor, this->onHoverBgColor);
+		}
 	}
 
-	// Convert png (from texture -> sprite) to draw on canvas
-	texture->setSmooth(true);
-	sprite->setTexture(*texture);
-	sprite->setScale((float)this->width / texture->getSize().x, (float)this->height / texture->getSize().y);
-	sprite->setPosition((float)this->x, (float)this->y);
-	color = sprite->getColor();
-	color.a = this->opacity;
-	sprite->setColor(color);
+	if (this->type == Type::IMAGE)
+	{
+		// Convert png (from texture -> sprite) to draw on canvas
+		texture->setSmooth(true);
+		sprite->setTexture(*texture);
+		sprite->setScale((float)this->width / texture->getSize().x, (float)this->height / texture->getSize().y);
+		sprite->setPosition((float)this->x, (float)this->y);
+		color = sprite->getColor();
+		color.a = this->opacity;
+		sprite->setColor(color);
 
-	this->drawables["bg"] = sprite;
+		this->drawables["bg"] = sprite;
+	}
 };
 
 /**************************************************/
@@ -76,6 +88,19 @@ Button::Button(RenderWindow* parent, int x, int y, int height, int width, Image 
 	this->onHoverBg = onHoverBgTexture;
 	this->opacity = opacity;
 	this->type = Type::IMAGE;
+	this->isReleased = true;
+
+	this->initDrawables();
+};
+
+Button::Button(RenderWindow* parent, int x, int y, int height, int width, string text, Color font, Color bg, Color onHoverBg, int opacity) : UIElement(parent, x, y, height, width, true)
+{
+	this->text = text;
+	this->fontColor = font;
+	this->bgColor = bg;
+	this->onHoverBgColor = onHoverBg;
+	this->opacity = opacity;
+	this->type = Type::TEXT;
 	this->isReleased = true;
 
 	this->initDrawables();

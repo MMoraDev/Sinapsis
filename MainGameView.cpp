@@ -124,23 +124,23 @@ void MainGameView::initDrawables()
 
 	circle5->setRadius(18);
 	circle5->setFillColor(APP_COLORS().ACCENT);
-	circle5->setPosition((float)(CENTER.x - 325), (float)168);
+	circle5->setPosition((float)(CENTER.x - 325), (float)170);
 
 	circle6->setRadius(18);
 	circle6->setFillColor(APP_COLORS().ACCENT);
-	circle6->setPosition((float)(CENTER.x - 325), (float)208);
+	circle6->setPosition((float)(CENTER.x - 325), (float)212);
 
 	circle7->setRadius(18);
 	circle7->setFillColor(APP_COLORS().ACCENT);
-	circle7->setPosition((float)(CENTER.x - 325), (float)248);
+	circle7->setPosition((float)(CENTER.x - 325), (float)254);
 
 	circle8->setRadius(18);
 	circle8->setFillColor(APP_COLORS().ACCENT);
-	circle8->setPosition((float)(CENTER.x - 325), (float)288);
+	circle8->setPosition((float)(CENTER.x - 325), (float)296);
 
 	circle9->setRadius(18);
 	circle9->setFillColor(APP_COLORS().ACCENT);
-	circle9->setPosition((float)(CENTER.x - 325), (float)328);
+	circle9->setPosition((float)(CENTER.x - 325), (float)338);
 	
 	// Convert bg.png (from image -> texture -> sprite) to draw on canvas
 	this->bg->setSmooth(true);
@@ -183,18 +183,24 @@ void MainGameView::initDrawables()
 	this->drawables["x1"] = xSprite1;
 	this->drawables["x2"] = xSprite2;
 	this->drawables["x3"] = xSprite3;
-	/*this->drawables["xBg1"] = circle1;
-	this->drawables["xBg2"] = circle2;
-	this->drawables["xBg3"] = circle3;
-	this->drawables["xa1"] = xSprite1;
-	this->drawables["xa2"] = xSprite2;
-	this->drawables["xa3"] = xSprite3;*/
-	this->drawables["zbg4"] = circle4;
-	this->drawables["zbg5"] = circle5;
-	this->drawables["zbg6"] = circle6;
-	this->drawables["zbg7"] = circle7;
-	this->drawables["zbg8"] = circle8;
-	this->drawables["zbg9"] = circle9;
+	this->drawables["ybg4"] = circle4;
+	this->drawables["ybg5"] = circle5;
+	this->drawables["ybg6"] = circle6;
+	this->drawables["ybg7"] = circle7;
+	this->drawables["ybg8"] = circle8;
+	this->drawables["ybg9"] = circle9;
+	this->drawables["respuesta1"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 128, 35, (int)(this->width * 2) / 5 + 80, "AAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHH", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
+	this->drawables["respuesta2"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 170, 35, (int)(this->width * 2) / 5 + 80, "AAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHH", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
+	this->drawables["respuesta3"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 212, 35, (int)(this->width * 2) / 5 + 80, "AAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHH", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
+	this->drawables["respuesta4"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 254, 35, (int)(this->width * 2) / 5 + 80, "AAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHH", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
+	this->drawables["respuesta5"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 296, 35, (int)(this->width * 2) / 5 + 80, "AAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHH", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
+	this->drawables["respuesta6"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 338, 35, (int)(this->width * 2) / 5 + 80, "AAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHH", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
+	this->drawables["zansButton1"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)122, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
+	this->drawables["zansButton2"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)164, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
+	this->drawables["zansButton3"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)206, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
+	this->drawables["zansButton4"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)248, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
+	this->drawables["zansButton5"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)290, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
+	this->drawables["zansButton6"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)332, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
 	this->drawables["logoImage"] = logoSprite;
 	this->drawables["zavatar1"] = new SlideableMenu(this->parent, (int)(this->width * 1 / 20) - 100, (int)(this->height * 5 / 10), 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team1Players"]), "resources\\images\\avatars\\", false, true);
 	this->drawables["zavatar2"] = new SlideableMenu(this->parent, (int)(this->width * 16 / 20) - 200, (int)(this->height * 5 / 10), 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team2Players"]), "resources\\images\\avatars\\", false, true);

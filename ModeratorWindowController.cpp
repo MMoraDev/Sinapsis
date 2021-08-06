@@ -59,7 +59,7 @@ ModeratorWindowController::ModeratorWindowController(int height, int width) : Wi
     }
 
     // Change some parameters
-    this->music->setVolume(50);         // reduce the volume
+    this->music->setVolume(20);         // reduce the volume
     this->music->setLoop(true);         // make it loop
 
     this->music->play();
@@ -140,7 +140,7 @@ void ModeratorWindowController::run()
                 }
 
                 // Change some parameters
-                this->music->setVolume(50);         // reduce the volume
+                this->music->setVolume(20);         // reduce the volume
                 this->music->setLoop(true);         // make it loop
 
                 this->music->play();

@@ -10,6 +10,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "UIElement.h"
 #include "WindowController.h"
 
 /**************************************************/
@@ -26,17 +27,28 @@ using namespace sf;
 class ModeratorWindowController : public WindowController
 {
     private:
+    
+    public:
         /********************/
-        // Variables
+        // Constants
 
         const enum class State {
-            MAIN_MENU
+            MAIN_MENU,
+            SIGN_UP,
+            GAME
         };
 
         /********************/
         // Methods
 
     protected:
+
+        /********************/
+        // Variables
+
+        State actualState;
+        UIElement *view;
+        map<string, string> selectedOption;
 
     public:
         /********************/
@@ -46,6 +58,9 @@ class ModeratorWindowController : public WindowController
 
         /********************/
         // Getters and setters methods
+
+        State getActualState();
+        void setActualState(State state);
 
         /********************/
         // Methods

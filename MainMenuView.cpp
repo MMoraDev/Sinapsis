@@ -29,6 +29,17 @@
 using namespace sf;
 
 /**************************************************/
+// Private
+
+/*****************************/
+// Medoths
+
+void MainMenuView::loop()
+{
+	this->selectedOption = static_cast<SlideableMenu*>(this->drawables["mainMenu"])->getSelectedOption();
+};
+
+/**************************************************/
 // Public
 
 /*****************************/
@@ -41,6 +52,9 @@ MainMenuView::MainMenuView(RenderWindow* parent, int x, int y, int height, int w
 
 /*****************************/
 // Getters and setters methods
+
+map<string, string> MainMenuView::getSelectedOption() { return this->selectedOption; };
+void MainMenuView::setSelectedOption(map<string, string> option) { this->selectedOption = option; };
 
 /*****************************/
 // Medoths

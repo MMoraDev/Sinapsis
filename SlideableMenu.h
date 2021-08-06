@@ -60,6 +60,7 @@ class SlideableMenu : public UIElement
         vector<Image> arrowImages;
         AnimationData animation;
         Texture *icon;
+        map<string, string> selectedOption;
 
         /********************/
         // Methods
@@ -82,6 +83,9 @@ class SlideableMenu : public UIElement
 
         /********************/
         // Getters and setters methods
+
+        map<string, string> getSelectedOption();
+        void setSelectedOption(map<string, string> option);
 
         /********************/
         // Methods

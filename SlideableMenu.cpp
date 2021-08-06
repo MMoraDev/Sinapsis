@@ -72,9 +72,11 @@ void SlideableMenu::loop()
 		this->drawables["prevOptionButton"] = this->drawables["optionButton"];
 		this->loadOption();
 	}
-	else if (static_cast<Button*>(this->drawables["nextButton"])->isClicked())
+	else if (static_cast<Button*>(this->drawables["optionButton"])->isClicked())
 	{
-
+		this->selectedOption = { 
+			{ this->actualSection->first, this->actualSection->second[this->actualOption] }
+		};
 	}
 
 	if (this->animation.isChangingOption)
@@ -101,6 +103,7 @@ SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int
 	this->options = options;
 	this->actualSection = this->options.begin();
 	this->actualOption = 0;
+	this->selectedOption = map<string, string>();
 	this->icon = new Texture();
 
 	if (!tempImages[0].loadFromFile("resources\\images\\buttons\\arrow.png") || !tempImages[1].loadFromFile("resources\\images\\buttons\\arrow-hover.png"))
@@ -124,6 +127,9 @@ SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int
 
 /*****************************/
 // Getters and setters methods
+
+map<string, string> SlideableMenu::getSelectedOption(){ return this->selectedOption; };
+void SlideableMenu::setSelectedOption(map<string, string> option) { this->selectedOption = option; };
 
 /*****************************/
 // Medoths

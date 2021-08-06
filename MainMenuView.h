@@ -26,6 +26,11 @@ using namespace sf;
 class MainMenuView : public UIElement
 {
     private:
+        /********************/
+        // Methods
+
+        void loop() override;
+
 
     protected:
         /********************/
@@ -34,8 +39,8 @@ class MainMenuView : public UIElement
         Texture 
             *logo,
             *bg;
-        map<string, vector<string>>
-            options;
+        map<string, vector<string>> options;
+        map<string, string> selectedOption;
 
         /********************/
         // Methods
@@ -48,6 +53,9 @@ class MainMenuView : public UIElement
 
         /********************/
         // Getters and setters methods
+
+        map<string, string> getSelectedOption();
+        void setSelectedOption(map<string, string> option);
 
         /********************/
         // Methods

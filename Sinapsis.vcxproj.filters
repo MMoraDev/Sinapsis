@@ -90,6 +90,9 @@
     <ClCompile Include="SignUpView.cpp">
       <Filter>src\views</Filter>
     </ClCompile>
+    <ClCompile Include="TextField.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Settings.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="SignUpView.h">
       <Filter>include\views</Filter>
+    </ClInclude>
+    <ClInclude Include="TextField.h">
+      <Filter>include\ui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

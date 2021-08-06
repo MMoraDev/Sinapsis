@@ -163,6 +163,7 @@
     <ClCompile Include="SlideableMenu.cpp" />
     <ClCompile Include="MainGameView.cpp" />
     <ClCompile Include="StorageController.cpp" />
+    <ClCompile Include="TextField.cpp" />
     <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="WindowController.cpp" />
     <ClCompile Include="WrappableText.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="SignUpView.h" />
     <ClInclude Include="SlideableMenu.h" />
     <ClInclude Include="StorageController.h" />
+    <ClInclude Include="TextField.h" />
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="WindowController.h" />
     <ClInclude Include="WrappableText.h" />

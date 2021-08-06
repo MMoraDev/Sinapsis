@@ -64,6 +64,6 @@ void SignUpView::initDrawables()
 	bgSprite->setTexture(*(this->bg));
 	bgSprite->setScale((float)this->width / this->bg->getSize().x, (float)this->height / this->bg->getSize().y);
 
-	this->drawables["team1"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3) / 5, "Equipo rojo", PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::LEFT, APP_COLORS().PRIMARY, APP_COLORS().PRIMARY);
+	this->drawables["team1"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3) / 5, "Equipo rojo", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::LEFT, APP_COLORS().PRIMARY, APP_COLORS().PRIMARY);
 	this->drawables["bg"] = bgSprite;
 };

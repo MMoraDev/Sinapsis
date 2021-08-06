@@ -37,7 +37,7 @@ bool WrappableText::initialized = false;
 /*****************************/
 // Constructor
 
-WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style, TextAlign alignment, Color fontColor, Color bgColor, float borderRadius) : UIElement(parent, x, y, height, width)
+WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style, TextAlign alignment, Color fontColor, Color bgColor, bool isUnderlined, float borderRadius) : UIElement(parent, x, y, height, width)
 {
 	this->text = text;
 	this->padding = padding;
@@ -45,6 +45,7 @@ WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int
 	this->alignment = alignment;
 	this->fontColor = fontColor;
 	this->bgColor = bgColor;
+	this->isUnderlined = isUnderlined;
 	this->borderRadius = borderRadius;
 
 	if (!WrappableText::initialized)
@@ -133,19 +134,20 @@ void WrappableText::initDrawables()
 
 	this->uiText->setString(finalText);
 
-	/*/if ()
+	if (this->isUnderlined)
 	{
-
+		this->drawables["bg"] = new RoundedRectangle(this->parent, this->x, this->y + this->height, 5, this->width, 5, this->bgColor);
 	}
 	else
 	{
 		this->drawables["bg"] = new RoundedRectangle(this->parent, this->x, this->y, this->height, this->width, BORDER_RADIUS, this->bgColor);
-	}*/
+	}
 	this->drawables["text"] = this->uiText;
 };
 
 void WrappableText::setStyle(Style style)
 {
+	this->style = style;
 	this->uiText->setFont(*WrappableText::fonts[3]);
 	int fontSize = 20;
 

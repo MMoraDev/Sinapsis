@@ -75,6 +75,28 @@ void SignUpView::loop()
 		this->drawables["sm" + to_string(this->avatars.size() + 1)] = new SlideableMenu(this->parent, x, y, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
 		this->avatars.push_back(static_cast<SlideableMenu*>(this->drawables["sm" + to_string(this->avatars.size())]));
 	}
+
+	if (this->drawables.find("zaddPlayer2") != this->drawables.end() && static_cast<Button*>(this->drawables["zaddPlayer2"])->isClicked())
+	{
+		int
+			x = (this->avatars.size() % 2 == 0) ? (int)this->x + (this->width * 11 / 20) : (int)this->x + (this->width * 4 / 5) -20,
+			y = ((this->avatars.size() / 2) * 170) + 50,
+			bX = (this->avatars.size() % 2 == 0) ? (int)this->x + (this->width * 4 / 5) - 20 : (int)this->x + (this->width * 11 / 20);
+
+		if (this->avatars.size() + 7 < 12)
+		{
+			static_cast<Button*>(this->drawables["zaddPlayer2"])->setX(bX + 80);
+			if (this->avatars.size() % 2 != 0)
+				static_cast<Button*>(this->drawables["zaddPlayer2"])->setY(y + 250);
+		}
+		else
+		{
+			this->drawables.erase("zaddPlayer2");
+		}
+
+		this->drawables["sm" + to_string(this->avatars.size() + 7)] = new SlideableMenu(this->parent, x, y, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
+		this->avatars.push_back(static_cast<SlideableMenu*>(this->drawables["sm" + to_string(this->avatars.size())]));
+	}
 };
 
 /**************************************************/
@@ -162,7 +184,7 @@ void SignUpView::initDrawables()
 	this->drawables["zaddPlayer"] = new Button(this->parent, (int)this->x + (this->width / 5) + 100, (int)this->y + 130, 120, 120, this->addPlayer->copyToImage(), this->addPlayer->copyToImage());
 
 	this->drawables["sm7"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 11 / 20) + 40, this->y + 50, 320, 200, this->avatarsFilesNames, "resources\\images\\avatars\\", true);
-	this->drawables["zaddPlayer2"] = addPlayerSprite2;
+	this->drawables["zaddPlayer2"] = new Button(this->parent, (int)this->x + (this->width * 4 / 5) + 20, (int)this->y + 130, 120, 120, this->addPlayer->copyToImage(), this->addPlayer->copyToImage());
 	/*this->drawables["sm8"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 11 / 20) + 40, this->y + 220, 320, 200, avatars, "resources\\images\\avatars\\", true);
 	this->drawables["sm9"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 11 / 20) + 40, this->y + 390, 320, 200, avatars, "resources\\images\\avatars\\", true);
 	this->drawables["sm10"] = new SlideableMenu(this->parent, (int)this->x + (this->width * 4 / 5) - 20, this->y + 50, 320, 200, avatars, "resources\\images\\avatars\\", true);

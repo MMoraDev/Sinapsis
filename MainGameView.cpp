@@ -118,17 +118,29 @@ void MainGameView::initDrawables()
 	circle3->setFillColor(APP_COLORS().GRAY);
 	circle3->setPosition((float)(CENTER.x + 95), (float)(this->height * 6 / 10)+ 40);
 
-	circle4->setRadius(10);
+	circle4->setRadius(18);
 	circle4->setFillColor(APP_COLORS().ACCENT);
-	circle4->setPosition((float)(CENTER.x - 335), (float)105.5);
+	circle4->setPosition((float)(CENTER.x - 325), (float)128);
 
-	circle5->setRadius(10);
+	circle5->setRadius(18);
 	circle5->setFillColor(APP_COLORS().ACCENT);
-	circle5->setPosition((float)(CENTER.x - 335), (float)145.5);
+	circle5->setPosition((float)(CENTER.x - 325), (float)168);
 
-	circle6->setRadius(10);
+	circle6->setRadius(18);
 	circle6->setFillColor(APP_COLORS().ACCENT);
-	circle6->setPosition((float)(CENTER.x - 335), (float)185.5);
+	circle6->setPosition((float)(CENTER.x - 325), (float)208);
+
+	circle7->setRadius(18);
+	circle7->setFillColor(APP_COLORS().ACCENT);
+	circle7->setPosition((float)(CENTER.x - 325), (float)248);
+
+	circle8->setRadius(18);
+	circle8->setFillColor(APP_COLORS().ACCENT);
+	circle8->setPosition((float)(CENTER.x - 325), (float)288);
+
+	circle9->setRadius(18);
+	circle9->setFillColor(APP_COLORS().ACCENT);
+	circle9->setPosition((float)(CENTER.x - 325), (float)328);
 	
 	// Convert bg.png (from image -> texture -> sprite) to draw on canvas
 	this->bg->setSmooth(true);
@@ -171,12 +183,18 @@ void MainGameView::initDrawables()
 	this->drawables["x1"] = xSprite1;
 	this->drawables["x2"] = xSprite2;
 	this->drawables["x3"] = xSprite3;
-	this->drawables["xBg1"] = circle1;
+	/*this->drawables["xBg1"] = circle1;
 	this->drawables["xBg2"] = circle2;
 	this->drawables["xBg3"] = circle3;
 	this->drawables["xa1"] = xSprite1;
 	this->drawables["xa2"] = xSprite2;
-	this->drawables["xa3"] = xSprite3;
+	this->drawables["xa3"] = xSprite3;*/
+	this->drawables["zbg4"] = circle4;
+	this->drawables["zbg5"] = circle5;
+	this->drawables["zbg6"] = circle6;
+	this->drawables["zbg7"] = circle7;
+	this->drawables["zbg8"] = circle8;
+	this->drawables["zbg9"] = circle9;
 	this->drawables["logoImage"] = logoSprite;
 	this->drawables["zavatar1"] = new SlideableMenu(this->parent, (int)(this->width * 1 / 20) - 100, (int)(this->height * 5 / 10), 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team1Players"]), "resources\\images\\avatars\\", false, true);
 	this->drawables["zavatar2"] = new SlideableMenu(this->parent, (int)(this->width * 16 / 20) - 200, (int)(this->height * 5 / 10), 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team2Players"]), "resources\\images\\avatars\\", false, true);

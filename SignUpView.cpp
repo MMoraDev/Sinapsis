@@ -119,7 +119,7 @@ void SignUpView::loop()
 
 SignUpView::SignUpView(RenderWindow* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
 {
-	isDone = false;
+	this->isDone = false;
 	this->initDrawables();
 };
 
@@ -128,6 +128,29 @@ SignUpView::SignUpView(RenderWindow* parent, int x, int y, int height, int width
 
 bool SignUpView::getIsDone() { return this->isDone; };
 void SignUpView::setIsDone(bool isDone) { this->isDone = isDone; };
+
+map<string, vector<map<string, string>>> SignUpView::getData()
+{
+	map<string, vector<map<string, string>>> res = map<string, vector<map<string, string>>>();
+	vector<map<string, string>> players = vector<map<string, string>>();
+
+	res["names"] = { {{ "team1", this->textFields[0]->getText() }, { "team2", this->textFields[0]->getText() }} };
+
+	for (SlideableMenu* avatar : this->t1Avatars)
+	{
+		players.push_back(avatar->getData());
+	}
+	res["team1Players"] = players;
+	players.clear();
+
+	for (SlideableMenu* avatar : this->t2Avatars)
+	{
+		players.push_back(avatar->getData());
+	}
+	res["team2Players"] = players;
+
+	return res;
+};
 
 /*****************************/
 // Medoths

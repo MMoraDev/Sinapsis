@@ -52,6 +52,7 @@ class ModeratorWindowController : public WindowController
         UIElement *view;
         map<string, string> selectedOption;
         Music* music;
+        map<string, vector<map<string, string>>> teams;
 
     public:
         /********************/

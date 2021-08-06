@@ -131,6 +131,11 @@ SlideableMenu::SlideableMenu(RenderWindow* parent, int x, int y, int height, int
 /*****************************/
 // Getters and setters methods
 
+map<string, string> SlideableMenu::getData()
+{
+	return {{ "text", this->getTextFieldPtr()->getText() }, { "image", this->actualSection->second[this->actualOption] }};
+};
+
 map<string, string> SlideableMenu::getSelectedOption() { return this->selectedOption; };
 void SlideableMenu::setSelectedOption(map<string, string> option) { this->selectedOption = option; };
 

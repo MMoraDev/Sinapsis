@@ -65,6 +65,8 @@ class SignUpView : public UIElement
         bool getIsDone();
         void setIsDone(bool isDone);
 
+        map<string, vector<map<string, string>>> getData();
+
         /********************/
         // Methods
 

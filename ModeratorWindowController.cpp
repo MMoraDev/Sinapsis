@@ -124,6 +124,7 @@ void ModeratorWindowController::run()
         {
             if (static_cast<SignUpView*>(this->view)->getIsDone())
             {
+                this->teams = static_cast<SignUpView*>(this->view)->getData();
                 this->setActualState(State::GAME);
             }
         }

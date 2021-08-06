@@ -92,8 +92,11 @@ class SlideableMenu : public UIElement
         /********************/
         // Getters and setters methods
 
+        map<string, string> getData();
+
         map<string, string> getSelectedOption();
         void setSelectedOption(map<string, string> option);
+
 
         TextField * getTextFieldPtr();
 

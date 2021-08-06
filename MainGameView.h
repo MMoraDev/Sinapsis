@@ -32,7 +32,10 @@ class MainGameView : public UIElement
             scores[2] = {0, 0};
 
         Texture
-            * bg;
+            * bg,
+            * logo,
+            * franjas,
+            * xS;
 
         /********************/
         // Methods

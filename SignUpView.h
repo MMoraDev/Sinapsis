@@ -36,7 +36,12 @@ class SignUpView : public UIElement
         /********************/
         // Variables
 
-        Texture * bg;
+        Texture
+            * bg,
+            * addPlayer,
+            * addPlayer2,
+            * vs;
+
         TextField* selectedTextField;
         vector<TextField*> textFields;
         vector<SlideableMenu*> avatars;

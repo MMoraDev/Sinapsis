@@ -83,7 +83,7 @@ void WinnerView::initDrawables()
 	this->logo->setSmooth(true);
 	logoSprite->setScale(logoScale);
 	logoSprite->setTexture(*(this->logo));
-	logoSprite->setPosition((float)(this->width / 2) - (this->logo->getSize().x * (logoScale.x / 2.f)), (float)(this->height * 4 / 5) - 100);
+	logoSprite->setPosition((float)(this->width / 2) - (this->logo->getSize().x * (logoScale.x / 2.f)), (float)(this->height * 3 / 5));
 
 	// Convert franjas.png (from image -> texture -> sprite) to draw on canvas
 	this->franjaIzq->setSmooth(true);
@@ -103,4 +103,5 @@ void WinnerView::initDrawables()
 	this->drawables["franjaDer"] = franja2Sprite;
 	this->drawables["winner"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 3) / 10, 65, 120, (int)(this->width * 3) / 5, "¡GANADOR!", PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().ACCENT);
 	this->drawables["winnerTeam"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, (this->height * 2 / 5), 60, (int)(this->width * 2) / 5, "EQUIPO AZUL", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
+	this->drawables["goMenu"] = new Button(this->parent, (int)this->x + (this->width / 2) - 150, (int)(this->height * 4 / 5) + 40, 55, 300, "Volver al Menú", APP_COLORS().GRAY_LIGHT, APP_COLORS().ACCENT, APP_COLORS().BLACK);
 };

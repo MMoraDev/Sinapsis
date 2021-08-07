@@ -108,15 +108,15 @@ void MainGameView::initDrawables()
 	// Creates the background circles for the strike's X
 	circle1->setRadius(30);
 	circle1->setFillColor(APP_COLORS().GRAY);
-	circle1->setPosition((float)(CENTER.x - 30), (float)(this->height * 6 / 10) + 40);
+	circle1->setPosition((float)(CENTER.x - 30), (float)(this->height * 6 / 10) + 10);
 
 	circle2->setRadius(30);
 	circle2->setFillColor(APP_COLORS().GRAY);
-	circle2->setPosition((float)(CENTER.x - 155), (float)(this->height * 6 / 10) + 40);
+	circle2->setPosition((float)(CENTER.x - 155), (float)(this->height * 6 / 10) + 10);
 
 	circle3->setRadius(30);
 	circle3->setFillColor(APP_COLORS().GRAY);
-	circle3->setPosition((float)(CENTER.x + 95), (float)(this->height * 6 / 10)+ 40);
+	circle3->setPosition((float)(CENTER.x + 95), (float)(this->height * 6 / 10)+ 10);
 
 	circle4->setRadius(18);
 	circle4->setFillColor(APP_COLORS().ACCENT);
@@ -164,15 +164,15 @@ void MainGameView::initDrawables()
 
 	xSprite1->setScale(xScale);
 	xSprite1->setTexture(*(this->xS));
-	xSprite1->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))) - 125, (float)(this->height * 6 / 10) + 28);
+	xSprite1->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))) - 125, (float)(this->height * 6 / 10));
 
 	xSprite2->setScale(xScale);
 	xSprite2->setTexture(*(this->xS));
-	xSprite2->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))), (float)(this->height * 6 / 10) + 28);
+	xSprite2->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))), (float)(this->height * 6 / 10));
 
 	xSprite3->setScale(xScale);
 	xSprite3->setTexture(*(this->xS));
-	xSprite3->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))) + 125, (float)(this->height * 6 / 10) + 28);
+	xSprite3->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))) + 125, (float)(this->height * 6 / 10));
 
 	//Drawables
 	this->drawables["bg"] = bgSprite;
@@ -201,9 +201,10 @@ void MainGameView::initDrawables()
 	this->drawables["zansButton4"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)248, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
 	this->drawables["zansButton5"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)290, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
 	this->drawables["zansButton6"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)332, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
+	this->drawables["strike"] = new Button(this->parent, (int)this->x + (this->width / 2) - 160, (int)(this->height * 4 / 5) - 20, 55, 320, "Respuesta Incorrecta", APP_COLORS().GRAY_LIGHT, APP_COLORS().RED, APP_COLORS().RED);
 	this->drawables["logoImage"] = logoSprite;
-	this->drawables["zavatar1"] = new SlideableMenu(this->parent, (int)(this->width * 1 / 20) - 100, (int)(this->height * 5 / 10) + 80, 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team1Players"]), "resources\\images\\avatars\\", false, true);
-	this->drawables["zavatar2"] = new SlideableMenu(this->parent, (int)(this->width * 16 / 20) - 200, (int)(this->height * 5 / 10) + 80, 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team2Players"]), "resources\\images\\avatars\\", false, true);
+	this->drawables["zavatar1"] = new SlideableMenu(this->parent, (int)(this->width * 1 / 20) - 160, (int)(this->height * 3 / 10) + 60, 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team1Players"]), "resources\\images\\avatars\\", false, true);
+	this->drawables["zavatar2"] = new SlideableMenu(this->parent, (int)(this->width * 16 / 20) - 140, (int)(this->height * 3 / 10) + 60, 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team2Players"]), "resources\\images\\avatars\\", false, true);
 	this->drawables["question"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, 65, 55, (int)(this->width * 2) / 5, "Pregunta X", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 	this->drawables["qauestionsBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 350, 90.5, 300, 700, BORDER_RADIUS, APP_COLORS().WHITE);
 	this->drawables["qauestionsaBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 345, 95.5, 290, 690, BORDER_RADIUS, APP_COLORS().GRAY_LIGHT);

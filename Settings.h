@@ -38,6 +38,7 @@ class APP_COLORS {
 			ACCENT = Color(247, 37, 133),
 			GRAY = Color(229, 229, 229),
 			GRAY_LIGHT = Color(242, 242, 242),
+			RED = Color(242, 32, 32),
 			WHITE = Color(255, 255, 255),
 			BLACK = Color(25, 25, 25);
 };

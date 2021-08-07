@@ -57,6 +57,8 @@ class MainGameView : public UIElement
 
         map<string, vector<string>> dataToSlideableMenuFormat(vector<map<string, string>> players);
 
+        //map<string, map<string, int>> getRandomQuestion ()
+
         /**
          * \brief Prints the ui on the canvas (doesn't show it on screen).
          */

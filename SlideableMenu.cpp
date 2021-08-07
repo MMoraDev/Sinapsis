@@ -214,20 +214,15 @@ void SlideableMenu::initDrawables()
 
 	this->loadOption();
 
-	circle->setRadius(50);
-	circle->setFillColor(APP_COLORS().GRAY);
-	circle->setPosition((float) (CENTER.x - 50), (float) (this->y));
-	
-	//RectangleShape* rectangle = new RectangleShape();
-	//rectangle->setSize(sf::Vector2f(this->width, this->height));
-	//rectangle->setOutlineColor(sf::Color::Red);
-	//rectangle->setOutlineThickness(5);
-	//rectangle->setPosition(this->x, this->y);
-	//this->drawables["rect"] = rectangle;
 	if (!this->isEditable && !this->isReadOnly)
 	{
 		offset = 82.5;
 	}
+
+	circle->setRadius(50);
+	circle->setFillColor(APP_COLORS().GRAY);
+	circle->setPosition((float) (CENTER.x - 50), (float) (this->y + offset + 10));
+
 
 	if (!this->isReadOnly)
 	{
@@ -272,7 +267,7 @@ void SlideableMenu::loadOption()
 	}
 	else if (this->isReadOnly)
 	{
-		this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + offset + 25, 50, (int)(this->width * 3) / 5, this->actualSection->first, PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT);
+		this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + 55 + offset + 55, 50, (int)(this->width * 3) / 5, this->actualSection->first, PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT);
 	}
 
 	this->drawables["optionButton"] = new Button(this->parent, (int)(CENTER.x - (this->icon->getSize().x * rescaleFactor / 2)), (int)(this->y + offset), 120, this->icon->getSize().x * rescaleFactor, image, image);

@@ -11,6 +11,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "MainView.h"
 #include "UIElement.h"
 #include "WindowController.h"
 
@@ -49,9 +50,11 @@ class ModeratorWindowController : public WindowController
         // Variables
 
         State actualState;
-        UIElement *view;
+        MainView *view;
         map<string, string> selectedOption;
-        Music* music;
+        Music
+            * music,
+            * fx;
         map<string, vector<map<string, string>>> teams;
         bool isMusicReady;
 

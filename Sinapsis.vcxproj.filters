@@ -96,7 +96,7 @@
     <ClCompile Include="WinnerView.cpp">
       <Filter>src\views</Filter>
     </ClCompile>
-    <ClCompile Include="View.cpp">
+    <ClCompile Include="MainView.cpp">
       <Filter>src\views</Filter>
     </ClCompile>
   </ItemGroup>

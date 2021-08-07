@@ -51,9 +51,13 @@ ModeratorWindowController::ModeratorWindowController(int height, int width) : Wi
     this->texture.display();
 
     this->music = new Music();
+    this->fx = new Music();
     this->isMusicReady = false;
+
     this->music->setVolume(20);
     this->music->setLoop(true);
+    this->fx->setVolume(20);
+    this->fx->setLoop(false);
 
     this->setActualState(State::MAIN_MENU);
 }
@@ -84,7 +88,7 @@ void ModeratorWindowController::setActualState(ModeratorWindowController::State 
             this->setMusic("game");
             break;
         case ModeratorWindowController::State::WINNER:
-            this->view = new WinnerView(&this->window, 0, 0, this->height, this->width, this->teams, this->selectedOption["Modo de juego"]);
+            //this->view = new WinnerView(&this->window, 0, 0, this->height, this->width);
             this->setMusic("game");
             break;
     }
@@ -149,6 +153,15 @@ void ModeratorWindowController::run()
         }
         else if (this->actualState == State::GAME)
         {
+        }
+
+        if (this->view->getPlayAudio().size() > 0) {
+            if (this->fx->getStatus() == Music::Status::Stopped) {
+                map<string, bool> i = this->view->getPlayAudio();
+
+                this->fx->openFromFile("resources\\audio\\" + i.begin()->first + ".ogg");
+                this->fx->play();
+            }
         }
 
         this->window.clear();

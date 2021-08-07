@@ -165,7 +165,7 @@
     <ClCompile Include="StorageController.cpp" />
     <ClCompile Include="TextField.cpp" />
     <ClCompile Include="UIElement.cpp" />
-    <ClCompile Include="View.cpp" />
+    <ClCompile Include="MainView.cpp" />
     <ClCompile Include="WindowController.cpp" />
     <ClCompile Include="WinnerView.cpp" />
     <ClCompile Include="WrappableText.cpp" />

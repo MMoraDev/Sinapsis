@@ -1,6 +1,6 @@
 /************************************************//**
- * \file    View.cpp
- * \brief   Here are defined all methods from View class
+ * \file    MainView.cpp
+ * \brief   Here are defined all methods from MainView class
 ***************************************************/
 
 /**************************************************/

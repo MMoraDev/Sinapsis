@@ -36,7 +36,7 @@ using namespace sf;
 /*****************************/
 // Constructor
 
-WinnerView::WinnerView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string game) : MainView(parent, x, y, height, width)
+WinnerView::WinnerView(RenderWindow* parent, int x, int y, int height, int width, string winner) : MainView(parent, x, y, height, width)
 {
 	this->initDrawables();
 };
@@ -102,6 +102,6 @@ void WinnerView::initDrawables()
 	this->drawables["franjaIzq"] = franja1Sprite;
 	this->drawables["franjaDer"] = franja2Sprite;
 	this->drawables["winner"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 3) / 10, 65, 120, (int)(this->width * 3) / 5, "¡GANADOR!", PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().ACCENT);
-	this->drawables["winnerTeam"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, (this->height * 2 / 5), 60, (int)(this->width * 2) / 5, "EQUIPO AZUL", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
-	this->drawables["goMenu"] = new Button(this->parent, (int)this->x + (this->width / 2) - 150, (int)(this->height * 4 / 5) + 40, 55, 300, "Volver al Menú", APP_COLORS().GRAY_LIGHT, APP_COLORS().ACCENT, APP_COLORS().BLACK);
+	this->drawables["winnerTeam"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, (this->height * 2 / 5), 60, (int)(this->width * 2) / 5, this->winner, PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
+	this->drawables["goToMenu"] = new Button(this->parent, (int)this->x + (this->width / 2) - 150, (int)(this->height * 4 / 5) + 40, 55, 300, "Volver al Menú", APP_COLORS().GRAY_LIGHT, APP_COLORS().ACCENT, APP_COLORS().BLACK);
 };

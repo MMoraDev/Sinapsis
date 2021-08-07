@@ -33,6 +33,7 @@ private:
         * logo,
         * franjaIzq,
         * franjaDer;
+    string winner;
 
     /********************/
     // Methods
@@ -43,7 +44,7 @@ public:
     /********************/
     // Constructor
 
-    WinnerView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string game);
+    WinnerView(RenderWindow* parent, int x, int y, int height, int width, string view);
 
     /********************/
     // Getters and setters methods

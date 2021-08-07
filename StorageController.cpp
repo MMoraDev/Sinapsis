@@ -48,7 +48,6 @@ vector<string> StorageController::getFilesNames(string path)
     return modes;
 };
 
-
 map<string, map<string, int>> StorageController::readFile(string filename)
 {
     ifstream file;

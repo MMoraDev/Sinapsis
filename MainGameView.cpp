@@ -202,8 +202,8 @@ void MainGameView::initDrawables()
 	this->drawables["zansButton5"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)290, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
 	this->drawables["zansButton6"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)332, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
 	this->drawables["logoImage"] = logoSprite;
-	this->drawables["zavatar1"] = new SlideableMenu(this->parent, (int)(this->width * 1 / 20) - 100, (int)(this->height * 5 / 10), 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team1Players"]), "resources\\images\\avatars\\", false, true);
-	this->drawables["zavatar2"] = new SlideableMenu(this->parent, (int)(this->width * 16 / 20) - 200, (int)(this->height * 5 / 10), 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team2Players"]), "resources\\images\\avatars\\", false, true);
+	this->drawables["zavatar1"] = new SlideableMenu(this->parent, (int)(this->width * 1 / 20) - 100, (int)(this->height * 5 / 10) + 80, 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team1Players"]), "resources\\images\\avatars\\", false, true);
+	this->drawables["zavatar2"] = new SlideableMenu(this->parent, (int)(this->width * 16 / 20) - 200, (int)(this->height * 5 / 10) + 80, 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team2Players"]), "resources\\images\\avatars\\", false, true);
 	this->drawables["question"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, 65, 55, (int)(this->width * 2) / 5, "Pregunta X", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 	this->drawables["qauestionsBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 350, 90.5, 300, 700, BORDER_RADIUS, APP_COLORS().WHITE);
 	this->drawables["qauestionsaBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 345, 95.5, 290, 690, BORDER_RADIUS, APP_COLORS().GRAY_LIGHT);

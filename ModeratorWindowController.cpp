@@ -18,6 +18,7 @@
 #include "SignUpView.h"
 #include "MainGameView.h"
 #include "WinnerView.h"
+#include "StorageController.h"
 
 /**************************************************/
 // Dev libraries
@@ -148,6 +149,9 @@ void ModeratorWindowController::run()
                 this->music->setLoop(true);         // make it loop
 
                 this->music->play();
+
+                StorageController::readFile("resources\\data\\classic.csv");
+
                 flag = false;
             }
         }

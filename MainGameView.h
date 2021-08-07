@@ -28,10 +28,11 @@ class MainGameView : public UIElement
     private:
         /********************/
         // Variables
-        int
-            scores[2] = {0, 0};
+        short int
+            scores[2],
+            round;
         map<string, vector<map<string, string>>> teams;
-        string game;
+        string gameMode;
         Texture
             * bg,
             * logo,
@@ -47,7 +48,7 @@ class MainGameView : public UIElement
         /********************/
         // Constructor
 
-        MainGameView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string game);
+        MainGameView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string gameMode);
 
         /********************/
         // Getters and setters methods
@@ -63,4 +64,8 @@ class MainGameView : public UIElement
          * \brief Prints the ui on the canvas (doesn't show it on screen).
          */
         void initDrawables();
+
+        int generateRandomNumber(int max, int min = 0);
+
+        void playRound(string round);
 };

@@ -36,10 +36,13 @@ using namespace sf;
 /*****************************/
 // Constructor
 
-MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string game) : UIElement(parent, x, y, height, width)
+MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string gameMode) : UIElement(parent, x, y, height, width)
 {
 	this->teams = teams;
-	this->game = game;
+	this->gameMode = gameMode;
+	this->scores[0] = 0;
+	this->scores[1] = 0;
+	this->round = 1;
 	this->initDrawables();
 };
 
@@ -213,3 +216,20 @@ void MainGameView::initDrawables()
 	this->drawables["leftTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40) - 15, 45, 45, (int)(this->width * 1) / 5 + 20, to_string(this->scores[0]), PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
 	this->drawables["rightTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 + 5, 45, 45, (int)(this->width * 1) / 5 + 2, to_string(this->scores[1]), PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
 };
+
+int generateRandomNumber(int max, int min)
+{
+	srand(time(NULL));
+
+	return rand() % max + min;
+};
+
+void MainGameView::playRound(string round)
+{
+	short int 
+		strikes,
+		playingTeam = this->generateRandomNumber(1);
+	
+
+};
+

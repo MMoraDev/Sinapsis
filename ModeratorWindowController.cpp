@@ -49,22 +49,13 @@ ModeratorWindowController::ModeratorWindowController(int height, int width) : Wi
     // We sets the texture size and display it once (it doesn`t display anything, but we need it to avoid errors while drawing).
     this->texture.create(width, height);
     this->texture.display();
-    this->setActualState(State::MAIN_MENU);
 
     this->music = new Music();
+    this->isMusicReady = false;
+    this->music->setVolume(20);
+    this->music->setLoop(true);
 
-    if (!this->music->openFromFile("resources\\audio\\menu.ogg"))
-    {
-        #ifdef _DEBUG
-                Console().debug("Error loading the audio", "There was an error loading menu.ogg", __LINE__, __FILE__, Console::Message_Type::ERR);
-        #endif
-    }
-
-    // Change some parameters
-    this->music->setVolume(20);         // reduce the volume
-    this->music->setLoop(true);         // make it loop
-
-    this->music->play();
+    this->setActualState(State::MAIN_MENU);
 }
 
 /*****************************/
@@ -73,22 +64,45 @@ ModeratorWindowController::ModeratorWindowController(int height, int width) : Wi
 ModeratorWindowController::State ModeratorWindowController::getActualState() { return this->actualState; };
 void ModeratorWindowController::setActualState(ModeratorWindowController::State state)
 {
+    State prevState = this->actualState;
     this->actualState = state;
 
     switch (this->actualState)
     {
         case ModeratorWindowController::State::MAIN_MENU:
             this->view = new MainMenuView(&this->window, 0, 0, this->height, this->width);
+            this->isMusicReady = false;
+            this->setMusic("menu");
             break;
         case ModeratorWindowController::State::SIGN_UP:
             this->view = new SignUpView(&this->window, 0, 0, this->height, this->width);
+            this->setMusic("menu");
             break;
         case ModeratorWindowController::State::GAME:
             this->view = new MainGameView(&this->window, 0, 0, this->height, this->width, this->teams, this->selectedOption["Modo de juego"]);
+            this->isMusicReady = false;
+            this->setMusic("game");
             break;
         case ModeratorWindowController::State::WINNER:
             this->view = new WinnerView(&this->window, 0, 0, this->height, this->width, this->teams, this->selectedOption["Modo de juego"]);
+            this->setMusic("game");
             break;
+    }
+};
+
+void ModeratorWindowController::setMusic(string fileName)
+{
+    if (!this->isMusicReady)
+    {
+        if (!this->music->openFromFile("resources\\audio\\" + fileName + ".ogg"))
+        {
+            #ifdef _DEBUG
+                        Console().debug("Error loading the audio", "There was an error loading game.ogg", __LINE__, __FILE__, Console::Message_Type::ERR);
+            #endif
+        }
+
+        this->music->play();
+        this->isMusicReady = true;
     }
 };
 
@@ -135,25 +149,6 @@ void ModeratorWindowController::run()
         }
         else if (this->actualState == State::GAME)
         {
-            if (flag == true)
-            {
-                if (!this->music->openFromFile("resources\\audio\\game.ogg"))
-                {
-                    #ifdef _DEBUG
-                        Console().debug("Error loading the audio", "There was an error loading game.ogg", __LINE__, __FILE__, Console::Message_Type::ERR);
-                    #endif
-                }
-
-                // Change some parameters
-                this->music->setVolume(20);         // reduce the volume
-                this->music->setLoop(true);         // make it loop
-
-                this->music->play();
-
-                StorageController::readFile("resources\\data\\classic.csv");
-
-                flag = false;
-            }
         }
 
         this->window.clear();

@@ -28,7 +28,6 @@ using namespace sf;
 class ModeratorWindowController : public WindowController
 {
     private:
-        bool flag = true;
     
     public:
         /********************/
@@ -54,6 +53,7 @@ class ModeratorWindowController : public WindowController
         map<string, string> selectedOption;
         Music* music;
         map<string, vector<map<string, string>>> teams;
+        bool isMusicReady;
 
     public:
         /********************/
@@ -66,6 +66,8 @@ class ModeratorWindowController : public WindowController
 
         State getActualState();
         void setActualState(State state);
+
+        void setMusic(string fileName);
 
         /********************/
         // Methods

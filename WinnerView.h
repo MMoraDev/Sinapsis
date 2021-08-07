@@ -31,7 +31,8 @@ private:
     Texture
         * bg,
         * logo,
-        * franjas;
+        * franjaIzq,
+        * franjaDer;
 
     /********************/
     // Methods

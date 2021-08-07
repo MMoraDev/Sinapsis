@@ -52,7 +52,8 @@ void WinnerView::initDrawables()
 	Sprite
 		* bgSprite = new Sprite(),
 		* logoSprite = new Sprite(),
-		* franjasSprite = new Sprite();
+		* franja1Sprite = new Sprite(),
+		* franja2Sprite = new Sprite();
 	
 	Vector2f
 		logoScale,
@@ -60,9 +61,10 @@ void WinnerView::initDrawables()
 
 	this->bg = new Texture();
 	this->logo = new Texture();
-	this->franjas = new Texture();
+	this->franjaIzq = new Texture();
+	this->franjaDer = new Texture();
 
-	if (!this->logo->loadFromFile("resources\\images\\logo.png") || !this->bg->loadFromFile("resources\\images\\bg.png") || !this->franjas->loadFromFile("resources\\images\\franjas.png"))
+	if (!this->logo->loadFromFile("resources\\images\\logo.png") || !this->bg->loadFromFile("resources\\images\\bg.png") || !this->franjaIzq->loadFromFile("resources\\images\\franjaIzq.png") || !this->franjaDer->loadFromFile("resources\\images\\franjaDer.png"))
 	{
 		#ifdef _DEBUG
 				Console().debug("Error loading image", "There was an error loading logo.png or bg.png", __LINE__, __FILE__, Console::Message_Type::ERR);
@@ -70,7 +72,7 @@ void WinnerView::initDrawables()
 	}
 
 	logoScale = Vector2f((float)(this->logo->getSize().x * 0.3) / this->width, (float)(this->logo->getSize().x * 0.3) / this->width);
-	franjasScale = Vector2f((float)(this->franjas->getSize().x) / this->width, (float)(this->franjas->getSize().x) / this->width);
+	franjasScale = Vector2f((float)(this->franjaIzq->getSize().x * 3 / this->width), (float)(this->franjaIzq->getSize().x * 3) / this->width);
 
 	// Convert bg.png (from image -> texture -> sprite) to draw on canvas
 	this->bg->setSmooth(true);
@@ -84,15 +86,21 @@ void WinnerView::initDrawables()
 	logoSprite->setPosition((float)(this->width / 2) - (this->logo->getSize().x * (logoScale.x / 2.f)), (float)(this->height * 4 / 5) - 100);
 
 	// Convert franjas.png (from image -> texture -> sprite) to draw on canvas
-	this->franjas->setSmooth(true);
-	franjasSprite->setTexture(*(this->franjas));
-	franjasSprite->setScale((float)this->width / (this->franjas->getSize().x), (float)this->height / this->franjas->getSize().y);
-	franjasSprite->setPosition((float)(this->width / 2) - (this->franjas->getSize().x * (franjasScale.x / 2.f)), 0);
+	this->franjaIzq->setSmooth(true);
+	franja1Sprite->setScale(franjasScale);
+	franja1Sprite->setTexture(*(this->franjaIzq));
+	franja1Sprite->setPosition(- 200, 0);
+
+	this->franjaDer->setSmooth(true);
+	franja2Sprite->setScale(franjasScale);
+	franja2Sprite->setTexture(*(this->franjaDer));
+	franja2Sprite->setPosition((float)(this->width) - (this->franjaDer->getSize().x * (franjasScale.x / 2.f)), 0);
 
 	//Drawables
 	this->drawables["bg"] = bgSprite;
 	this->drawables["logoImage"] = logoSprite;
-	this->drawables["franjas"] = franjasSprite;
+	this->drawables["franjaIzq"] = franja1Sprite;
+	this->drawables["franjaDer"] = franja2Sprite;
 	this->drawables["winner"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 3) / 10, 65, 120, (int)(this->width * 3) / 5, "¡GANADOR!", PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().ACCENT);
 	this->drawables["winnerTeam"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, (this->height * 2 / 5), 60, (int)(this->width * 2) / 5, "EQUIPO AZUL", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 };

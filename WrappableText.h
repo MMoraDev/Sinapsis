@@ -70,7 +70,8 @@ class WrappableText : public UIElement
         Text * uiText;
         bool 
             isUnderlined,
-            isClickable;
+            isClickable,
+            isVisible;
 
         /********************/
         // Methods
@@ -96,8 +97,9 @@ class WrappableText : public UIElement
          * \param isUnderlined (Optional)
          * \param borderRadius (Optional) Corner's radious
          * \param isClickable (Optional)
+         * \param isVisible (Optional)
          */
-        WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style = Style::BODY, TextAlign alignment = TextAlign::LEFT, Color fontColor = Color::Black, Color bgColor = Color::Transparent, bool isUnderlined = false, float borderRadius = 0, bool isClickable = false);
+        WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style = Style::BODY, TextAlign alignment = TextAlign::LEFT, Color fontColor = Color::Black, Color bgColor = Color::Transparent, bool isUnderlined = false, float borderRadius = 0, bool isClickable = false, bool isVisible = true);
 
         /********************/
         // Getters and setters methods

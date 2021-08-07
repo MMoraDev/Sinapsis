@@ -249,10 +249,10 @@ void MainGameView::playRound(string round)
 	this->actualQuestion = getRandomQuestion();
 	map<string, int>::iterator i = this->actualQuestion[this->actualQuestion.begin()->first].begin();
 
-
 	while (i != this->actualQuestion[this->actualQuestion.begin()->first].end())
-	{ 
-		static_cast<WrappableText*>(this->drawables["ranswer" + ++answerNum])->setText(i->first);
+	{
+		static_cast<WrappableText*>(this->drawables["ranswer" + to_string(++answerNum)])->setText(i->first);
+		i++;
 	}
 };
 

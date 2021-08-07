@@ -44,11 +44,24 @@ MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int w
 	this->scores[0] = 0;
 	this->scores[1] = 0;
 	this->round = 1;
+	this->questions = StorageController::readFile(this->gameMode);
 	this->initDrawables();
 };
 
 /*****************************/
 // Getters and setters methods
+
+map<string, map<string, int>> MainGameView::getRandomQuestion()
+{
+	int num = generateRandomNumber(questions.size() - 1);
+	map<string, map<string, int>>::iterator i = this->questions.begin();
+	map<string, map<string, int>> answer = map<string, map<string, int>>();
+	advance(i, num);
+	answer[i->first] = i->second;
+	this->questions.erase(i);
+
+	return answer;
+}
 
 /*****************************/
 // Medoths
@@ -231,4 +244,5 @@ void MainGameView::playRound(string round)
 		strikes = 0,
 		playingTeam = this->generateRandomNumber(1);
 };
+
 

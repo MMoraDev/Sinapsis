@@ -33,6 +33,9 @@ class MainGameView : public MainView
             round;
         map<string, bool> playAudio;
         map<string, vector<map<string, string>>> teams;
+        map<string, map<string, int>>
+            questions, 
+            actualQuestion;
         string gameMode;
         Texture
             * bg,
@@ -53,6 +56,7 @@ class MainGameView : public MainView
 
         /********************/
         // Getters and setters methods
+        map<string, map<string, int>> getRandomQuestion();
 
         /********************/
         // Methods
@@ -69,4 +73,5 @@ class MainGameView : public MainView
         int generateRandomNumber(int max, int min = 0);
 
         void playRound(string round);
+
 };

@@ -210,23 +210,35 @@ void SlideableMenu::initDrawables()
 {
 	const Vector2f CENTER = Vector2f((float)(this->x + (this->width / 2)), (float)(this->y + (this->height / 2)));
 	CircleShape* circle = new CircleShape();
+	float offset = 0;
 
 	this->loadOption();
 
 	circle->setRadius(50);
 	circle->setFillColor(APP_COLORS().GRAY);
-	circle->setPosition((float) (CENTER.x - 50), (float) (this->y + 55 + 37.5));
+	circle->setPosition((float) (CENTER.x - 50), (float) (this->y));
+	
+	//RectangleShape* rectangle = new RectangleShape();
+	//rectangle->setSize(sf::Vector2f(this->width, this->height));
+	//rectangle->setOutlineColor(sf::Color::Red);
+	//rectangle->setOutlineThickness(5);
+	//rectangle->setPosition(this->x, this->y);
+	//this->drawables["rect"] = rectangle;
+	if (!this->isEditable && !this->isReadOnly)
+	{
+		offset = 82.5;
+	}
 
 	if (!this->isReadOnly)
 	{
-		this->drawables["backButton"] = new Button(this->parent, (int)this->x, (int)this->y + 55 + 50, 75, 26, arrowImages[0], arrowImages[1]);
-		this->drawables["nextButton"] = new Button(this->parent, (int)(this->x + this->width - 26), (int)this->y + 55 + 50, 75, 26, arrowImages[2], arrowImages[3]);
+		this->drawables["backButton"] = new Button(this->parent, (int)this->x, (int)this->y + offset + 25, 75, 26, arrowImages[0], arrowImages[1]);
+		this->drawables["nextButton"] = new Button(this->parent, (int)(this->x + this->width - 26), (int)this->y + offset + 25, 75, 26, arrowImages[2], arrowImages[3]);
 	}
 
 	this->drawables["bg"] = circle;
 
 	if (this->isEditable)
-		this->drawables["optionText"] = new TextField(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + 55 + 10, 50, (int)(this->width * 3) / 5, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().BLACK, APP_COLORS().BLACK);
+		this->drawables["optionText"] = new TextField(this->parent, (int)this->x + (this->width / 5), this->y + 55 + offset + 55, 50, (int)(this->width * 3) / 5, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().BLACK, APP_COLORS().BLACK);
 };
 
 void SlideableMenu::loadOption()
@@ -234,7 +246,7 @@ void SlideableMenu::loadOption()
 	Image image;
 	Sprite* sprite;
 	const Vector2f CENTER = Vector2f((float)(this->x + (this->width / 2)), (float)(this->y + (this->height / 2)));
-	float rescaleFactor;
+	float rescaleFactor, offset = 0;
 	string realText = this->actualSection->second[this->actualOption];
 	realText[0] = toupper(realText[0]);
 
@@ -254,13 +266,14 @@ void SlideableMenu::loadOption()
 
 	if (!this->isEditable && !this->isReadOnly)
 	{
+		offset = 82.5;
 		this->drawables["sectionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y, 50, (int)(this->width * 3) / 5, this->actualSection->first, PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 		this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + +55 + 25, 50, (int)(this->width * 3) / 5, realText, PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().SECONDARY_DARK);
 	}
 	else if (this->isReadOnly)
 	{
-		this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + 55 + 75 + +55 + 25, 50, (int)(this->width * 3) / 5, this->actualSection->first, PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT);
+		this->drawables["optionText"] = new WrappableText(this->parent, (int)this->x + (this->width / 5), this->y + offset + 25, 50, (int)(this->width * 3) / 5, this->actualSection->first, PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT);
 	}
 
-	this->drawables["optionButton"] = new Button(this->parent, (int)(CENTER.x - (this->icon->getSize().x * rescaleFactor / 2)), (int)(this->y + 82.5), 120, this->icon->getSize().x * rescaleFactor, image, image);
+	this->drawables["optionButton"] = new Button(this->parent, (int)(CENTER.x - (this->icon->getSize().x * rescaleFactor / 2)), (int)(this->y + offset), 120, this->icon->getSize().x * rescaleFactor, image, image);
 };

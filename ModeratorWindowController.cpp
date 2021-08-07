@@ -121,7 +121,7 @@ void ModeratorWindowController::run()
             this->selectedOption = static_cast<MainMenuView*>(this->view)->getSelectedOption();
             if (this->selectedOption.size() > 0)
             {
-                this->setActualState(State::WINNER);
+                this->setActualState(State::SIGN_UP);
             }
         }
         else if (this->actualState == State::SIGN_UP)
@@ -139,7 +139,7 @@ void ModeratorWindowController::run()
                 if (!this->music->openFromFile("resources\\audio\\game.ogg"))
                 {
                     #ifdef _DEBUG
-                                    Console().debug("Error loading the audio", "There was an error loading game.ogg", __LINE__, __FILE__, Console::Message_Type::ERR);
+                        Console().debug("Error loading the audio", "There was an error loading game.ogg", __LINE__, __FILE__, Console::Message_Type::ERR);
                     #endif
                 }
 

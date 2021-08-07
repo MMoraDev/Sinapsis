@@ -11,12 +11,12 @@
 #include "RoundedRectangle.h"
 
 #include "Button.h"
+#include "MainView.h"
 #include "Settings.h"
 #include "SlideableMenu.h"
 #include "StorageController.h"
 #include "SignUpView.h"
 #include "TextField.h"
-#include "UIElement.h"
 #include "WrappableText.h"
 
 /**************************************************/
@@ -117,7 +117,7 @@ void SignUpView::loop()
 /*****************************/
 // Constructor
 
-SignUpView::SignUpView(RenderWindow* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
+SignUpView::SignUpView(RenderWindow* parent, int x, int y, int height, int width) : MainView(parent, x, y, height, width)
 {
 	this->isDone = false;
 	this->initDrawables();

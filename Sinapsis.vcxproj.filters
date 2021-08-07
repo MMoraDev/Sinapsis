@@ -96,6 +96,9 @@
     <ClCompile Include="WinnerView.cpp">
       <Filter>src\views</Filter>
     </ClCompile>
+    <ClCompile Include="View.cpp">
+      <Filter>src\views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Settings.h">
@@ -144,6 +147,9 @@
       <Filter>include\ui</Filter>
     </ClInclude>
     <ClInclude Include="WinnerView.h">
+      <Filter>include\views</Filter>
+    </ClInclude>
+    <ClInclude Include="MainView.h">
       <Filter>include\views</Filter>
     </ClInclude>
   </ItemGroup>

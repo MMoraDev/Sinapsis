@@ -11,9 +11,9 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-#include "TextField.h"
+#include "MainView.h"
 #include "SlideableMenu.h"
-#include "UIElement.h"
+#include "TextField.h"
 
 /**************************************************/
 // Namespaces
@@ -25,7 +25,7 @@ using namespace sf;
 /**
  * SignUpView class
  */
-class SignUpView : public UIElement
+class SignUpView : public MainView
 {
     private:
         /********************/

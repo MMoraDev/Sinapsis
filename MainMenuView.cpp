@@ -11,11 +11,11 @@
 
 #include "Button.h"
 #include "MainMenuView.h"
+#include "MainView.h"
 #include "RoundedRectangle.h"
 #include "Settings.h"
 #include "SlideableMenu.h"
 #include "StorageController.h"
-#include "UIElement.h"
 
 /**************************************************/
 // Dev libraries
@@ -45,7 +45,7 @@ void MainMenuView::loop()
 /*****************************/
 // Constructor
 
-MainMenuView::MainMenuView(RenderWindow* parent, int x, int y, int height, int width) : UIElement(parent, x, y, height, width)
+MainMenuView::MainMenuView(RenderWindow* parent, int x, int y, int height, int width) : MainView(parent, x, y, height, width)
 {
 	this->initDrawables();
 };

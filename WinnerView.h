@@ -11,7 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-#include "UIElement.h"
+#include "MainView.h"
 
 /**************************************************/
 // Namespaces
@@ -23,7 +23,7 @@ using namespace sf;
 /**
  * MainMenuView class
  */
-class WinnerView : public UIElement
+class WinnerView : public MainView
 {
 private:
     /********************/

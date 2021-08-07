@@ -6,16 +6,17 @@
 /**************************************************/
 // Libraries
 
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
 #include "RoundedRectangle.h"
 
 #include "Button.h"
 #include "MainGameView.h"
+#include "MainView.h"
 #include "Settings.h"
 #include "SlideableMenu.h"
 #include "StorageController.h"
-#include "UIElement.h"
 #include "WrappableText.h"
 #include "RoundedRectangle.h"
 
@@ -36,7 +37,7 @@ using namespace sf;
 /*****************************/
 // Constructor
 
-MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string gameMode) : UIElement(parent, x, y, height, width)
+MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string gameMode) : MainView(parent, x, y, height, width)
 {
 	this->teams = teams;
 	this->gameMode = gameMode;
@@ -217,7 +218,7 @@ void MainGameView::initDrawables()
 	this->drawables["rightTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 + 5, 45, 45, (int)(this->width * 1) / 5 + 2, to_string(this->scores[1]), PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
 };
 
-int generateRandomNumber(int max, int min)
+int MainGameView::generateRandomNumber(int max, int min)
 {
 	srand(time(NULL));
 
@@ -227,9 +228,7 @@ int generateRandomNumber(int max, int min)
 void MainGameView::playRound(string round)
 {
 	short int 
-		strikes,
+		strikes = 0,
 		playingTeam = this->generateRandomNumber(1);
-	
-
 };
 

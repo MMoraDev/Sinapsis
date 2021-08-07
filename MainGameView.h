@@ -11,7 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-#include "UIElement.h"
+#include "MainView.h"
 
 /**************************************************/
 // Namespaces
@@ -23,7 +23,7 @@ using namespace sf;
 /**
  * MainMenuView class
  */
-class MainGameView : public UIElement
+class MainGameView : public MainView
 {
     private:
         /********************/
@@ -31,6 +31,7 @@ class MainGameView : public UIElement
         short int
             scores[2],
             round;
+        map<string, bool> playAudio;
         map<string, vector<map<string, string>>> teams;
         string gameMode;
         Texture

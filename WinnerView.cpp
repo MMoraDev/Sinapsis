@@ -11,10 +11,10 @@
 #include "RoundedRectangle.h"
 
 #include "Button.h"
+#include "MainView.h"
 #include "Settings.h"
 #include "SlideableMenu.h"
 #include "StorageController.h"
-#include "UIElement.h"
 #include "WrappableText.h"
 #include "RoundedRectangle.h"
 #include "WinnerView.h"
@@ -36,7 +36,7 @@ using namespace sf;
 /*****************************/
 // Constructor
 
-WinnerView::WinnerView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string game) : UIElement(parent, x, y, height, width)
+WinnerView::WinnerView(RenderWindow* parent, int x, int y, int height, int width, map<string, vector<map<string, string>>> teams, string game) : MainView(parent, x, y, height, width)
 {
 	this->initDrawables();
 };

@@ -6,6 +6,7 @@
 /**************************************************/
 // Libraries
 
+#include <ctime>
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -39,6 +40,11 @@ using namespace sf;
 
 void MainGameView::loop()
 {
+	if (static_cast<WrappableText*>(this->drawables["zzAlertz"])->getIsVisible() && (clock() - this->startTime) / CLOCKS_PER_SEC >= 2)
+	{
+		static_cast<WrappableText*>(this->drawables["zzAlertz"])->setIsVisible(false);
+	}
+
 	if (static_cast<Button*>(this->drawables["strike"])->isClicked() && this->strikes <= 2)
 	{
 		Sprite* strike = static_cast<Sprite*>(this->drawables["x" + to_string(++(this->strikes))]);
@@ -66,7 +72,7 @@ MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int w
 	this->round = 1;
 	this->questions = StorageController::readFile("resources\\data\\" + this->gameMode + ".csv");
 	this->initDrawables();
-	this->playRound(to_string(this->round));
+	this->playRound();
 };
 
 /*****************************/
@@ -243,12 +249,12 @@ void MainGameView::initDrawables()
 	this->drawables["ranswer4"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 254, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE, false, 0.0f, false, false);
 	this->drawables["ranswer5"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 296, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE, false, 0.0f, false, false);
 	this->drawables["ranswer6"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 338, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE, false, 0.0f, false, false);
-	this->drawables["zansButton1"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)122, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
-	this->drawables["zansButton2"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)164, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
-	this->drawables["zansButton3"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)206, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
-	this->drawables["zansButton4"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)248, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
-	this->drawables["zansButton5"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)290, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
-	this->drawables["zansButton6"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)332, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
+	this->drawables["zansButton1"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)122, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent, false);
+	this->drawables["zansButton2"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)164, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent, false);
+	this->drawables["zansButton3"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)206, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent, false);
+	this->drawables["zansButton4"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)248, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent, false);
+	this->drawables["zansButton5"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)290, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent, false);
+	this->drawables["zansButton6"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)332, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent, false);
 	this->drawables["strike"] = new Button(this->parent, (int)this->x + (this->width / 2) - 160, (int)(this->height * 4 / 5) - 20, 55, 320, "Respuesta Incorrecta", APP_COLORS().GRAY_LIGHT, APP_COLORS().RED_DARK, APP_COLORS().RED);
 	this->drawables["logoImage"] = logoSprite;
 	this->drawables["zavatar1"] = new SlideableMenu(this->parent, (int)(this->width * 1 / 20) - 160, (int)(this->height * 3 / 10) + 60, 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team1Players"]), "resources\\images\\avatars\\", false, true);
@@ -270,30 +276,53 @@ int MainGameView::generateRandomNumber(int max, int min)
 	return rand() % max + min;
 };
 
-void MainGameView::playRound(string round)
+void MainGameView::playRound()
 {
 	short int 
 		answerNum = 0,
 		playingTeam = this->generateRandomNumber(1);
 	this->strikes = 0;
+	this->round++;
 
-	for (int i = 0; i < 3; i++)
+	if (this->round > 3)
 	{
-		Sprite* strike = static_cast<Sprite*>(this->drawables["x" + to_string(i + 1)]);
-		Color opacity = strike->getColor();
-		opacity.a = 0;
-		strike->setColor(opacity);
+		for (int i = 0; i < 3; i++)
+		{
+			Sprite* strike = static_cast<Sprite*>(this->drawables["x" + to_string(i + 1)]);
+			Color opacity = strike->getColor();
+			opacity.a = 0;
+			strike->setColor(opacity);
+		}
+
+		static_cast<WrappableText*>(this->drawables["zzAlertz"])->setText("Ronda" + to_string(this->round));
+		static_cast<WrappableText*>(this->drawables["zzAlertz"])->setIsVisible(true);
+		this->startTime = clock();
+
+		this->actualQuestion = getRandomQuestion();
+		map<string, int>::iterator i = this->actualQuestion[this->actualQuestion.begin()->first].begin();
+		string question = this->actualQuestion.begin()->first;
+		static_cast<WrappableText*>(this->drawables["question"])->setText(question);
+
+		while (i != this->actualQuestion[this->actualQuestion.begin()->first].end())
+		{
+			static_cast<WrappableText*>(this->drawables["ranswer" + to_string(++answerNum)])->setText(i->first);
+			i++;
+		}
 	}
-	
-	this->actualQuestion = getRandomQuestion();
-	map<string, int>::iterator i = this->actualQuestion[this->actualQuestion.begin()->first].begin();
-	string question = this->actualQuestion.begin()->first;
-	static_cast<WrappableText*>(this->drawables["question"])->setText(question);
-
-	while (i != this->actualQuestion[this->actualQuestion.begin()->first].end())
+	else
 	{
-		static_cast<WrappableText*>(this->drawables["ranswer" + to_string(++answerNum)])->setText(i->first);
-		i++;
+		if (this->scores[0] > this->scores[1])
+		{
+			this->winner = this->teams["names"][0]["team1"];
+		}
+		else if (this->scores[0] < this->scores[1])
+		{
+			this->winner = this->teams["names"][0]["team2"];
+		}
+		else
+		{
+			this->winner = "Empate";
+		}
 	}
 };
 

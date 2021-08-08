@@ -75,7 +75,7 @@ void Button::loop()
 /**************************************************/
 // Constructor
 
-Button::Button(RenderWindow* parent, int x, int y, int height, int width, Image bg, Image onHoverBg, int opacity) : UIElement(parent, x, y, height, width, true)
+Button::Button(RenderWindow* parent, int x, int y, int height, int width, Image bg, Image onHoverBg, int opacity, bool isVisible) : UIElement(parent, x, y, height, width, true, isVisible)
 {
 	Texture
 		*bgTexture = new Texture(),
@@ -93,13 +93,13 @@ Button::Button(RenderWindow* parent, int x, int y, int height, int width, Image 
 	this->initDrawables();
 };
 
-Button::Button(RenderWindow* parent, int x, int y, int height, int width, string text, Color font, Color bg, Color onHoverBg, int opacity) : UIElement(parent, x, y, height, width, true)
+Button::Button(RenderWindow* parent, int x, int y, int height, int width, string text, Color font, Color bg, Color onHoverBg, bool isVisible) : UIElement(parent, x, y, height, width, true, isVisible)
 {
 	this->text = text;
 	this->fontColor = font;
 	this->bgColor = bg;
 	this->onHoverBgColor = onHoverBg;
-	this->opacity = opacity;
+	this->opacity = 255;
 	this->type = Type::TEXT;
 	this->isReleased = true;
 

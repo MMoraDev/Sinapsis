@@ -7,6 +7,7 @@
 /**************************************************/
 // Libraries
 
+#include <ctime>
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -44,6 +45,7 @@ class MainGameView : public MainView
             * logo,
             * franjas,
             * xS;
+        clock_t startTime;
 
         /********************/
         // Methods
@@ -79,6 +81,6 @@ class MainGameView : public MainView
 
         int generateRandomNumber(int max, int min = 0);
 
-        void playRound(string round);
+        void playRound();
 
 };

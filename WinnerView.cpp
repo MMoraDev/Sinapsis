@@ -52,6 +52,7 @@ void WinnerView::loop()
 WinnerView::WinnerView(RenderWindow* parent, int x, int y, int height, int width, string winner) : MainView(parent, x, y, height, width)
 {
 	this->isDone = false;
+	this->winner = winner;
 	this->initDrawables();
 };
 

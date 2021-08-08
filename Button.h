@@ -62,9 +62,9 @@ class Button : public UIElement
         /********************/
         // Constructor
 
-        Button(RenderWindow* parent, int x, int y, int height, int width, Image bg, Image onHoverBg, int opacity = 255);
+        Button(RenderWindow* parent, int x, int y, int height, int width, Image bg, Image onHoverBg, int opacity = 255, bool isVisible = true);
 
-        Button(RenderWindow* parent, int x, int y, int height, int width, string text, Color font, Color bg, Color onHoverBg, int opacity = 255);
+        Button(RenderWindow* parent, int x, int y, int height, int width, string text, Color font, Color bg, Color onHoverBg, bool isVisible = true);
 
         /********************/
         // Getters and setters methods

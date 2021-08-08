@@ -32,6 +32,7 @@ class MainGameView : public MainView
             scores[2],
             strikes,
             round;
+        string winner;
         map<string, bool> playAudio;
         map<string, vector<map<string, string>>> teams;
         map<string, map<string, int>>
@@ -60,6 +61,9 @@ class MainGameView : public MainView
         /********************/
         // Getters and setters methods
         map<string, map<string, int>> getRandomQuestion();
+
+        string getWinner();
+        void setWinner(string winner);
 
         /********************/
         // Methods

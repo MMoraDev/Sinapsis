@@ -88,7 +88,7 @@ void ModeratorWindowController::setActualState(ModeratorWindowController::State 
             this->setMusic("game");
             break;
         case ModeratorWindowController::State::WINNER:
-            //this->view = new WinnerView(&this->window, 0, 0, this->height, this->width);
+            this->view = new WinnerView(&this->window, 0, 0, this->height, this->width, this->winner);
             this->setMusic("game");
             break;
     }
@@ -140,7 +140,7 @@ void ModeratorWindowController::run()
             this->selectedOption = static_cast<MainMenuView*>(this->view)->getSelectedOption();
             if (this->selectedOption.size() > 0)
             {
-                this->setActualState(State::SIGN_UP);
+                this->setActualState(State::WINNER);
             }
         }
         else if (this->actualState == State::SIGN_UP)
@@ -153,6 +153,18 @@ void ModeratorWindowController::run()
         }
         else if (this->actualState == State::GAME)
         {
+            if (static_cast<MainGameView*>(this->view)->getWinner() != "")
+            {
+                this->winner = static_cast<MainGameView*>(this->view)->getWinner();
+                this->setActualState(State::WINNER);
+            }
+        }
+        else if (this->actualState == State::WINNER)
+        {
+            if (static_cast<WinnerView*>(this->view)->getIsDone())
+            {
+                this->setActualState(State::MAIN_MENU);
+            }
         }
 
         if (this->view->getPlayAudio().size() > 0) {

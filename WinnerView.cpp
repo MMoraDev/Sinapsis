@@ -31,6 +31,19 @@
 using namespace sf;
 
 /**************************************************/
+// Private
+
+/*****************************/
+// Medoths
+void WinnerView::loop()
+{
+	if (static_cast<Button*>(this->drawables["goToMenu"])->isClicked())
+	{
+		this->isDone = true;
+	}
+};
+
+/**************************************************/
 // Public
 
 /*****************************/
@@ -38,11 +51,14 @@ using namespace sf;
 
 WinnerView::WinnerView(RenderWindow* parent, int x, int y, int height, int width, string winner) : MainView(parent, x, y, height, width)
 {
+	this->isDone = false;
 	this->initDrawables();
 };
 
 /*****************************/
 // Getters and setters methods
+bool WinnerView::getIsDone() { return this->isDone; };
+void WinnerView::setIsDone(bool isDone) { this->isDone = isDone; };
 
 /*****************************/
 // Medoths

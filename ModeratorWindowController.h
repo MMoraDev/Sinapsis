@@ -57,6 +57,7 @@ class ModeratorWindowController : public WindowController
             * fx;
         map<string, vector<map<string, string>>> teams;
         bool isMusicReady;
+        string winner;
 
     public:
         /********************/

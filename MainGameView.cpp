@@ -70,6 +70,9 @@ MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int w
 /*****************************/
 // Getters and setters methods
 
+string MainGameView::getWinner() { return this->winner; };
+void MainGameView::setWinner(string winner) { this->winner = winner; };
+
 map<string, map<string, int>> MainGameView::getRandomQuestion()
 {
 	int num = generateRandomNumber(questions.size() - 1);
@@ -255,6 +258,7 @@ void MainGameView::initDrawables()
 	this->drawables["rightTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 - 10, 5, 45, (int)(this->width * 1) / 5 + 2, this->teams["names"][0]["team2"], PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, APP_COLORS().GRAY_LIGHT, true);
 	this->drawables["leftTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40) - 15, 45, 45, (int)(this->width * 1) / 5 + 20, to_string(this->scores[0]), PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
 	this->drawables["rightTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 + 5, 45, 45, (int)(this->width * 1) / 5 + 2, to_string(this->scores[1]), PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
+	this->drawables["zzAlertz"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 4) / 10, (int)this->y + (this->height / 2) - 50, 120, (int)(this->width * 4) / 5, "ROUND 1", PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().ACCENT, false, 0.0F, false, false);
 };
 
 int MainGameView::generateRandomNumber(int max, int min)

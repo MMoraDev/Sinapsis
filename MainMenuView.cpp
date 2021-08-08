@@ -33,11 +33,11 @@ using namespace sf;
 
 /*****************************/
 // Medoths
-
 void MainMenuView::loop()
 {
 	this->selectedOption = static_cast<SlideableMenu*>(this->drawables["mainMenu"])->getSelectedOption();
 };
+
 
 /**************************************************/
 // Public

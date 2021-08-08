@@ -34,20 +34,23 @@ private:
         * franjaIzq,
         * franjaDer;
     string winner;
+    bool isDone;
 
     /********************/
     // Methods
-
+    void loop();
 protected:
 
 public:
     /********************/
     // Constructor
 
-    WinnerView(RenderWindow* parent, int x, int y, int height, int width, string view);
+    WinnerView(RenderWindow* parent, int x, int y, int height, int width, string winner);
 
     /********************/
     // Getters and setters methods
+    bool getIsDone();
+    void setIsDone(bool isDone);
 
     /********************/
     // Methods

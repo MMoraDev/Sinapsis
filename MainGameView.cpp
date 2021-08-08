@@ -40,6 +40,7 @@ using namespace sf;
 
 void MainGameView::loop()
 {
+	bool allAnswers = true;
 	static_cast<WrappableText*>(this->drawables["leftTeamScore"])->setText(to_string(this->scores[0]));
 	static_cast<WrappableText*>(this->drawables["rightTeamScore"])->setText(to_string(this->scores[1]));
 
@@ -72,8 +73,13 @@ void MainGameView::loop()
 		}
 	}
 
-	for (int i = 0 ; i < this->answers.size() ; i++)
+	for (int i = 0 ; i < this->actualQuestion.begin()->second.size(); i++)
 	{
+		if (!static_cast<WrappableText*>(this->drawables["ranswer" + to_string(i + 1)])->getIsVisible())
+		{
+			allAnswers = false;
+		}
+
 		if (this->answers[i]->isClicked())
 		{
 			map<string, int>::iterator it = this->actualQuestion[this->actualQuestion.begin()->first].begin();
@@ -87,6 +93,11 @@ void MainGameView::loop()
 			static_cast<SlideableMenu*>(this->drawables["zavatar" + to_string(this->teamTurn + 1)])->nextOption();
 			this->scores[this->teamTurn] += it->second;
 		}
+	}
+
+	if (allAnswers)
+	{
+		this->playRound();
 	}
 };
 

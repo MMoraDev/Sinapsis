@@ -72,13 +72,6 @@ void MainGameView::loop()
 		}
 	}
 
-	for (int i = this->actualQuestion.begin()->second.size(); i < answers.size(); i++)
-	{
-		static_cast<WrappableText*>(this->drawables["ranswer" + to_string(i+1)])->setIsVisible(false);
-		static_cast<Button*>(this->drawables["zansButton" + to_string(i+1)])->setIsVisible(false);
-		static_cast<CircleShape*>(this->drawables["ybg" + to_string(i+4)])->setFillColor(Color::Transparent);
-	}
-
 	for (int i = 0 ; i < this->answers.size() ; i++)
 	{
 		if (this->answers[i]->isClicked())
@@ -364,6 +357,21 @@ void MainGameView::playRound()
 		{
 			static_cast<WrappableText*>(this->drawables["ranswer" + to_string(++answerNum)])->setText(i->first);
 			i++;
+		}
+
+		for (int i = 0; i < answers.size(); i++)
+		{
+			static_cast<WrappableText*>(this->drawables["ranswer" + to_string(i + 1)])->setIsVisible(false);
+			static_cast<Button*>(this->drawables["zansButton" + to_string(i + 1)])->setText("?");
+			static_cast<Button*>(this->drawables["zansButton" + to_string(i + 1)])->setIsVisible(true);
+			static_cast<CircleShape*>(this->drawables["ybg" + to_string(i + 4)])->setFillColor(APP_COLORS().ACCENT);
+		}
+
+		for (int i = this->actualQuestion.begin()->second.size(); i < answers.size(); i++)
+		{
+			static_cast<WrappableText*>(this->drawables["ranswer" + to_string(i + 1)])->setIsVisible(false);
+			static_cast<Button*>(this->drawables["zansButton" + to_string(i + 1)])->setIsVisible(false);
+			static_cast<CircleShape*>(this->drawables["ybg" + to_string(i + 4)])->setFillColor(Color::Transparent);
 		}
 	}
 	else

@@ -177,6 +177,10 @@ void WrappableText::setStyle(Style style)
 		this->uiText->setFont(*WrappableText::fonts[2]);
 		fontSize = 20;
 		break;
+	case Style::QUESTION:
+		this->uiText->setFont(*WrappableText::fonts[1]);
+		fontSize = 20;
+		break;
 	}
 
 	this->uiText->setCharacterSize(fontSize);

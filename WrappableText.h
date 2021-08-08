@@ -39,7 +39,8 @@ class WrappableText : public UIElement
             TITLE,
             SUBTITLE,
             SCORE,
-            BODY
+            BODY,
+            QUESTION
         };
 
         const enum class TextAlign {

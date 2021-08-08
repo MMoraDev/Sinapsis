@@ -331,8 +331,12 @@ void MainGameView::playRound()
 	short int 
 		answerNum = 0,
 		playingTeam = this->generateRandomNumber(1);
-	this->strikes = 0;
 	this->round++;
+	if (this->strikes < 3)
+	{
+		this->setTeamTurn((this->teamTurn == 0) ? 1 : 0);
+	}
+	this->strikes = 0;
 
 	if (this->round <= 3)
 	{

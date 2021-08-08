@@ -65,11 +65,8 @@ void MainGameView::loop()
 			if (this->strikes == 3)
 			{
 				this->setTeamTurn((this->teamTurn == 0) ? 1 : 0);
+				this->restartStrikes();
 			}
-		}
-		else if (this->strikes == 4)
-		{
-			this->playRound();
 		}
 	}
 
@@ -343,21 +340,10 @@ void MainGameView::playRound()
 		answerNum = 0,
 		playingTeam = this->generateRandomNumber(1);
 	this->round++;
-	if (this->strikes < 3)
-	{
-		this->setTeamTurn((this->teamTurn == 0) ? 1 : 0);
-	}
-	this->strikes = 0;
 
 	if (this->round <= 4)
 	{
-		for (int i = 0; i < 3; i++)
-		{
-			Sprite* strike = static_cast<Sprite*>(this->drawables["x" + to_string(i + 1)]);
-			Color opacity = strike->getColor();
-			opacity.a = 0;
-			strike->setColor(opacity);
-		}
+		this->restartStrikes();
 
 		static_cast<WrappableText*>(this->drawables["zzAlertz"])->setText("Ronda " + to_string(this->round));
 		static_cast<WrappableText*>(this->drawables["zzAlertz"])->setIsVisible(true);
@@ -403,6 +389,18 @@ void MainGameView::playRound()
 		{
 			this->winner = "Empate";
 		}
+	}
+};
+
+void MainGameView::restartStrikes()
+{
+	this->strikes = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		Sprite* strike = static_cast<Sprite*>(this->drawables["x" + to_string(i + 1)]);
+		Color opacity = strike->getColor();
+		opacity.a = 0;
+		strike->setColor(opacity);
 	}
 };
 

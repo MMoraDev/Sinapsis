@@ -88,4 +88,5 @@ class MainGameView : public MainView
 
         void playRound();
 
+        void restartStrikes();
 };

@@ -223,9 +223,9 @@ void MainGameView::initDrawables()
 	this->drawables["logoImage"] = logoSprite;
 	this->drawables["zavatar1"] = new SlideableMenu(this->parent, (int)(this->width * 1 / 20) - 160, (int)(this->height * 3 / 10) + 60, 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team1Players"]), "resources\\images\\avatars\\", false, true);
 	this->drawables["zavatar2"] = new SlideableMenu(this->parent, (int)(this->width * 16 / 20) - 140, (int)(this->height * 3 / 10) + 60, 40, (int)(this->width * 2) / 5, this->dataToSlideableMenuFormat(this->teams["team2Players"]), "resources\\images\\avatars\\", false, true);
-	this->drawables["question"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, 65, 55, (int)(this->width * 2) / 5, "", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 	this->drawables["qauestionsBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 350, 90.5, 300, 700, BORDER_RADIUS, APP_COLORS().WHITE);
 	this->drawables["qauestionsaBg"] = new RoundedRectangle(this->parent, this->x + (this->width / 2) - 345, 95.5, 290, 690, BORDER_RADIUS, APP_COLORS().GRAY_LIGHT);
+	this->drawables["question"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10, 65, 55, (int)(this->width * 2) / 5, "", PADDING, WrappableText::Style::TITLE, WrappableText::TextAlign::CENTER, APP_COLORS().GRAY_LIGHT, APP_COLORS().PRIMARY);
 	this->drawables["leftTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40) + 10, 5, 45, (int)(this->width * 1) / 5 + 20, this->teams["names"][0]["team1"], PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, APP_COLORS().GRAY_LIGHT ,true);
 	this->drawables["rightTeam"] = new WrappableText(this->parent, (int)this->x + (this->width * 39 / 40) - (this->width * 1) / 5 - 10, 5, 45, (int)(this->width * 1) / 5 + 2, this->teams["names"][0]["team2"], PADDING, WrappableText::Style::SUBTITLE, WrappableText::TextAlign::RIGHT, APP_COLORS().GRAY_LIGHT, APP_COLORS().GRAY_LIGHT, true);
 	this->drawables["leftTeamScore"] = new WrappableText(this->parent, (int)this->x + (this->width * 1 / 40) - 15, 45, 45, (int)(this->width * 1) / 5 + 20, to_string(this->scores[0]), PADDING, WrappableText::Style::SCORE, WrappableText::TextAlign::LEFT, APP_COLORS().GRAY_LIGHT, Color::Transparent);
@@ -248,7 +248,8 @@ void MainGameView::playRound(string round)
 	
 	this->actualQuestion = getRandomQuestion();
 	map<string, int>::iterator i = this->actualQuestion[this->actualQuestion.begin()->first].begin();
-	static_cast<WrappableText*>(this->drawables["question"])->setText(this->actualQuestion.begin()->first);
+	string question = this->actualQuestion.begin()->first;
+	static_cast<WrappableText*>(this->drawables["question"])->setText(question);
 
 	while (i != this->actualQuestion[this->actualQuestion.begin()->first].end())
 	{

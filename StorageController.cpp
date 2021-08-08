@@ -51,7 +51,11 @@ vector<string> StorageController::getFilesNames(string path)
 map<string, map<string, int>> StorageController::readFile(string filename)
 {
     ifstream file;
-    string text, text2, text3;
+    string
+        text, 
+        text2, 
+        text3, 
+        question;
     int points, pos;
 
     map<string, map<string, int>> res = map<string, map<string, int>>();
@@ -72,7 +76,7 @@ map<string, map<string, int>> StorageController::readFile(string filename)
 
         if (text[0] == '\n')
         {
-            text.substr(1, text.size() - 2);
+            question = text.substr(1, text.size() - 1);
         }
 
         while (text != '\n' && text2 != "*")
@@ -81,7 +85,7 @@ map<string, map<string, int>> StorageController::readFile(string filename)
             getline(file, text3, ',');
 
             points = stoi(text3);
-            res[text][text2] = points;
+            res[question][text2] = points;
             
             pos = file.tellg();
             getline(file, text2, ',');

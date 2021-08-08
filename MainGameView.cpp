@@ -207,12 +207,12 @@ void MainGameView::initDrawables()
 	this->drawables["ybg7"] = circle7;
 	this->drawables["ybg8"] = circle8;
 	this->drawables["ybg9"] = circle9;
-	this->drawables["ranswer1"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 128, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
-	this->drawables["ranswer2"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 170, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
-	this->drawables["ranswer3"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 212, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
-	this->drawables["ranswer4"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 254, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
-	this->drawables["ranswer5"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 296, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
-	this->drawables["ranswer6"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 338, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE);
+	this->drawables["ranswer1"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 128, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE, false);
+	this->drawables["ranswer2"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 170, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE, false);
+	this->drawables["ranswer3"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 212, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE, false);
+	this->drawables["ranswer4"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 254, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE, false);
+	this->drawables["ranswer5"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 296, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE, false);
+	this->drawables["ranswer6"] = new WrappableText(this->parent, (int)this->x + (this->width / 2) - (int)(this->width * 2) / 10 - 40, 338, 35, (int)(this->width * 2) / 5 + 80, "", PADDING, WrappableText::Style::BODY, WrappableText::TextAlign::LEFT, APP_COLORS().BLACK, APP_COLORS().WHITE, false);
 	this->drawables["zansButton1"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)122, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
 	this->drawables["zansButton2"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)164, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
 	this->drawables["zansButton3"] = new Button(this->parent, (int)this->x + (this->width / 2) - 362, (int)206, 35, 120, "?", APP_COLORS().WHITE, Color::Transparent, Color::Transparent);
@@ -248,6 +248,7 @@ void MainGameView::playRound(string round)
 	
 	this->actualQuestion = getRandomQuestion();
 	map<string, int>::iterator i = this->actualQuestion[this->actualQuestion.begin()->first].begin();
+	static_cast<WrappableText*>(this->drawables["question"])->setText(this->actualQuestion.begin()->first);
 
 	while (i != this->actualQuestion[this->actualQuestion.begin()->first].end())
 	{

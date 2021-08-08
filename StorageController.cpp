@@ -70,6 +70,11 @@ map<string, map<string, int>> StorageController::readFile(string filename)
     {
         getline(file, text, ',');
 
+        if (text[0] == '\n')
+        {
+            text.substr(1, text.size() - 2);
+        }
+
         while (text != '\n' && text2 != "*")
         {
             getline(file, text2, ',');

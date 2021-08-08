@@ -47,8 +47,6 @@
             Console().debug("Welcome", "José Gutiérrez & Miguel De La Mora welcome you, developer.", __LINE__, __FILE__, Console::Message_Type::FRIENDLY);
     #endif
 
-    //! Tests section
-    StorageController::readFile("resources\\data\\classic.csv");
 
     // Variables
     MainController mainCtrl = MainController();

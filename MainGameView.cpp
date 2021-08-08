@@ -72,6 +72,13 @@ void MainGameView::loop()
 		}
 	}
 
+	for (int i = this->actualQuestion.begin()->second.size(); i < answers.size(); i++)
+	{
+		static_cast<WrappableText*>(this->drawables["ranswer" + to_string(i+1)])->setIsVisible(false);
+		static_cast<Button*>(this->drawables["zansButton" + to_string(i+1)])->setIsVisible(false);
+		static_cast<CircleShape*>(this->drawables["ybg" + to_string(i+4)])->setFillColor(Color::Transparent);
+	}
+
 	for (int i = 0 ; i < this->answers.size() ; i++)
 	{
 		if (this->answers[i]->isClicked())

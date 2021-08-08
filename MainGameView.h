@@ -46,6 +46,7 @@ class MainGameView : public MainView
             * franjas,
             * xS;
         clock_t startTime;
+        vector<Button*> answers;
 
         /********************/
         // Methods

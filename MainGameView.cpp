@@ -55,11 +55,12 @@ void MainGameView::loop()
 		static_cast<SlideableMenu*>(this->drawables["zavatar2"])->nextOption();
 	}
 
-	for (Button* answer : this->answers)
+	for (int i = 0 ; i < this->answers.size() ; i++)
 	{
-		if (answer->isClicked())
+		if (this->answers[i]->isClicked())
 		{
-			answer->setText();
+
+			this->answers[i]->setText(this->actualQuestion->second[this->drawables["ranswer" + to_string(i)]]);
 		}
 	}
 };

@@ -284,7 +284,7 @@ void MainGameView::playRound()
 	this->strikes = 0;
 	this->round++;
 
-	if (this->round > 3)
+	if (this->round <= 3)
 	{
 		for (int i = 0; i < 3; i++)
 		{

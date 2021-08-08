@@ -72,6 +72,9 @@ class Button : public UIElement
         int getOpacity();
         void setOpacity(int opacity);
 
+        string getText();
+        void setText(string text);
+
         /********************/
         // Methods
 

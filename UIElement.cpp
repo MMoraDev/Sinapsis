@@ -64,6 +64,9 @@ void UIElement::setHeight(int height)
 	this->bounds.setSize(Vector2f((float)this->width, (float)this->height));
 };
 
+bool UIElement::getIsClickeable() { return this->isClickeable; };
+void UIElement::setIsClickeable(bool isClickeable) { this->isClickeable = isClickeable; };
+
 bool UIElement::getIsVisible() { return this->isVisible; };
 void UIElement::setIsVisible(bool isVisible) { this->isVisible = isVisible; };
 

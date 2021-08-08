@@ -74,6 +74,9 @@ class UIElement : public Drawable
         int getHeight();
         void setHeight(int height);
 
+        bool getIsClickeable();
+        void setIsClickeable(bool isClickeable);
+
         bool getIsVisible();
         void setIsVisible(bool isVisible);
 

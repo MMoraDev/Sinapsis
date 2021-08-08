@@ -112,6 +112,9 @@ Button::Button(RenderWindow* parent, int x, int y, int height, int width, string
 int Button::getOpacity() { return this->opacity; };
 void Button::setOpacity(int opacity) { this->opacity = opacity; };
 
+string Button::getText() { return this->text; };
+void Button::setText(string text) { this->text = text; };
+
 /*****************************/
 // Medoths
 

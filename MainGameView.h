@@ -12,6 +12,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+#include "Button.h"
 #include "MainView.h"
 
 /**************************************************/
@@ -32,7 +33,8 @@ class MainGameView : public MainView
         short int
             scores[2],
             strikes,
-            round;
+            round,
+            teamTurn;
         string winner;
         map<string, bool> playAudio;
         map<string, vector<map<string, string>>> teams;

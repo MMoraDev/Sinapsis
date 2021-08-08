@@ -40,6 +40,8 @@ using namespace sf;
 
 void MainGameView::loop()
 {
+	map<string, int>::iterator it = this->actualQuestion[this->actualQuestion.begin()->first].begin();
+
 	if (static_cast<WrappableText*>(this->drawables["zzAlertz"])->getIsVisible() && (clock() - this->startTime) / CLOCKS_PER_SEC >= 2)
 	{
 		static_cast<WrappableText*>(this->drawables["zzAlertz"])->setIsVisible(false);
@@ -59,9 +61,16 @@ void MainGameView::loop()
 	{
 		if (this->answers[i]->isClicked())
 		{
+			this->answers[i]->setText(to_string(it->second));
+			this->answers[i]->setIsVisible(true);
+			this->answers[i]->setIsClickeable(false);
 
-			this->answers[i]->setText(this->actualQuestion->second[this->drawables["ranswer" + to_string(i)]]);
+			static_cast<WrappableText*>(this->drawables["ranswer" + to_string(i + 1)])->setIsVisible(true);
+			static_cast<SlideableMenu*>(this->drawables["zavatar" + to_string(this->teamTurn + 1)])->nextOption();
 		}
+
+		if (it != this->actualQuestion[this->actualQuestion.begin()->first].end())
+			it++;
 	}
 };
 
@@ -79,6 +88,7 @@ MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int w
 	this->scores[1] = 0;
 	this->strikes = 0;
 	this->round = 1;
+	this->teamTurn = this->generateRandomNumber(1);
 	this->questions = StorageController::readFile("resources\\data\\" + this->gameMode + ".csv");
 	this->initDrawables();
 	this->playRound();

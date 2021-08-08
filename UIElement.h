@@ -41,7 +41,8 @@ class UIElement : public Drawable
         bool
             isClickeable,
             isMouseInside,
-            isRedrawNeeded;
+            isRedrawNeeded,
+            isVisible;
         map<string, Drawable*>
             drawables;
 
@@ -62,15 +63,19 @@ class UIElement : public Drawable
          * \param y The y coordinate.
          * \param height The desired height for the element.
          * \param width The desired width for the element.
-         * \param isClickeable
+         * \param (optional) isClickeable
+         * \param (optional) isVisible
          */
-        UIElement(RenderWindow* parent, int x, int y, int height, int width, bool isClickeable = false);
+        UIElement(RenderWindow* parent, int x, int y, int height, int width, bool isClickeable = false, bool isVisible = true);
 
         /********************/
         // Getters and setters methods
 
         int getHeight();
         void setHeight(int height);
+
+        bool getIsVisible();
+        void setIsVisible(bool isVisible);
 
         int getWidth();
         void setWidth(int width);

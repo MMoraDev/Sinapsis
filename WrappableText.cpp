@@ -37,7 +37,7 @@ bool WrappableText::initialized = false;
 /*****************************/
 // Constructor
 
-WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style, TextAlign alignment, Color fontColor, Color bgColor, bool isUnderlined, float borderRadius, bool isClickable, bool isVisible) : UIElement(parent, x, y, height, width, isClickable)
+WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int width, string text, Vector2f padding, Style style, TextAlign alignment, Color fontColor, Color bgColor, bool isUnderlined, float borderRadius, bool isClickable, bool isVisible) : UIElement(parent, x, y, height, width, isClickable, isVisible)
 {
 	this->text = text;
 	this->padding = padding;
@@ -48,7 +48,6 @@ WrappableText::WrappableText(RenderWindow* parent, int x, int y, int height, int
 	this->isUnderlined = isUnderlined;
 	this->borderRadius = borderRadius;
 	this->isClickable = isClickable;
-	this->isVisible = isVisible;
 
 	if (!WrappableText::initialized)
 	{

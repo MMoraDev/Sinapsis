@@ -38,7 +38,7 @@ void UIElement::setCursor(Cursor::Type cursor)
 /*****************************/
 // Constructor
 
-UIElement::UIElement(RenderWindow* parent, int x, int y, int height, int width, bool isClickeable)
+UIElement::UIElement(RenderWindow* parent, int x, int y, int height, int width, bool isClickeable, bool isVisible)
 {
 	this->parent = parent;
 	this->x = x;
@@ -46,6 +46,7 @@ UIElement::UIElement(RenderWindow* parent, int x, int y, int height, int width, 
 	this->height = height;
 	this->width = width;
 	this->isClickeable = isClickeable;
+	this->isVisible = isVisible;
 	this->isMouseInside = false;
 	this->isRedrawNeeded = true;
 
@@ -62,6 +63,9 @@ void UIElement::setHeight(int height)
 	this->height = height;
 	this->bounds.setSize(Vector2f((float)this->width, (float)this->height));
 };
+
+bool UIElement::getIsVisible() { return this->isVisible; };
+void UIElement::setIsVisible(bool isVisible) { this->isVisible = isVisible; };
 
 int UIElement::getWidth() { return this->width; };
 void UIElement::setWidth(int width)
@@ -90,9 +94,11 @@ void UIElement::draw(RenderTarget& target, RenderStates states) const
 {
 	const_cast<UIElement*>(this)->loop();
 
-	for (const auto& d : this->drawables)
-	{
-		target.draw(*d.second, states);
+	if (const_cast<UIElement*>(this)->getIsVisible()) {
+		for (const auto& d : this->drawables)
+		{
+			target.draw(*d.second, states);
+		}
 	}
 };
 

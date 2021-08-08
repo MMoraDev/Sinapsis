@@ -71,8 +71,7 @@ class WrappableText : public UIElement
         Text * uiText;
         bool 
             isUnderlined,
-            isClickable,
-            isVisible;
+            isClickable;
 
         /********************/
         // Methods

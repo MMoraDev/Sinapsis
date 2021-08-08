@@ -30,6 +30,7 @@ class MainGameView : public MainView
         // Variables
         short int
             scores[2],
+            strikes,
             round;
         map<string, bool> playAudio;
         map<string, vector<map<string, string>>> teams;
@@ -45,6 +46,8 @@ class MainGameView : public MainView
 
         /********************/
         // Methods
+
+        void loop();
 
     protected:
 

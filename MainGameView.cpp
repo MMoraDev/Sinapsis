@@ -32,6 +32,23 @@
 using namespace sf;
 
 /**************************************************/
+// Private
+
+/*****************************/
+// Methods
+
+void MainGameView::loop()
+{
+	if (static_cast<Button*>(this->drawables["strike"])->isClicked() && this->strikes <= 2)
+	{
+		Sprite* strike = static_cast<Sprite*>(this->drawables["x" + to_string(++(this->strikes))]);
+		Color opacity = strike->getColor();
+		opacity.a = 255;
+		strike->setColor(opacity);
+	}
+};
+
+/**************************************************/
 // Public
 
 /*****************************/
@@ -43,6 +60,7 @@ MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int w
 	this->gameMode = gameMode;
 	this->scores[0] = 0;
 	this->scores[1] = 0;
+	this->strikes = 0;
 	this->round = 1;
 	this->questions = StorageController::readFile("resources\\data\\" + this->gameMode + ".csv");
 	this->initDrawables();
@@ -88,14 +106,11 @@ void MainGameView::initDrawables()
 		* xSprite1 = new Sprite(),
 		* xSprite2 = new Sprite(),
 		* xSprite3 = new Sprite();
-	
 	Vector2f
 		logoScale,
 		franjasScale,
 		xScale;
-
 	const Vector2f CENTER = Vector2f((float)(this->x + (this->width / 2)), (float)(this->y + (this->height / 2)));
-
 	CircleShape
 		* circle1 = new CircleShape(),
 		* circle2 = new CircleShape(),
@@ -106,7 +121,8 @@ void MainGameView::initDrawables()
 		* circle7 = new CircleShape(),
 		* circle8 = new CircleShape(),
 		* circle9 = new CircleShape();
-	
+	Color opacity = Color();
+
 	this->bg = new Texture();
 	this->logo = new Texture();
 	this->franjas = new Texture();
@@ -183,14 +199,23 @@ void MainGameView::initDrawables()
 	xSprite1->setScale(xScale);
 	xSprite1->setTexture(*(this->xS));
 	xSprite1->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))) - 125, (float)(this->height * 6 / 10));
+	opacity = xSprite1->getColor();
+	opacity.a = 0;
+	xSprite1->setColor(opacity);
 
 	xSprite2->setScale(xScale);
 	xSprite2->setTexture(*(this->xS));
 	xSprite2->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))), (float)(this->height * 6 / 10));
+	opacity = xSprite2->getColor();
+	opacity.a = 0;
+	xSprite2->setColor(opacity);
 
 	xSprite3->setScale(xScale);
 	xSprite3->setTexture(*(this->xS));
 	xSprite3->setPosition((float)((this->width / 2) - (this->xS->getSize().x * (xScale.x / 2.f))) + 125, (float)(this->height * 6 / 10));
+	opacity = xSprite3->getColor();
+	opacity.a = 0;
+	xSprite3->setColor(opacity);
 
 	//Drawables
 	this->drawables["bg"] = bgSprite;
@@ -242,7 +267,6 @@ int MainGameView::generateRandomNumber(int max, int min)
 void MainGameView::playRound(string round)
 {
 	short int 
-		strikes = 0,
 		answerNum = 0,
 		playingTeam = this->generateRandomNumber(1);
 	

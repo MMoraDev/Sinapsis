@@ -45,6 +45,8 @@ void MainGameView::loop()
 		Color opacity = strike->getColor();
 		opacity.a = 255;
 		strike->setColor(opacity);
+
+		static_cast<SlideableMenu*>(this->drawables["zavatar2"])->nextOption();
 	}
 };
 
@@ -273,6 +275,15 @@ void MainGameView::playRound(string round)
 	short int 
 		answerNum = 0,
 		playingTeam = this->generateRandomNumber(1);
+	this->strikes = 0;
+
+	for (int i = 0; i < 3; i++)
+	{
+		Sprite* strike = static_cast<Sprite*>(this->drawables["x" + to_string(i + 1)]);
+		Color opacity = strike->getColor();
+		opacity.a = 0;
+		strike->setColor(opacity);
+	}
 	
 	this->actualQuestion = getRandomQuestion();
 	map<string, int>::iterator i = this->actualQuestion[this->actualQuestion.begin()->first].begin();

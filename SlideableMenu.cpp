@@ -39,39 +39,11 @@ void SlideableMenu::loop()
 {
 	if (this->drawables.find("backButton") != this->drawables.end() && static_cast<Button*>(this->drawables["backButton"])->isClicked())
 	{
-		this->animation.isChangingOption = true;
-		this->animation.direction = AnimationData::Direction::LEFT;
-
-		if (--(this->actualOption) < 0)
-		{
-			if ((this->actualSection)-- == this->options.begin())
-			{
-				this->actualSection = --(this->options.end());
-			}
-
-			this->actualOption = this->actualSection->second.size() - 1;
-		}
-
-		this->drawables["prevOptionButton"] = this->drawables["optionButton"];
-		this->loadOption();
+		this->previusOption();
 	}
 	else if (this->drawables.find("nextButton") != this->drawables.end() && static_cast<Button*>(this->drawables["nextButton"])->isClicked())
 	{
-		this->animation.isChangingOption = true;
-		this->animation.direction = AnimationData::Direction::RIGHT;
-
-		if (++(this->actualOption) >= this->actualSection->second.size())
-		{
-			if (++(this->actualSection) == this->options.end())
-			{
-				this->actualSection = this->options.begin();
-			}
-
-			this->actualOption = 0;
-		}
-
-		this->drawables["prevOptionButton"] = this->drawables["optionButton"];
-		this->loadOption();
+		this->nextOption();
 	}
 	else if (static_cast<Button*>(this->drawables["optionButton"])->isClicked())
 	{
@@ -271,4 +243,42 @@ void SlideableMenu::loadOption()
 	}
 
 	this->drawables["optionButton"] = new Button(this->parent, (int)(CENTER.x - (this->icon->getSize().x * rescaleFactor / 2)), (int)(this->y + offset), 120, this->icon->getSize().x * rescaleFactor, image, image);
+};
+
+void SlideableMenu::nextOption()
+{
+	this->animation.isChangingOption = true;
+	this->animation.direction = AnimationData::Direction::RIGHT;
+
+	if (++(this->actualOption) >= this->actualSection->second.size())
+	{
+		if (++(this->actualSection) == this->options.end())
+		{
+			this->actualSection = this->options.begin();
+		}
+
+		this->actualOption = 0;
+	}
+
+	this->drawables["prevOptionButton"] = this->drawables["optionButton"];
+	this->loadOption();
+};
+
+void SlideableMenu::previusOption()
+{
+	this->animation.isChangingOption = true;
+	this->animation.direction = AnimationData::Direction::LEFT;
+
+	if (--(this->actualOption) < 0)
+	{
+		if ((this->actualSection)-- == this->options.begin())
+		{
+			this->actualSection = --(this->options.end());
+		}
+
+		this->actualOption = this->actualSection->second.size() - 1;
+	}
+
+	this->drawables["prevOptionButton"] = this->drawables["optionButton"];
+	this->loadOption();
 };

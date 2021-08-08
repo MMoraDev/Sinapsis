@@ -97,7 +97,6 @@ class SlideableMenu : public UIElement
         map<string, string> getSelectedOption();
         void setSelectedOption(map<string, string> option);
 
-
         TextField * getTextFieldPtr();
 
         /********************/
@@ -111,4 +110,8 @@ class SlideableMenu : public UIElement
         void initDrawables();
 
         void loadOption();
+
+        void nextOption();
+
+        void previusOption();
 };

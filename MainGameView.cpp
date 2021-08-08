@@ -91,7 +91,7 @@ MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int w
 	this->scores[0] = 0;
 	this->scores[1] = 0;
 	this->strikes = 0;
-	this->round = 1;
+	this->round = 0;
 	this->teamTurn = this->generateRandomNumber(2);
 	this->questions = StorageController::readFile("resources\\data\\" + this->gameMode + ".csv");
 	this->initDrawables();
@@ -324,7 +324,7 @@ void MainGameView::playRound()
 			strike->setColor(opacity);
 		}
 
-		static_cast<WrappableText*>(this->drawables["zzAlertz"])->setText("Ronda" + to_string(this->round));
+		static_cast<WrappableText*>(this->drawables["zzAlertz"])->setText("Ronda " + to_string(this->round));
 		static_cast<WrappableText*>(this->drawables["zzAlertz"])->setIsVisible(true);
 		this->startTime = clock();
 

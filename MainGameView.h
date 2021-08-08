@@ -67,6 +67,8 @@ class MainGameView : public MainView
         // Getters and setters methods
         map<string, map<string, int>> getRandomQuestion();
 
+        void setTeamTurn(int teamTurn);
+
         string getWinner();
         void setWinner(string winner);
 

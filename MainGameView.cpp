@@ -40,8 +40,6 @@ using namespace sf;
 
 void MainGameView::loop()
 {
-	map<string, int>::iterator it = this->actualQuestion[this->actualQuestion.begin()->first].begin();
-
 	static_cast<WrappableText*>(this->drawables["leftTeamScore"])->setText(to_string(this->scores[0]));
 	static_cast<WrappableText*>(this->drawables["rightTeamScore"])->setText(to_string(this->scores[1]));
 
@@ -50,20 +48,37 @@ void MainGameView::loop()
 		static_cast<WrappableText*>(this->drawables["zzAlertz"])->setIsVisible(false);
 	}
 
-	if (static_cast<Button*>(this->drawables["strike"])->isClicked() && this->strikes <= 2)
+	if (static_cast<Button*>(this->drawables["strike"])->isClicked())
 	{
-		Sprite* strike = static_cast<Sprite*>(this->drawables["x" + to_string(++(this->strikes))]);
-		Color opacity = strike->getColor();
-		opacity.a = 255;
-		strike->setColor(opacity);
+		this->strikes++;
 
-		static_cast<SlideableMenu*>(this->drawables["zavatar2"])->nextOption();
+		if (this->strikes <= 3)
+		{
+			Sprite* strike = static_cast<Sprite*>(this->drawables["x" + to_string(this->strikes)]);
+			Color opacity = strike->getColor();
+			opacity.a = 255;
+			strike->setColor(opacity);
+
+			static_cast<SlideableMenu*>(this->drawables["zavatar" + to_string(this->teamTurn + 1)])->nextOption();
+
+			if (this->strikes == 3)
+			{
+				this->setTeamTurn((this->teamTurn == 0) ? 1 : 0);
+			}
+		}
+		else if (this->strikes == 4)
+		{
+			this->playRound();
+		}
 	}
 
 	for (int i = 0 ; i < this->answers.size() ; i++)
 	{
 		if (this->answers[i]->isClicked())
 		{
+			map<string, int>::iterator it = this->actualQuestion[this->actualQuestion.begin()->first].begin();
+			advance(it, i);
+
 			this->answers[i]->setText(to_string(it->second));
 			this->answers[i]->setIsVisible(true);
 			this->answers[i]->setIsClickeable(false);
@@ -72,9 +87,6 @@ void MainGameView::loop()
 			static_cast<SlideableMenu*>(this->drawables["zavatar" + to_string(this->teamTurn + 1)])->nextOption();
 			this->scores[this->teamTurn] += it->second;
 		}
-
-		if (it != this->actualQuestion[this->actualQuestion.begin()->first].end())
-			it++;
 	}
 };
 
@@ -92,17 +104,14 @@ MainGameView::MainGameView(RenderWindow* parent, int x, int y, int height, int w
 	this->scores[1] = 0;
 	this->strikes = 0;
 	this->round = 0;
-	this->teamTurn = this->generateRandomNumber(2);
 	this->questions = StorageController::readFile("resources\\data\\" + this->gameMode + ".csv");
 	this->initDrawables();
 	this->playRound();
+	this->setTeamTurn(this->generateRandomNumber(2));
 };
 
 /*****************************/
 // Getters and setters methods
-
-string MainGameView::getWinner() { return this->winner; };
-void MainGameView::setWinner(string winner) { this->winner = winner; };
 
 map<string, map<string, int>> MainGameView::getRandomQuestion()
 {
@@ -114,7 +123,18 @@ map<string, map<string, int>> MainGameView::getRandomQuestion()
 	this->questions.erase(it);
 
 	return answer;
-}
+};
+
+void MainGameView::setTeamTurn(int teamTurn)
+{
+	this->teamTurn = teamTurn;
+
+	static_cast<SlideableMenu*>(this->drawables["zavatar1"])->setIsVisible((this->teamTurn == 0 ? true : false));
+	static_cast<SlideableMenu*>(this->drawables["zavatar2"])->setIsVisible((this->teamTurn == 1 ? true : false));
+};
+
+string MainGameView::getWinner() { return this->winner; };
+void MainGameView::setWinner(string winner) { this->winner = winner; };
 
 /*****************************/
 // Medoths
